@@ -519,6 +519,12 @@
     .cp-day .d{font-family:var(--display);color:var(--brass);font-size:1.15rem}
     .cp-day h4{font-family:var(--display);font-weight:500;font-size:1.2rem}
     .cp-day p{color:var(--ink-soft);margin-top:7px;font-size:.96rem;line-height:1.55}
+    .cp-day ul{list-style:none;display:grid;gap:8px;margin-top:12px}
+    .cp-day li{position:relative;padding-left:18px;color:var(--ink-soft);font-size:.96rem;line-height:1.55}
+    .cp-day li::before{content:"";position:absolute;left:0;top:9px;width:6px;height:6px;border-radius:50%;background:var(--brass)}
+    .cp-info{list-style:none;display:grid;gap:10px;margin:0 0 38px;border-left:3px solid var(--brass);padding:4px 0 4px 20px}
+    .cp-info li{color:var(--ink);font-size:1.02rem;line-height:1.55}
+    .cp-info b{font-weight:700;color:var(--ink);margin-right:4px}
     .cp-gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:28px}
     .cp-gallery img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:6px;border:1px solid var(--line)}
     .cp-lect{display:grid;grid-template-columns:.66fr 1.34fr;gap:46px;align-items:center}
@@ -641,7 +647,7 @@
       <div class="cp-facts cp-facts-3 ru">
         <div><div class="n">60</div><div class="l">балів БПР</div></div>
         <div><div class="n">4</div><div class="l">дні навчання</div></div>
-        <div><div class="n">Полтава</div><div class="l">+60 +30 баллов BBR</div></div>
+        <div><div class="n">Полтава</div><div class="l">навчальний центр «Аполлонія»</div></div>
       </div>
     </div>
   </section>
@@ -674,12 +680,56 @@
   <!-- PROGRAM -->
   <section class="cp-sec alt" id="program">
     <div class="wrap">
-      <div class="sec-head ru"><span class="eyebrow">Програма</span><h2>Чотири дні — від теорії до пацієнта</h2></div>
+      <div class="sec-head ru"><span class="eyebrow">Програма</span><h2>Як проходить курс</h2></div>
+      <ul class="cp-info ru">
+        <li>📅 <b>Коли?</b> За розкладом — 14–17 липня, 25–28 серпня, 16–19 вересня</li>
+        <li>💻 <b>Формат:</b> 2 дні в клінічному класі + 2 практичних майстер-класи</li>
+        <li>📍 <b>Де?</b> Полтава, Україна</li>
+        <li>💰 <b>Вартість:</b> 19 900 грн</li>
+        <li>🎓 <b>Бали:</b> 60 балів БПР</li>
+      </ul>
       <div class="ru">
-        <div class="cp-day"><div class="d">День 1</div><div><h4>Анатомія, колір і планування</h4><p>Топографія зубних тканин, колірна конструкція, оптика. Діагностика, фотопротокол і план реставрації клінічного випадка.</p></div></div>
-        <div class="cp-day"><div class="d">День 2</div><div><h4>Фронтальна група</h4><p>Пошарова пряма реставрація передніх зубів: форма, прозорість, природний перехід. Робота на пацієнті під наглядом лектора.</p></div></div>
-        <div class="cp-day"><div class="d">День 3</div><div><h4>Бічна група та контактні пункти</h4><p>Реставрація жувальних зубів, відтворення горбиків і фісур, формування щільних контактних пунктів та оклюзії.</p></div></div>
-        <div class="cp-day"><div class="d">День 4</div><div><h4>Фінішна обробка та розбір</h4><p>Корекція форми, текстура, полірування й контроль результату. Розбір кейсів учасників і відповіді на запитання.</p></div></div>
+        <div class="cp-day">
+          <div class="d">1–2 день</div>
+          <div>
+            <h4>🏥 Клінічна демонстрація</h4>
+            <p>Перші два дні ви працюєте безпосередньо у клініці.</p>
+            <ul>
+              <li>👨‍⚕️ Спостерігаєте за роботою лікаря-викладача під час реального лікування</li>
+              <li>📋 Отримуєте коментарі до кожного етапу: від планування і вибору матеріалів до фінішної поліровки</li>
+              <li>🧠 Слухаєте лекції з авторськими методиками Радлінського, розробленими на основі біоміметичного принципу</li>
+              <li>💬 Навчання проходить у форматі живої дискусії, з розбором клінічних випадків і помилок</li>
+            </ul>
+          </div>
+        </div>
+        <div class="cp-day">
+          <div class="d">3 день</div>
+          <div>
+            <h4>🧩 Реставрація передніх зубів у біоміметичній концепції</h4>
+            <ul>
+              <li>Клінічна анатомія передніх зубів: форма, рельєф, контури</li>
+              <li>Розрахунок пропорцій, роль «золотого перетину» в естетиці посмішки</li>
+              <li>Колір і світло в реставрації: як створити оптичну ілюзію природності</li>
+              <li>Внутрішня топографія зуба і її вплив на зовнішню форму</li>
+              <li>Алгоритм реставрації дефектів III–V класів</li>
+              <li>Відновлення контактних пунктів і інтеграція в оклюзію</li>
+              <li>Фінішна обробка реставрацій</li>
+            </ul>
+          </div>
+        </div>
+        <div class="cp-day">
+          <div class="d">4 день</div>
+          <div>
+            <h4>⚙️ Реставрація бокових зубів</h4>
+            <ul>
+              <li>Фізіологія форми і анатомія бокових зубів</li>
+              <li>Показання до прямої реставрації</li>
+              <li>Алгоритм реставрації дефектів II і V класів</li>
+              <li>Моделювання контактних поверхонь і інтеграція в оклюзію</li>
+              <li>Практичне застосування біоміметичної концепції</li>
+            </ul>
+          </div>
+        </div>
       </div>
       <div class="cp-prog-cta ru"><a href="#enroll" class="btn btn-green">Записатися на курс</a></div>
     </div>
@@ -705,8 +755,9 @@
       <div>
         <span class="eyebrow">Лектор курсу</span>
         <h2 class="cp-h">Ольга Пономаренко</h2>
-        <p class="role">Викладач курсів та майстер-класів з художньої реставрації зубів</p>
-        <p class="bio">Лікар стоматологічної клініки-студії «Аполлонія», сертифікований тренер компанії Dentsply Sirona, лектор практичних майстер-класів у різних регіонах України та за кордоном. Член Української академії естетичної стоматології (УАЕС).</p>
+        <p class="role">Лікар клініки-студії «Аполлонія» · сертифікований тренер Dentsply Sirona</p>
+        <p class="bio">Лікар стоматологічної клініки-студії «Аполлонія», сертифікований тренер компанії Dentsply Sirona, викладач клінічного та практичного курсів у навчальному центрі «Аполлонія». Лектор практичних майстер-класів від навчального центру «Аполлонія» у різних регіонах України, Грузії, Казахстані, Узбекистані, Киргизстані та Вірменії. Проходила навчання у Фінляндії, Швейцарії, Німеччині. Автор статей у спеціалізованих стоматологічних виданнях.</p>
+        <p class="bio">Член Української академії естетичної стоматології (УАЕС). Спеціалізується в естетичній стоматології у техніці прямої художньої реставрації.</p>
         <a href="lektory.html" class="btn btn-ghost" style="margin-top:22px">Усі лектори</a>
       </div>
     </div>
