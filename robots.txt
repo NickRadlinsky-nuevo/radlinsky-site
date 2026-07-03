@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://radlinsky.com/sitemap.xml
+Sitemap: https://radlinsky.com.ua/sitemap.xml
