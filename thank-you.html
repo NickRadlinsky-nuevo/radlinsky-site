@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Дякуємо за оплату — НЦ «Аполлонія»</title>
+<link rel="icon" href="favicon.ico" sizes="any">
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7E639R6FKT"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-7E639R6FKT');
+</script>
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1357557515478741');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1357557515478741&ev=PageView&noscript=1"/></noscript>
+<!-- Purchase events: продукт по ?p=, дедуп через sessionStorage -->
+<script>
+(function(){
+  var products = {
+    'summer-sale': { name: '6 онлайн майстер-класів', value: 2480 },
+    'kurs-online': { name: 'Онлайн майстер-курс художньої реставрації', value: 5999 }
+  };
+  var p = new URLSearchParams(location.search).get('p');
+  var prod = products[p] || { name: 'Онлайн-продукт НЦ Аполлонія', value: 0 };
+  var key = 'purchase_sent_' + (p || 'unknown');
+  if (sessionStorage.getItem(key)) return;
+  sessionStorage.setItem(key, '1');
+  var txid = 'wfp_' + Date.now();
+  try {
+    gtag('event', 'purchase', {
+      transaction_id: txid, currency: 'UAH', value: prod.value,
+      items: [{ item_name: prod.name, price: prod.value, quantity: 1 }]
+    });
+  } catch(_){}
+  try {
+    fbq('track', 'Purchase', { currency: 'UAH', value: prod.value, content_name: prod.name });
+  } catch(_){}
+})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600&family=Onest:wght@400;500;600;700&display=swap&subset=cyrillic" rel="stylesheet">
+<style>
+:root{--charcoal:#1F1611;--cream:#FAF5E8;--ivory:#F2EBD8;--muted:#8B7E70;--saffron:#E8A82C;--saffron-deep:#C26A1A;--sage-mist:#E4E2CC;--walnut:#3D2418}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{font-family:'Onest',sans-serif;background:var(--cream);color:var(--charcoal);line-height:1.6;display:flex;flex-direction:column;min-height:100%;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:640px;margin:auto;padding:48px 28px;text-align:center;display:flex;flex-direction:column;align-items:center;position:relative}
+.mark{width:88px;height:88px;border-radius:50%;background:var(--saffron);display:flex;align-items:center;justify-content:center;margin-bottom:30px}
+.mark svg{width:40px;height:40px;stroke:var(--charcoal);stroke-width:3;fill:none}
+.eyebrow{font-size:13px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--saffron-deep);margin-bottom:16px}
+h1{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(34px,6vw,52px);line-height:1.06}
+.lede{color:var(--walnut);font-size:17.5px;margin-top:18px;max-width:46ch}
+.card{margin-top:30px;background:var(--ivory);border:1px solid var(--sage-mist);border-radius:16px;padding:22px 28px;font-size:15.5px;color:var(--walnut);max-width:52ch}
+.card b{color:var(--charcoal)}
+.btn{display:inline-flex;margin-top:32px;background:var(--charcoal);color:var(--cream);font-weight:700;font-size:14px;letter-spacing:.06em;text-transform:uppercase;padding:16px 32px;border-radius:12px;transition:background .25s}
+.btn:hover{background:var(--walnut)}
+.contact{margin-top:18px;font-size:14px;color:var(--muted)}
+.contact a{color:var(--saffron-deep);font-weight:600}
+footer{padding:24px;text-align:center;font-size:13px;color:var(--muted)}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="mark" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="4 12.5 9.5 18 20 6"/></svg></div>
+  <p class="eyebrow">Оплата пройшла успішно</p>
+  <h1>Дякуємо!</h1>
+  <p class="lede">Ми вже отримали вашу оплату. Менеджер зв'яжеться з вами протягом робочого дня та надасть доступ до всіх матеріалів.</p>
+  <div class="card">Якщо лист або дзвінок не надійшли протягом робочого дня — напишіть нам, і ми все вирішимо: <b>+38 (066) 191-83-00</b></div>
+  <a class="btn" href="/">На головну</a>
+  <p class="contact">Питання? <a href="mailto:nickolay@radlinsky.com.ua">nickolay@radlinsky.com.ua</a></p>
+</main>
+<footer>© 2026 Навчальний центр «Аполлонія» · Полтава</footer>
+</body>
+</html>
