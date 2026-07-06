@@ -512,6 +512,25 @@
     .ccard-desc{color:var(--ink-soft);font-size:.91rem;line-height:1.62;margin-top:14px;flex:1}
     .ccard-btn{margin-top:20px;align-self:flex-start}
     @media(max-width:820px){.ccards{grid-template-columns:1fr}}
+    /* ---- summer promo band ---- */
+    .promo-band{padding:0;background:linear-gradient(102deg,#E8A82C 0%,#EFBE55 55%,#F5D88B 100%);position:relative;overflow:hidden}
+    .promo-band::before{content:"";position:absolute;left:56%;top:-70px;width:150px;height:150px;border:1.5px solid rgba(31,22,17,.22);border-radius:50%}
+    .promo-band .wrap{display:grid;grid-template-columns:1.15fr auto auto;gap:34px;align-items:end;position:relative}
+    .pb-copy{padding:34px 0;align-self:center}
+    .pb-label{font-size:.7rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:#7A4C0E}
+    .pb-title{font-family:var(--display);font-weight:500;font-size:clamp(1.5rem,2.8vw,2.15rem);color:#1F1611;margin-top:8px;line-height:1.12}
+    .pb-title em{font-style:italic}
+    .pb-meta{margin-top:10px;font-size:.9rem;color:#3D2418;font-weight:600}
+    .pb-trio{height:212px;width:auto;display:block;filter:drop-shadow(0 10px 18px rgba(31,22,17,.25))}
+    .pb-right{display:flex;align-items:center;gap:24px;padding:34px 0;align-self:center}
+    .pb-price{text-align:right;white-space:nowrap}
+    .pb-badge{display:inline-block;background:#1F1611;color:#FAF5E8;font-size:.78rem;font-weight:700;padding:4px 10px;border-radius:20px;margin-bottom:8px}
+    .pb-old{font-size:.95rem;color:rgba(31,22,17,.55);text-decoration:line-through}
+    .pb-new{font-family:var(--display);font-size:2.3rem;font-weight:500;color:#1F1611;line-height:1.05}
+    .pb-btn{display:inline-flex;background:#1F1611;color:#FAF5E8;font-weight:700;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;padding:17px 28px;border-radius:8px;white-space:nowrap;transition:background .3s var(--ease)}
+    .pb-btn:hover{background:#3D2418;color:#FAF5E8}
+    @media(max-width:1060px){.pb-trio{display:none}.promo-band .wrap{grid-template-columns:1fr auto}}
+    @media(max-width:720px){.promo-band .wrap{grid-template-columns:1fr;gap:0}.pb-copy{padding-bottom:6px}.pb-right{padding-top:0;justify-content:space-between;width:100%}}
   </style>  <style>
     /* schedule thumbnails */
     .sched-table td.c-thumb{width:118px;padding-right:0}
@@ -574,6 +593,26 @@
       </div>
       <div class="hero-art ru">
         <img src="images/vitruvian-hero.jpg" alt="Вітрувіанська людина — пропорція усмішки" loading="lazy" decoding="async">
+      </div>
+    </div>
+  </section>
+
+    <!-- SUMMER PROMO BAND -->
+  <section class="promo-band ru" id="summer-promo">
+    <div class="wrap">
+      <div class="pb-copy">
+        <p class="pb-label">Літня пропозиція</p>
+        <p class="pb-title">6 онлайн майстер-класів <em>від майстрів школи Радлінського</em></p>
+        <p class="pb-meta">30 годин відео · 15 балів БПР · доступ 3 місяці</p>
+      </div>
+      <img class="pb-trio" src="images/mk-trio-640.png" alt="Сергій Радлінський, Ольга Пономаренко, Наталія Синицина" loading="lazy" decoding="async">
+      <div class="pb-right">
+        <div class="pb-price">
+          <span class="pb-badge">−60%</span>
+          <div class="pb-old">6200 грн</div>
+          <div class="pb-new">2480 грн</div>
+        </div>
+        <a class="pb-btn" href="summer-sale">Отримати доступ</a>
       </div>
     </div>
   </section>
