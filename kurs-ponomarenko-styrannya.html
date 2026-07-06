@@ -3,6 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7E639R6FKT"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-7E639R6FKT');
+document.addEventListener('click', function(e){
+  var t = e.target;
+  var a = t && t.closest ? t.closest('a[href*="wayforpay"]') : null;
+  if (a) { try { gtag('event', 'begin_checkout', {currency: 'UAH'}); } catch(_){} }
+}, true);
+</script>
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
