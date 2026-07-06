@@ -13,9 +13,23 @@ gtag('config', 'G-7E639R6FKT');
 document.addEventListener('click', function(e){
   var t = e.target;
   var a = t && t.closest ? t.closest('a[href*="wayforpay"]') : null;
-  if (a) { try { gtag('event', 'begin_checkout', {currency: 'UAH'}); } catch(_){} }
+  if (a) { try { gtag('event', 'begin_checkout', {currency: 'UAH'}); } catch(_){} try { fbq('track', 'InitiateCheckout'); } catch(_){} }
 }, true);
 </script>
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1357557515478741');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1357557515478741&ev=PageView&noscript=1"/></noscript>
   <meta name="robots" content="noindex">
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
