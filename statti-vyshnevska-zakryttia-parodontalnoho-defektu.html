@@ -116,6 +116,12 @@ fbq('track', 'PageView');
     .gal.g4{grid-template-columns:repeat(4,1fr)}
     .gal.g5{grid-template-columns:repeat(5,1fr);gap:7px}
     @media(max-width:560px){.gal,.gal.g4,.gal.g5{grid-template-columns:1fr 1fr}.gal img.wide{grid-column:1 / -1}}
+    .galc{display:grid;grid-template-columns:1fr 1fr;gap:20px 18px;margin-top:24px;align-items:start}
+    .galc figure{margin:0;display:flex;flex-direction:column}
+    .galc img{width:100%;height:auto;border-radius:6px;border:1px solid var(--line);background:var(--porcelain)}
+    .galc img.wide{grid-column:1 / -1}
+    .galc figcaption{font-size:.82rem;color:var(--ink-faint);line-height:1.5;margin-top:9px}
+    @media(max-width:560px){.galc{grid-template-columns:1fr}}
     .cap{max-width:820px;margin:14px auto 0;font-size:.86rem;color:var(--ink-faint);line-height:1.55}
     .refs{max-width:820px;margin:40px auto 0}
     .refs h2{font-size:1.2rem;margin-top:0;color:var(--ink)}
@@ -172,26 +178,26 @@ fbq('track', 'PageView');
 
 <h2>Клінічний випадок</h2>
 <p>Пацієнтка Н., 44 роки, скаржилася на виражений дефект ясен і кістки в зоні зубів 11 і 12, що утворився після втручання електрокоагулятором. При огляді — виражена кровоточивість, гноєтеча, пародонтальні кишені 4–9 мм, рухливість зубів I–II ступеня, повна відсутність міжзубного сосочка з обох боків і рухливий секвестр. Діагноз: генералізований пародонтит II–III ступеня, стадія загострення; дефект м'яких тканин та альвеолярної кістки в зоні зубів 11 і 12 ятрогенної етіології. На рентгенограмі — зона резорбції міжальвеолярної перегородки.</p>
-<div class="gal">
-  <figure><img class="aimg" src="images/vysh-002.jpg" width="499" height="277" loading="lazy" alt="Дефект м'яких і твердих тканин у зоні зубів 11 і 12 ятрогенної етіології (з вестибулярного й піднебінного боків), рентгенограма зони резорбції та пародонтальна карта до лікування"></figure>
-  <figure><img class="aimg" src="images/vysh-003.jpg" width="499" height="281" loading="lazy" alt="Дефект м'яких і твердих тканин у зоні зубів 11 і 12 ятрогенної етіології (з вестибулярного й піднебінного боків), рентгенограма зони резорбції та пародонтальна карта до лікування"></figure>
-  <figure><img class="aimg" src="images/vysh-004.jpg" width="285" height="363" loading="lazy" alt="Дефект м'яких і твердих тканин у зоні зубів 11 і 12 ятрогенної етіології (з вестибулярного й піднебінного боків), рентгенограма зони резорбції та пародонтальна карта до лікування"></figure>
-  <figure><img class="aimg" src="images/vysh-005.jpg" width="491" height="543" loading="lazy" alt="Дефект м'яких і твердих тканин у зоні зубів 11 і 12 ятрогенної етіології (з вестибулярного й піднебінного боків), рентгенограма зони резорбції та пародонтальна карта до лікування"></figure>
-  <figure><img class="aimg" src="images/vysh-006.jpg" width="550" height="398" loading="lazy" alt="Дефект м'яких і твердих тканин у зоні зубів 11 і 12 ятрогенної етіології (з вестибулярного й піднебінного боків), рентгенограма зони резорбції та пародонтальна карта до лікування"></figure>
-  <figure><img class="aimg" src="images/vysh-007.jpg" width="271" height="170" loading="lazy" alt="Дефект м'яких і твердих тканин у зоні зубів 11 і 12 ятрогенної етіології (з вестибулярного й піднебінного боків), рентгенограма зони резорбції та пародонтальна карта до лікування"></figure>
+<div class="galc">
+  <figure><img class="aimg" src="images/vysh-002.jpg" width="499" height="277" loading="lazy" alt="Дефект м'яких і твердих тканин у ділянці зубів 12, 11."><figcaption>Фото 1. Дефект м'яких і твердих тканин у ділянці зубів 12, 11.</figcaption></figure>
+  <figure><img class="aimg" src="images/vysh-003.jpg" width="499" height="281" loading="lazy" alt="Вигляд дефекту з піднебінного боку."><figcaption>Фото 2. Вигляд дефекту з піднебінного боку.</figcaption></figure>
+  <figure><img class="aimg" src="images/vysh-004.jpg" width="285" height="363" loading="lazy" alt="Рентгенограма зони дефекту до лікування."><figcaption>Фото 3. Рентгенограма зони дефекту до лікування.</figcaption></figure>
+  <figure><img class="aimg" src="images/vysh-005.jpg" width="491" height="543" loading="lazy" alt="Пародонтальна карта пацієнтки Н. до лікування."><figcaption>Рис. 1. Пародонтальна карта пацієнтки Н. до лікування.</figcaption></figure>
+  <figure><img class="aimg" src="images/vysh-006.jpg" width="550" height="398" loading="lazy" alt="Препарати Straumann PrefGel і Straumann Emdogain для регенерації тканин пародонта."><figcaption>Фото 4. Препарати Straumann PrefGel і Straumann Emdogain для регенерації тканин пародонта.</figcaption></figure>
+  <figure><img class="aimg" src="images/vysh-007.jpg" width="271" height="170" loading="lazy" alt="Препарат гіалуронової кислоти hyaDENT BG."><figcaption>Фото 5. Препарат гіалуронової кислоти hyaDENT BG.</figcaption></figure>
 </div>
 <h2>Вибір методики</h2>
 <p>Як варіант розглядався ортодонтичний метод коронального зміщення ЦЕМ, але через невелику довжину кореня зуба 12, складність діагностики ЦЕМ і неготовність пацієнтки до ортодонтії його відхилили. Обрано комбінований метод: на хірургічному етапі витягували секвестр, очищали кістковий дефект і наносили «Емдогейн» для відновлення зв'язкового апарату й кістки, а в післяопераційному періоді формували м'які тканини ін'єкціями hyaDENT BG. План включав професійну гігієну, SRP, антисептичну обробку, хірургічне втручання з «Емдогейном», заміну тимчасової конструкції та ін'єкції гіалуронової кислоти.</p>
 <p><b>«Емдогейн»</b> (Straumann) — суміш протеїнів емалевої матриці свинячого походження; перед нанесенням поверхню коренів обробляють кондиціонером PrefGel (24 % ЕДТА). Препарат утворює позаклітинну матрицю, що запускає регенерацію тканин пародонту. <b>Гіалуронова кислота</b> — полісахарид глюкозаміногліканів; одна молекула зв'язує близько 500 молекул води, бере участь у регенерації, ангіогенезі та запаленні. hyaDENT BG — комбінація крос-зв'язаної й крос-незв'язаної ГК нетваринного походження для стоматології, що дає тривалий ефект стимуляції регенерації.</p>
 <h2>Результати</h2>
 <p>Після консервативного етапу ясна набули блідо-рожевого кольору, припинилися кровоточивість і гноєтеча. Після хірургічного етапу зробили заміну тимчасової конструкції й перший курс ін'єкцій hyaDENT BG (3 процедури з інтервалом 3 тижні) — контур м'яких тканин набув видимого об'єму з обох боків. Усього проведено 3 курси по 3 процедури з інтервалом 3 місяці. На контрольній рентгенограмі видно відновлену міжальвеолярну перегородку з чітким кістковим рисунком; за пародонтальною картою — відновлення епітеліального прикріплення й відсутність рецесії в зоні 11 і 12 (глибина борозни ~3 мм). Ясенний контур повністю відновлено, а тимчасову конструкцію замінено на коронки.</p>
-<div class="gal">
-  <figure><img class="aimg" src="images/vysh-008.jpg" width="241" height="365" loading="lazy" alt="Препарати Straumann PrefGel і Emdogain та гіалуронова кислота hyaDENT BG, вигляд дефекту після хірургічного етапу й ін'єкцій, відновлена міжальвеолярна перегородка та результат"></figure>
-  <figure><img class="aimg" src="images/vysh-009.jpg" width="498" height="263" loading="lazy" alt="Препарати Straumann PrefGel і Emdogain та гіалуронова кислота hyaDENT BG, вигляд дефекту після хірургічного етапу й ін'єкцій, відновлена міжальвеолярна перегородка та результат"></figure>
-  <figure><img class="aimg" src="images/vysh-010.jpg" width="499" height="280" loading="lazy" alt="Препарати Straumann PrefGel і Emdogain та гіалуронова кислота hyaDENT BG, вигляд дефекту після хірургічного етапу й ін'єкцій, відновлена міжальвеолярна перегородка та результат"></figure>
-  <figure><img class="aimg" src="images/vysh-011.jpg" width="491" height="545" loading="lazy" alt="Препарати Straumann PrefGel і Emdogain та гіалуронова кислота hyaDENT BG, вигляд дефекту після хірургічного етапу й ін'єкцій, відновлена міжальвеолярна перегородка та результат"></figure>
-  <figure><img class="aimg wide" src="images/vysh-012.jpg" width="498" height="256" loading="lazy" alt="Препарати Straumann PrefGel і Emdogain та гіалуронова кислота hyaDENT BG, вигляд дефекту після хірургічного етапу й ін'єкцій, відновлена міжальвеолярна перегородка та результат"></figure>
-  <figure><img class="aimg wide" src="images/vysh-013.jpg" width="498" height="229" loading="lazy" alt="Препарати Straumann PrefGel і Emdogain та гіалуронова кислота hyaDENT BG, вигляд дефекту після хірургічного етапу й ін'єкцій, відновлена міжальвеолярна перегородка та результат"></figure>
+<div class="galc">
+  <figure><img class="aimg" src="images/vysh-008.jpg" width="241" height="365" loading="lazy" alt="Рентгенограма зони дефекту після лікування."><figcaption>Фото 8. Рентгенограма зони дефекту після лікування.</figcaption></figure>
+  <figure><img class="aimg" src="images/vysh-009.jpg" width="498" height="263" loading="lazy" alt="Вигляд зони втручання з вестибулярного боку."><figcaption>Фото 6. Вигляд зони втручання з вестибулярного боку.</figcaption></figure>
+  <figure><img class="aimg" src="images/vysh-010.jpg" width="499" height="280" loading="lazy" alt="Вигляд дефекту з піднебінного боку після хірургічного втручання."><figcaption>Фото 7. Вигляд дефекту з піднебінного боку після хірургічного втручання.</figcaption></figure>
+  <figure><img class="aimg" src="images/vysh-011.jpg" width="491" height="545" loading="lazy" alt="Пародонтальна карта пацієнтки Н. після лікування (позитивна динаміка)."><figcaption>Рис. 2. Пародонтальна карта пацієнтки Н. після лікування (позитивна динаміка).</figcaption></figure>
+  <figure><img class="aimg wide" src="images/vysh-012.jpg" width="498" height="256" loading="lazy" alt="Вигляд дефекту після лікування з вестибулярного боку."><figcaption>Фото 9. Вигляд дефекту після лікування з вестибулярного боку.</figcaption></figure>
+  <figure><img class="aimg wide" src="images/vysh-013.jpg" width="498" height="229" loading="lazy" alt="Вигляд зубів 12, 11 з піднебінного боку після лікування."><figcaption>Фото 10. Вигляд зубів 12, 11 з піднебінного боку після лікування.</figcaption></figure>
 </div>
 <h2>Висновки</h2>
 <p>Позитивна динаміка клінічних проявів при усуненні пародонтального дефекту підтверджена оглядом, фотопротоколюванням, зондуванням і рентгенографією, що демонструє успішність обраного алгоритму та доцільність комбінованого застосування «Емдогейну» для відновлення зв'язкового апарату й кістки з ін'єкціями hyaDENT BG для прискорення загоєння й формування м'яких тканин. Збережені пародонтальні кишені понад 5,5 мм у дистальних ділянках указують на необхідність подальшого хірургічного регенеративного лікування генералізованого пародонтиту.</p>
