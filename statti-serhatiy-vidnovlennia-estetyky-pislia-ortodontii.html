@@ -116,6 +116,12 @@ fbq('track', 'PageView');
     .gal.g4{grid-template-columns:repeat(4,1fr)}
     .gal.g5{grid-template-columns:repeat(5,1fr);gap:7px}
     @media(max-width:560px){.gal,.gal.g4,.gal.g5{grid-template-columns:1fr 1fr}.gal img.wide{grid-column:1 / -1}}
+    .galc{display:grid;grid-template-columns:1fr 1fr;gap:20px 18px;margin-top:24px;align-items:start}
+    .galc figure{margin:0;display:flex;flex-direction:column}
+    .galc img{width:100%;height:auto;border-radius:6px;border:1px solid var(--line);background:var(--porcelain)}
+    .galc img.wide{grid-column:1 / -1}
+    .galc figcaption{font-size:.82rem;color:var(--ink-faint);line-height:1.5;margin-top:9px}
+    @media(max-width:560px){.galc{grid-template-columns:1fr}}
     .cap{max-width:820px;margin:14px auto 0;font-size:.86rem;color:var(--ink-faint);line-height:1.55}
     .refs{max-width:820px;margin:40px auto 0}
     .refs h2{font-size:1.2rem;margin-top:0;color:var(--ink)}
@@ -178,14 +184,14 @@ fbq('track', 'PageView');
 <li>Керамічні вініри (непрямим способом).</li>
 </ol>
 <p>Було вирішено виготовити 6 керамічних вінірів на рефракторі.</p>
-<div class="gal">
-  <figure><img class="aimg" src="images/serhatiy-001.jpg" width="705" height="407" loading="lazy" alt="Початкова клінічна ситуація після ортодонтичного лікування: адентія верхніх латеральних різців, низька лінія усмішки, wax-up, mock-up і маркування зон препарування"></figure>
-  <figure><img class="aimg" src="images/serhatiy-002.jpg" width="333" height="408" loading="lazy" alt="Початкова клінічна ситуація після ортодонтичного лікування: адентія верхніх латеральних різців, низька лінія усмішки, wax-up, mock-up і маркування зон препарування"></figure>
-  <figure><img class="aimg" src="images/serhatiy-003.jpg" width="513" height="303" loading="lazy" alt="Початкова клінічна ситуація після ортодонтичного лікування: адентія верхніх латеральних різців, низька лінія усмішки, wax-up, mock-up і маркування зон препарування"></figure>
-  <figure><img class="aimg" src="images/serhatiy-004.jpg" width="499" height="302" loading="lazy" alt="Початкова клінічна ситуація після ортодонтичного лікування: адентія верхніх латеральних різців, низька лінія усмішки, wax-up, mock-up і маркування зон препарування"></figure>
-  <figure><img class="aimg" src="images/serhatiy-005.jpg" width="498" height="305" loading="lazy" alt="Початкова клінічна ситуація після ортодонтичного лікування: адентія верхніх латеральних різців, низька лінія усмішки, wax-up, mock-up і маркування зон препарування"></figure>
-  <figure><img class="aimg" src="images/serhatiy-006.jpg" width="498" height="304" loading="lazy" alt="Початкова клінічна ситуація після ортодонтичного лікування: адентія верхніх латеральних різців, низька лінія усмішки, wax-up, mock-up і маркування зон препарування"></figure>
-  <figure><img class="aimg" src="images/serhatiy-007.jpg" width="313" height="430" loading="lazy" alt="Початкова клінічна ситуація після ортодонтичного лікування: адентія верхніх латеральних різців, низька лінія усмішки, wax-up, mock-up і маркування зон препарування"></figure>
+<div class="galc">
+  <figure><img class="aimg" src="images/serhatiy-001.jpg" width="705" height="407" loading="lazy" alt="Вихідна клінічна ситуація після ортодонтичного лікування: адентія верхніх латеральних різців із тремами."><figcaption>Вихідна клінічна ситуація після ортодонтичного лікування: адентія верхніх латеральних різців із тремами.</figcaption></figure>
+  <figure><img class="aimg" src="images/serhatiy-002.jpg" width="333" height="408" loading="lazy" alt="Низька лінія усмішки пацієнта; на основі фото-, відеоаналізу та сканування виготовлено wax-up на надрукованій моделі."><figcaption>Фото 1. Низька лінія усмішки пацієнта; на основі фото-, відеоаналізу та сканування виготовлено wax-up на надрукованій моделі.</figcaption></figure>
+  <figure><img class="aimg" src="images/serhatiy-003.jpg" width="513" height="303" loading="lazy" alt="Вигляд зубів після попереднього пришліфовування."><figcaption>Фото 2. Вигляд зубів після попереднього пришліфовування.</figcaption></figure>
+  <figure><img class="aimg" src="images/serhatiy-004.jpg" width="499" height="302" loading="lazy" alt="Вигляд зубів після встановлення mock-up."><figcaption>Фото 3. Вигляд зубів після встановлення mock-up.</figcaption></figure>
+  <figure><img class="aimg" src="images/serhatiy-006.jpg" width="498" height="304" loading="lazy" alt="Вестибулярне маркування глибини препарування та редукції ріжучого краю."><figcaption>Фото 4. Вестибулярне маркування глибини препарування та редукції ріжучого краю.</figcaption></figure>
+  <figure><img class="aimg" src="images/serhatiy-005.jpg" width="498" height="305" loading="lazy" alt="Маркування зон, що підлягають пришліфовуванню, після зняття mock-up (піднебінний бік)."><figcaption>Фото 5. Маркування зон, що підлягають пришліфовуванню, після зняття mock-up (піднебінний бік).</figcaption></figure>
+  <figure><img class="aimg" src="images/serhatiy-007.jpg" width="313" height="430" loading="lazy" alt="Попередній вигляд усмішки з mock-up."><figcaption>Попередній вигляд усмішки з mock-up.</figcaption></figure>
 </div>
 <h2>Діагностика й пришліфовування</h2>
 <p>Перший візит — діагностичний: зроблено сканування зубів, фото- та відеоаналіз обличчя й усмішки. Стандартним еталоном оцінки є лінія усмішки; у пацієнта вона низька — верхня губа прикриває зеніти зубів, що значно спрощує роботу (висока лінія усмішки, коли візуалізуються й ясна, найскладніша). Отриману інформацію передали в лабораторію для виготовлення wax-up. Під час другого візиту А-силіконом віддублювали wax-up з надрукованої моделі, створивши силіконовий ключ для переносу.</p>
@@ -194,26 +200,26 @@ fbq('track', 'PageView');
 <h2>Препарування й тимчасові конструкції</h2>
 <p>Вестибулярне маркування глибини препарування та редукцію ріжучого краю провадили за mock-up маркувальним бором Komet; зафарбовування поверхні олівцем посилює контраст між препарованими й непрепарованими ділянками. Препарування зубів 11, 13, 14 та 21, 23, 24 виконали діамантовими борами під мікроскопом; на зубі 11 повністю видалили стару композитну реставрацію. Редукція ріжучого краю в межах 1 мм забезпечує плавний перехід прозорості, а упор при незначному препаруванні краю — правильне позиціонування вініра під час фіксації.</p>
 <p>Для передачі меж препарування обрано хіміко-механічний метод ретракції: перша нитка Sure-Cord 000 забезпечила вертикальну ретракцію, друга з просоченням Sure-Cord 0 (експозиція 5 хв) — горизонтальну, безпосередньо перед зняттям цифрового відбитка. Тимчасові конструкції створили прямим методом і перенесли силіконовим ключем із самотвердіючою пластмасою Ivoclar Telio CS C&amp;B; надлишки скоригували полум'яподібним бором і провели полімеризацію адгезиву.</p>
-<div class="gal">
-  <figure><img class="aimg" src="images/serhatiy-008.jpg" width="498" height="305" loading="lazy" alt="Препарування зубів під керамічні вініри, редукція ріжучого краю, ретракційні нитки Sure-Cord і виготовлення тимчасових конструкцій"></figure>
-  <figure><img class="aimg" src="images/serhatiy-009.jpg" width="506" height="307" loading="lazy" alt="Препарування зубів під керамічні вініри, редукція ріжучого краю, ретракційні нитки Sure-Cord і виготовлення тимчасових конструкцій"></figure>
-  <figure><img class="aimg" src="images/serhatiy-010.jpg" width="498" height="303" loading="lazy" alt="Препарування зубів під керамічні вініри, редукція ріжучого краю, ретракційні нитки Sure-Cord і виготовлення тимчасових конструкцій"></figure>
-  <figure><img class="aimg" src="images/serhatiy-011.jpg" width="499" height="288" loading="lazy" alt="Препарування зубів під керамічні вініри, редукція ріжучого краю, ретракційні нитки Sure-Cord і виготовлення тимчасових конструкцій"></figure>
-  <figure><img class="aimg" src="images/serhatiy-012.jpg" width="496" height="331" loading="lazy" alt="Препарування зубів під керамічні вініри, редукція ріжучого краю, ретракційні нитки Sure-Cord і виготовлення тимчасових конструкцій"></figure>
-  <figure><img class="aimg" src="images/serhatiy-013.jpg" width="496" height="331" loading="lazy" alt="Препарування зубів під керамічні вініри, редукція ріжучого краю, ретракційні нитки Sure-Cord і виготовлення тимчасових конструкцій"></figure>
-  <figure><img class="aimg" src="images/serhatiy-014.jpg" width="499" height="298" loading="lazy" alt="Препарування зубів під керамічні вініри, редукція ріжучого краю, ретракційні нитки Sure-Cord і виготовлення тимчасових конструкцій"></figure>
+<div class="galc">
+  <figure><img class="aimg" src="images/serhatiy-008.jpg" width="498" height="305" loading="lazy" alt="Вигляд зубів після препарування."><figcaption>Фото 6. Вигляд зубів після препарування.</figcaption></figure>
+  <figure><img class="aimg" src="images/serhatiy-009.jpg" width="506" height="307" loading="lazy" alt="Встановлено першу ретракційну нитку Sure-Cord 000."><figcaption>Фото 7. Встановлено першу ретракційну нитку Sure-Cord 000.</figcaption></figure>
+  <figure><img class="aimg" src="images/serhatiy-010.jpg" width="498" height="303" loading="lazy" alt="Друга ретракційна нитка з просочуванням — Sure-Cord 0."><figcaption>Фото 8. Друга ретракційна нитка з просочуванням — Sure-Cord 0.</figcaption></figure>
+  <figure><img class="aimg" src="images/serhatiy-014.jpg" width="499" height="298" loading="lazy" alt="-10. Шість виготовлених керамічних вінірів; етап Dry Fit (примірка на суху поверхню)."><figcaption>Фото 9-10. Шість виготовлених керамічних вінірів; етап Dry Fit (примірка на суху поверхню).</figcaption></figure>
+  <figure><img class="aimg" src="images/serhatiy-011.jpg" width="499" height="288" loading="lazy" alt="Ізольоване робоче поле зубів 11, 21."><figcaption>Фото 11. Ізольоване робоче поле зубів 11, 21.</figcaption></figure>
+  <figure><img class="aimg" src="images/serhatiy-012.jpg" width="496" height="331" loading="lazy" alt="Етап фіксації вінірів на зуби 11, 21."><figcaption>Фото 12. Етап фіксації вінірів на зуби 11, 21.</figcaption></figure>
+  <figure><img class="aimg" src="images/serhatiy-013.jpg" width="496" height="331" loading="lazy" alt="(продовження). Адгезивна фіксація вінірів на центральні різці 11, 21 під ізоляцією."><figcaption>Фото 12 (продовження). Адгезивна фіксація вінірів на центральні різці 11, 21 під ізоляцією.</figcaption></figure>
 </div>
 <h2>Примірка й адгезивна фіксація</h2>
 <p>Третій візит — примірка та фіксація шести керамічних вінірів. Після зняття тимчасових конструкцій і полірування зубів провели примірку на суху поверхню (Dry Fit) для контролю точності прилягання, а під час другої примірки внесли Try-In paste Ivoclar відтінку Warm для імітації теплого відтінку постійного матеріалу. Ізоляцію виконали системою рабердам для контролю сухості операційного поля.</p>
 <p>Адгезивна підготовка кераміки: очищення Ivoclean, динамічне протравлювання на рефракторі плавиковою кислотою 4,5 % (60 с), очищення 96 % етанолом (30 с) і силанізація Monobond Plus. На силанізовану поверхню внесли адгезив ClearFil SE Bond 2 (Kuraray, 20 с), видалили розчинник повітрям і внесли фіксуючий композит Variolink Esthetic LC відтінку Warm (Ivoclar), помістивши реставрації у світлозахисний бокс. Сусідні зуби захистили тефлоном; емаль підготували повітряно-абразивно (оксид алюмінію 27 мкм) та динамічним протравлюванням (30 с), а адгезивну підготовку зуба виконали ClearFil SE Bond 2. Після точкової полімеризації (3 с) надлишки прибрали пензликом і флосом, застосували Air-Block проти інгібованого киснем шару, а залишки цементу зрізали скальпелем.</p>
-<div class="gal">
-  <figure><img class="aimg" src="images/serhatiy-015.jpg" width="498" height="296" loading="lazy" alt="Шість керамічних вінірів на рефракторі, примірка Dry Fit, ізоляція рабердамом та адгезивна фіксація вінірів із фінальним естетичним результатом"></figure>
-  <figure><img class="aimg wide" src="images/serhatiy-016.jpg" width="1050" height="340" loading="lazy" alt="Шість керамічних вінірів на рефракторі, примірка Dry Fit, ізоляція рабердамом та адгезивна фіксація вінірів із фінальним естетичним результатом"></figure>
-  <figure><img class="aimg" src="images/serhatiy-017.jpg" width="679" height="453" loading="lazy" alt="Шість керамічних вінірів на рефракторі, примірка Dry Fit, ізоляція рабердамом та адгезивна фіксація вінірів із фінальним естетичним результатом"></figure>
-  <figure><img class="aimg" src="images/serhatiy-018.jpg" width="390" height="450" loading="lazy" alt="Шість керамічних вінірів на рефракторі, примірка Dry Fit, ізоляція рабердамом та адгезивна фіксація вінірів із фінальним естетичним результатом"></figure>
-  <figure><img class="aimg" src="images/serhatiy-019.jpg" width="343" height="235" loading="lazy" alt="Шість керамічних вінірів на рефракторі, примірка Dry Fit, ізоляція рабердамом та адгезивна фіксація вінірів із фінальним естетичним результатом"></figure>
-  <figure><img class="aimg" src="images/serhatiy-020.jpg" width="343" height="235" loading="lazy" alt="Шість керамічних вінірів на рефракторі, примірка Dry Fit, ізоляція рабердамом та адгезивна фіксація вінірів із фінальним естетичним результатом"></figure>
-  <figure><img class="aimg" src="images/serhatiy-021.jpg" width="343" height="235" loading="lazy" alt="Шість керамічних вінірів на рефракторі, примірка Dry Fit, ізоляція рабердамом та адгезивна фіксація вінірів із фінальним естетичним результатом"></figure>
+<div class="galc">
+  <figure><img class="aimg" src="images/serhatiy-015.jpg" width="498" height="296" loading="lazy" alt="Вигляд після фіксації вінірів на зуби 11, 21."><figcaption>Фото 13. Вигляд після фіксації вінірів на зуби 11, 21.</figcaption></figure>
+  <figure><img class="aimg wide" src="images/serhatiy-016.jpg" width="1050" height="340" loading="lazy" alt="Остаточний вигляд після фіксації шести вінірів."><figcaption>Фото 14. Остаточний вигляд після фіксації шести вінірів.</figcaption></figure>
+  <figure><img class="aimg" src="images/serhatiy-017.jpg" width="679" height="453" loading="lazy" alt="Остаточний вигляд усмішки (крупний план)."><figcaption>Остаточний вигляд усмішки (крупний план).</figcaption></figure>
+  <figure><img class="aimg" src="images/serhatiy-018.jpg" width="390" height="450" loading="lazy" alt="Портрет пацієнта після лікування."><figcaption>Портрет пацієнта після лікування.</figcaption></figure>
+  <figure><img class="aimg" src="images/serhatiy-019.jpg" width="343" height="235" loading="lazy" alt="Змикання зубів праворуч після лікування."><figcaption>Змикання зубів праворуч після лікування.</figcaption></figure>
+  <figure><img class="aimg" src="images/serhatiy-020.jpg" width="343" height="235" loading="lazy" alt="Фронтальне змикання зубів після лікування."><figcaption>Фронтальне змикання зубів після лікування.</figcaption></figure>
+  <figure><img class="aimg" src="images/serhatiy-021.jpg" width="343" height="235" loading="lazy" alt="Змикання зубів ліворуч після лікування."><figcaption>Змикання зубів ліворуч після лікування.</figcaption></figure>
 </div>
 <h2>Висновки</h2>
 <p>Вдалося зробити успішну реабілітацію пацієнта в естетично значущій зоні. Адентія верхніх латеральних різців — досить поширений діагноз, тож рішення потрібно ухвалювати виважено у кожному випадку: можна створювати місце під імплантацію верхніх латеральних різців із подальшим протезуванням або обрати трансформацію іклів у латеральні різці, а перших премолярів — в ікла. Ідеальної техніки не існує, і результат завжди залежатиме від мануальних навичок лікаря-стоматолога й зубного техніка.</p>
