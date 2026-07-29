@@ -112,10 +112,14 @@ fbq('track', 'PageView');
     .gal{display:grid;grid-template-columns:1fr 1fr 1fr;gap:9px;margin-top:24px}
     .gal figure{margin:0}
     .gal img{width:100%;height:auto;border-radius:6px;border:1px solid var(--line);background:var(--porcelain)}
-    .gal img.wide{grid-column:1 / -1}
+    .gal img.wide,.gal figure.wide{grid-column:1 / -1}
+    .gal figure.wide img{max-width:360px;margin:0 auto}
+    .gal.g2{grid-template-columns:1fr 1fr}
+    .gal.g3{grid-template-columns:repeat(3,1fr)}
     .gal.g4{grid-template-columns:repeat(4,1fr)}
     .gal.g5{grid-template-columns:repeat(5,1fr);gap:7px}
-    @media(max-width:560px){.gal,.gal.g4,.gal.g5{grid-template-columns:1fr 1fr}.gal img.wide{grid-column:1 / -1}}
+    @media(max-width:560px){.gal,.gal.g4,.gal.g5{grid-template-columns:1fr 1fr}.gal img.wide,.gal figure.wide{grid-column:1 / -1}
+    .gal figure.wide img{max-width:360px;margin:0 auto}}
     .galc{display:grid;grid-template-columns:1fr 1fr;gap:20px 18px;margin-top:24px;align-items:start}
     .galc figure{margin:0;display:flex;flex-direction:column}
     .galc img{width:100%;height:auto;border-radius:6px;border:1px solid var(--line);background:var(--porcelain)}
@@ -214,6 +218,15 @@ fbq('track', 'PageView');
 </table>
 </div>
 
+<div class="gal g5">
+  <figure><img class="aimg " src="images/skr-004.jpg" width="380" height="306" loading="lazy" decoding="async" alt="Етапи конкурсної роботи; члени журі, організатори, учасники і спонсори"></figure>
+  <figure><img class="aimg " src="images/skr-005.jpg" width="374" height="306" loading="lazy" decoding="async" alt="Етапи конкурсної роботи; члени журі, організатори, учасники і спонсори"></figure>
+  <figure><img class="aimg " src="images/skr-006.jpg" width="252" height="306" loading="lazy" decoding="async" alt="Етапи конкурсної роботи; члени журі, організатори, учасники і спонсори"></figure>
+  <figure><img class="aimg " src="images/skr-007.jpg" width="648" height="400" loading="lazy" decoding="async" alt="Етапи конкурсної роботи; члени журі, організатори, учасники і спонсори"></figure>
+  <figure><img class="aimg " src="images/skr-008.jpg" width="372" height="399" loading="lazy" decoding="async" alt="Етапи конкурсної роботи; члени журі, організатори, учасники і спонсори"></figure>
+</div>
+<p class="cap">Етапи конкурсної роботи. Члени журі, організатори, учасники і спонсори.</p>
+
 <h2>Перебіг конкурсу</h2>
 <p>Тож перший тур конкурсу проводився в онлайн-форматі. За умовами конкурсу лікарі-інтерни повинні володіти технологією роботи із сучасними реставраційними матеріалами, уміти виконувати реставрації в зоні передніх зубів верхньої щелепи, лікувати неускладнений карієс. Інформацію надавали у вигляді презентацій, які висвітлювалися в рамках ХХІV Всеукраїнського навчального семінару «Шлях у світ майстерності», присвяченого актуальним питанням стоматології, що відбувся 9 лютого 2023 року на кафедрі післядипломної освіти лікарів-стоматологів.</p>
 <p>Зі вступним словом і привітанням до учасників семінару виступив проректор закладу вищої освіти з науково-педагогічної роботи та післядипломної освіти професор Ігор Скрипник. Плідної роботи семінару побажав завідувач кафедри післядипломної освіти лікарів-стоматологів професор Петро Скрипников.</p>
@@ -243,6 +256,182 @@ fbq('track', 'PageView');
 <p>Таким чином, професійні конкурси реставрації зубів, зокрема Всеукраїнський конкурс «Шлях у світ майстерності», що відбувається понад 20 років на базі кафедри післядипломної освіти лікарів-стоматологів УМСА, нині ПДМУ, дозволяють привернути увагу авдиторії інтернів і фахівців до проблеми якості реставрацій, продемонструвати, що стійкий гарантований результат можна отримати завдяки тренуванню та аналізу головних критеріїв зовнішнього вигляду природних тканин зуба. Адже кожна реставрація — це і репутація лікаря, який лише розпочинає свій професійний шлях, його певний професійний статус, і майбутня довіра пацієнтів. Конкурсний досвід дозволяє отримати портфоліо для подальшого успішного працевлаштування.</p>
 <p>Крім того, конкурс — це чудова можливість для обміну досвідом і демонстрації найкращих практик виконання процедур з використанням сучасних матеріалів. Фотореєстрація допомагає журі конкурсу визначити якість виконання всіх нюансів реставрації. Оцінка відновлених зубів є досить суб'єктивною, оскільки одні й ті ж результати можуть зовсім по-різному сприйматися різними фахівцями. Буде незайвим також дізнатися відчуття і думку пацієнта як майбутнього користувача після завершення відновлення зубів, ця оцінка може бути суб'єктивною за формою, але об'єктивною по суті, поскільки зорове сприйняття реставраційної конструкції є вирішальним в оцінці її якості.</p>
 
+<h3>Лікар Роман Моторний, м. Карлівка, ПДМУ</h3>
+<div class="gal g2">
+  <figure class="wide"><img class="aimg" src="images/skr-009.jpg" width="218" height="146" loading="lazy" decoding="async" alt="Лікар Роман Моторний, м. Карлівка, ПДМУ — команда конкурсанта"></figure>
+  <figure><img class="aimg " src="images/skr-010.jpg" width="217" height="230" loading="lazy" decoding="async" alt="Лікар Роман Моторний, м. Карлівка, ПДМУ: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-011.jpg" width="213" height="230" loading="lazy" decoding="async" alt="Лікар Роман Моторний, м. Карлівка, ПДМУ: після реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-012.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Роман Моторний, м. Карлівка, ПДМУ: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-013.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Роман Моторний, м. Карлівка, ПДМУ: після реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-014.jpg" width="245" height="150" loading="lazy" decoding="async" alt="Лікар Роман Моторний, м. Карлівка, ПДМУ: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-015.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Роман Моторний, м. Карлівка, ПДМУ: після реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-016.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Роман Моторний, м. Карлівка, ПДМУ: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-017.jpg" width="245" height="150" loading="lazy" decoding="async" alt="Лікар Роман Моторний, м. Карлівка, ПДМУ: після реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-018.jpg" width="245" height="150" loading="lazy" decoding="async" alt="Лікар Роман Моторний, м. Карлівка, ПДМУ: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-019.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Роман Моторний, м. Карлівка, ПДМУ: після реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-020.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Роман Моторний, м. Карлівка, ПДМУ: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-021.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Роман Моторний, м. Карлівка, ПДМУ: після реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-022.jpg" width="166" height="220" loading="lazy" decoding="async" alt="Лікар Роман Моторний, м. Карлівка, ПДМУ: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-023.jpg" width="165" height="245" loading="lazy" decoding="async" alt="Лікар Роман Моторний, м. Карлівка, ПДМУ: після реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-024.jpg" width="255" height="149" loading="lazy" decoding="async" alt="Лікар Роман Моторний, м. Карлівка, ПДМУ: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-025.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Роман Моторний, м. Карлівка, ПДМУ: після реставрації"></figure>
+</div>
+<p class="cap"><b>Лікар Роман Моторний, м. Карлівка, ПДМУ.</b> Ліворуч — до реставрації, праворуч — після реставрації.</p>
+
+<h3>Лікар Кристина Костюк, м. Полтава, ПДМУ</h3>
+<div class="gal g2">
+  <figure class="wide"><img class="aimg" src="images/skr-026.jpg" width="239" height="146" loading="lazy" decoding="async" alt="Лікар Кристина Костюк, м. Полтава, ПДМУ — команда конкурсанта"></figure>
+  <figure><img class="aimg " src="images/skr-027.jpg" width="217" height="230" loading="lazy" decoding="async" alt="Лікар Кристина Костюк, м. Полтава, ПДМУ: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-028.jpg" width="213" height="230" loading="lazy" decoding="async" alt="Лікар Кристина Костюк, м. Полтава, ПДМУ: після реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-029.jpg" width="245" height="150" loading="lazy" decoding="async" alt="Лікар Кристина Костюк, м. Полтава, ПДМУ: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-030.jpg" width="245" height="150" loading="lazy" decoding="async" alt="Лікар Кристина Костюк, м. Полтава, ПДМУ: після реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-031.jpg" width="245" height="150" loading="lazy" decoding="async" alt="Лікар Кристина Костюк, м. Полтава, ПДМУ: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-032.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Кристина Костюк, м. Полтава, ПДМУ: після реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-033.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Кристина Костюк, м. Полтава, ПДМУ: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-034.jpg" width="245" height="150" loading="lazy" decoding="async" alt="Лікар Кристина Костюк, м. Полтава, ПДМУ: після реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-035.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Кристина Костюк, м. Полтава, ПДМУ: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-036.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Кристина Костюк, м. Полтава, ПДМУ: після реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-037.jpg" width="245" height="150" loading="lazy" decoding="async" alt="Лікар Кристина Костюк, м. Полтава, ПДМУ: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-038.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Кристина Костюк, м. Полтава, ПДМУ: після реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-039.jpg" width="166" height="220" loading="lazy" decoding="async" alt="Лікар Кристина Костюк, м. Полтава, ПДМУ: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-040.jpg" width="165" height="220" loading="lazy" decoding="async" alt="Лікар Кристина Костюк, м. Полтава, ПДМУ: після реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-041.jpg" width="245" height="148" loading="lazy" decoding="async" alt="Лікар Кристина Костюк, м. Полтава, ПДМУ: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-042.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Кристина Костюк, м. Полтава, ПДМУ: після реставрації"></figure>
+</div>
+<p class="cap"><b>Лікар Кристина Костюк, м. Полтава, ПДМУ.</b> Ліворуч — до реставрації, праворуч — після реставрації.</p>
+
+<h3>Лікар Валентин Пілат, м. Хмельницький, ВНМУ ім. М. І. Пирогова</h3>
+<div class="gal g2">
+  <figure class="wide"><img class="aimg" src="images/skr-043.jpg" width="218" height="146" loading="lazy" decoding="async" alt="Лікар Валентин Пілат, м. Хмельницький, ВНМУ ім. М. І. Пирогова — команда конкурсанта"></figure>
+  <figure><img class="aimg " src="images/skr-044.jpg" width="217" height="230" loading="lazy" decoding="async" alt="Лікар Валентин Пілат, м. Хмельницький, ВНМУ ім. М. І. Пирогова: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-045.jpg" width="213" height="230" loading="lazy" decoding="async" alt="Лікар Валентин Пілат, м. Хмельницький, ВНМУ ім. М. І. Пирогова: після реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-046.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Валентин Пілат, м. Хмельницький, ВНМУ ім. М. І. Пирогова: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-047.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Валентин Пілат, м. Хмельницький, ВНМУ ім. М. І. Пирогова: після реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-048.jpg" width="245" height="150" loading="lazy" decoding="async" alt="Лікар Валентин Пілат, м. Хмельницький, ВНМУ ім. М. І. Пирогова: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-049.jpg" width="244" height="149" loading="lazy" decoding="async" alt="Лікар Валентин Пілат, м. Хмельницький, ВНМУ ім. М. І. Пирогова: після реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-050.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Валентин Пілат, м. Хмельницький, ВНМУ ім. М. І. Пирогова: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-051.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Валентин Пілат, м. Хмельницький, ВНМУ ім. М. І. Пирогова: після реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-052.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Валентин Пілат, м. Хмельницький, ВНМУ ім. М. І. Пирогова: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-053.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Валентин Пілат, м. Хмельницький, ВНМУ ім. М. І. Пирогова: після реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-054.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Валентин Пілат, м. Хмельницький, ВНМУ ім. М. І. Пирогова: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-055.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Валентин Пілат, м. Хмельницький, ВНМУ ім. М. І. Пирогова: після реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-056.jpg" width="166" height="245" loading="lazy" decoding="async" alt="Лікар Валентин Пілат, м. Хмельницький, ВНМУ ім. М. І. Пирогова: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-057.jpg" width="165" height="245" loading="lazy" decoding="async" alt="Лікар Валентин Пілат, м. Хмельницький, ВНМУ ім. М. І. Пирогова: після реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-058.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Валентин Пілат, м. Хмельницький, ВНМУ ім. М. І. Пирогова: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-059.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Валентин Пілат, м. Хмельницький, ВНМУ ім. М. І. Пирогова: після реставрації"></figure>
+</div>
+<p class="cap"><b>Лікар Валентин Пілат, м. Хмельницький, ВНМУ ім. М. І. Пирогова.</b> Ліворуч — до реставрації, праворуч — після реставрації.</p>
+
+<h3>Лікар Дмитро Клевець, м. Докучаєвськ, ПДМУ</h3>
+<div class="gal g2">
+  <figure class="wide"><img class="aimg" src="images/skr-060.jpg" width="218" height="146" loading="lazy" decoding="async" alt="Лікар Дмитро Клевець, м. Докучаєвськ, ПДМУ — команда конкурсанта"></figure>
+  <figure><img class="aimg " src="images/skr-061.jpg" width="218" height="230" loading="lazy" decoding="async" alt="Лікар Дмитро Клевець, м. Докучаєвськ, ПДМУ: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-062.jpg" width="212" height="230" loading="lazy" decoding="async" alt="Лікар Дмитро Клевець, м. Докучаєвськ, ПДМУ: після реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-063.jpg" width="244" height="149" loading="lazy" decoding="async" alt="Лікар Дмитро Клевець, м. Докучаєвськ, ПДМУ: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-064.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Дмитро Клевець, м. Докучаєвськ, ПДМУ: після реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-065.jpg" width="245" height="150" loading="lazy" decoding="async" alt="Лікар Дмитро Клевець, м. Докучаєвськ, ПДМУ: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-066.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Дмитро Клевець, м. Докучаєвськ, ПДМУ: після реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-067.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Дмитро Клевець, м. Докучаєвськ, ПДМУ: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-068.jpg" width="245" height="150" loading="lazy" decoding="async" alt="Лікар Дмитро Клевець, м. Докучаєвськ, ПДМУ: після реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-069.jpg" width="245" height="150" loading="lazy" decoding="async" alt="Лікар Дмитро Клевець, м. Докучаєвськ, ПДМУ: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-070.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Дмитро Клевець, м. Докучаєвськ, ПДМУ: після реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-071.jpg" width="245" height="150" loading="lazy" decoding="async" alt="Лікар Дмитро Клевець, м. Докучаєвськ, ПДМУ: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-072.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Дмитро Клевець, м. Докучаєвськ, ПДМУ: після реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-073.jpg" width="166" height="245" loading="lazy" decoding="async" alt="Лікар Дмитро Клевець, м. Докучаєвськ, ПДМУ: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-074.jpg" width="165" height="245" loading="lazy" decoding="async" alt="Лікар Дмитро Клевець, м. Докучаєвськ, ПДМУ: після реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-075.jpg" width="254" height="148" loading="lazy" decoding="async" alt="Лікар Дмитро Клевець, м. Докучаєвськ, ПДМУ: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-076.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Дмитро Клевець, м. Докучаєвськ, ПДМУ: після реставрації"></figure>
+</div>
+<p class="cap"><b>Лікар Дмитро Клевець, м. Докучаєвськ, ПДМУ.</b> Ліворуч — до реставрації, праворуч — після реставрації.</p>
+
+<h3>Лікар Ольга Кривда, м. Ватутіне, ПДМУ</h3>
+<div class="gal g2">
+  <figure class="wide"><img class="aimg" src="images/skr-077.jpg" width="218" height="146" loading="lazy" decoding="async" alt="Лікар Ольга Кривда, м. Ватутіне, ПДМУ — команда конкурсанта"></figure>
+  <figure><img class="aimg " src="images/skr-078.jpg" width="218" height="231" loading="lazy" decoding="async" alt="Лікар Ольга Кривда, м. Ватутіне, ПДМУ: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-079.jpg" width="212" height="230" loading="lazy" decoding="async" alt="Лікар Ольга Кривда, м. Ватутіне, ПДМУ: після реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-080.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Ольга Кривда, м. Ватутіне, ПДМУ: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-081.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Ольга Кривда, м. Ватутіне, ПДМУ: після реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-082.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Ольга Кривда, м. Ватутіне, ПДМУ: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-083.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Ольга Кривда, м. Ватутіне, ПДМУ: після реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-084.jpg" width="254" height="167" loading="lazy" decoding="async" alt="Лікар Ольга Кривда, м. Ватутіне, ПДМУ: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-085.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Ольга Кривда, м. Ватутіне, ПДМУ: після реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-086.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Ольга Кривда, м. Ватутіне, ПДМУ: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-087.jpg" width="245" height="150" loading="lazy" decoding="async" alt="Лікар Ольга Кривда, м. Ватутіне, ПДМУ: після реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-088.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Ольга Кривда, м. Ватутіне, ПДМУ: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-089.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Ольга Кривда, м. Ватутіне, ПДМУ: після реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-090.jpg" width="166" height="245" loading="lazy" decoding="async" alt="Лікар Ольга Кривда, м. Ватутіне, ПДМУ: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-091.jpg" width="165" height="220" loading="lazy" decoding="async" alt="Лікар Ольга Кривда, м. Ватутіне, ПДМУ: після реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-092.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Ольга Кривда, м. Ватутіне, ПДМУ: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-093.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Ольга Кривда, м. Ватутіне, ПДМУ: після реставрації"></figure>
+</div>
+<p class="cap"><b>Лікар Ольга Кривда, м. Ватутіне, ПДМУ.</b> Ліворуч — до реставрації, праворуч — після реставрації.</p>
+
+<h3>Лікар Андрій Адаменко, м. Херсон, ПДМУ</h3>
+<div class="gal g2">
+  <figure class="wide"><img class="aimg" src="images/skr-094.jpg" width="213" height="146" loading="lazy" decoding="async" alt="Лікар Андрій Адаменко, м. Херсон, ПДМУ — команда конкурсанта"></figure>
+  <figure><img class="aimg " src="images/skr-095.jpg" width="218" height="231" loading="lazy" decoding="async" alt="Лікар Андрій Адаменко, м. Херсон, ПДМУ: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-096.jpg" width="209" height="231" loading="lazy" decoding="async" alt="Лікар Андрій Адаменко, м. Херсон, ПДМУ: після реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-097.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Андрій Адаменко, м. Херсон, ПДМУ: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-098.jpg" width="244" height="153" loading="lazy" decoding="async" alt="Лікар Андрій Адаменко, м. Херсон, ПДМУ: після реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-099.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Андрій Адаменко, м. Херсон, ПДМУ: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-100.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Андрій Адаменко, м. Херсон, ПДМУ: після реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-101.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Андрій Адаменко, м. Херсон, ПДМУ: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-102.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Андрій Адаменко, м. Херсон, ПДМУ: після реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-103.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Андрій Адаменко, м. Херсон, ПДМУ: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-104.jpg" width="245" height="150" loading="lazy" decoding="async" alt="Лікар Андрій Адаменко, м. Херсон, ПДМУ: після реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-105.jpg" width="246" height="149" loading="lazy" decoding="async" alt="Лікар Андрій Адаменко, м. Херсон, ПДМУ: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-106.jpg" width="245" height="150" loading="lazy" decoding="async" alt="Лікар Андрій Адаменко, м. Херсон, ПДМУ: після реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-107.jpg" width="166" height="245" loading="lazy" decoding="async" alt="Лікар Андрій Адаменко, м. Херсон, ПДМУ: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-108.jpg" width="165" height="220" loading="lazy" decoding="async" alt="Лікар Андрій Адаменко, м. Херсон, ПДМУ: після реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-109.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Андрій Адаменко, м. Херсон, ПДМУ: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-110.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Андрій Адаменко, м. Херсон, ПДМУ: після реставрації"></figure>
+</div>
+<p class="cap"><b>Лікар Андрій Адаменко, м. Херсон, ПДМУ.</b> Ліворуч — до реставрації, праворуч — після реставрації.</p>
+
+<h3>Лікар Валерія Скубій, м. Полтава, ПДМУ</h3>
+<div class="gal g2">
+  <figure class="wide"><img class="aimg" src="images/skr-111.jpg" width="218" height="146" loading="lazy" decoding="async" alt="Лікар Валерія Скубій, м. Полтава, ПДМУ — команда конкурсанта"></figure>
+  <figure><img class="aimg " src="images/skr-112.jpg" width="217" height="230" loading="lazy" decoding="async" alt="Лікар Валерія Скубій, м. Полтава, ПДМУ: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-113.jpg" width="213" height="231" loading="lazy" decoding="async" alt="Лікар Валерія Скубій, м. Полтава, ПДМУ: після реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-114.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Валерія Скубій, м. Полтава, ПДМУ: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-115.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Валерія Скубій, м. Полтава, ПДМУ: після реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-116.jpg" width="245" height="150" loading="lazy" decoding="async" alt="Лікар Валерія Скубій, м. Полтава, ПДМУ: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-117.jpg" width="245" height="150" loading="lazy" decoding="async" alt="Лікар Валерія Скубій, м. Полтава, ПДМУ: після реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-118.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Валерія Скубій, м. Полтава, ПДМУ: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-119.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Валерія Скубій, м. Полтава, ПДМУ: після реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-120.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Валерія Скубій, м. Полтава, ПДМУ: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-121.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Валерія Скубій, м. Полтава, ПДМУ: після реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-122.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Валерія Скубій, м. Полтава, ПДМУ: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-123.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Валерія Скубій, м. Полтава, ПДМУ: після реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-124.jpg" width="166" height="245" loading="lazy" decoding="async" alt="Лікар Валерія Скубій, м. Полтава, ПДМУ: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-125.jpg" width="165" height="220" loading="lazy" decoding="async" alt="Лікар Валерія Скубій, м. Полтава, ПДМУ: після реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-126.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Валерія Скубій, м. Полтава, ПДМУ: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-127.jpg" width="263" height="151" loading="lazy" decoding="async" alt="Лікар Валерія Скубій, м. Полтава, ПДМУ: після реставрації"></figure>
+</div>
+<p class="cap"><b>Лікар Валерія Скубій, м. Полтава, ПДМУ.</b> Ліворуч — до реставрації, праворуч — після реставрації.</p>
+
+<h3>Лікар Ілля Прокопенко, м. Полтава, ПДМУ</h3>
+<div class="gal g2">
+  <figure class="wide"><img class="aimg" src="images/skr-128.jpg" width="213" height="146" loading="lazy" decoding="async" alt="Лікар Ілля Прокопенко, м. Полтава, ПДМУ — команда конкурсанта"></figure>
+  <figure><img class="aimg " src="images/skr-129.jpg" width="217" height="230" loading="lazy" decoding="async" alt="Лікар Ілля Прокопенко, м. Полтава, ПДМУ: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-130.jpg" width="211" height="230" loading="lazy" decoding="async" alt="Лікар Ілля Прокопенко, м. Полтава, ПДМУ: після реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-131.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Ілля Прокопенко, м. Полтава, ПДМУ: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-132.jpg" width="250" height="161" loading="lazy" decoding="async" alt="Лікар Ілля Прокопенко, м. Полтава, ПДМУ: після реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-133.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Ілля Прокопенко, м. Полтава, ПДМУ: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-134.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Ілля Прокопенко, м. Полтава, ПДМУ: після реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-135.jpg" width="245" height="150" loading="lazy" decoding="async" alt="Лікар Ілля Прокопенко, м. Полтава, ПДМУ: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-136.jpg" width="242" height="150" loading="lazy" decoding="async" alt="Лікар Ілля Прокопенко, м. Полтава, ПДМУ: після реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-137.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Ілля Прокопенко, м. Полтава, ПДМУ: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-138.jpg" width="245" height="150" loading="lazy" decoding="async" alt="Лікар Ілля Прокопенко, м. Полтава, ПДМУ: після реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-139.jpg" width="245" height="150" loading="lazy" decoding="async" alt="Лікар Ілля Прокопенко, м. Полтава, ПДМУ: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-140.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Ілля Прокопенко, м. Полтава, ПДМУ: після реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-141.jpg" width="167" height="221" loading="lazy" decoding="async" alt="Лікар Ілля Прокопенко, м. Полтава, ПДМУ: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-142.jpg" width="165" height="220" loading="lazy" decoding="async" alt="Лікар Ілля Прокопенко, м. Полтава, ПДМУ: після реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-143.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Ілля Прокопенко, м. Полтава, ПДМУ: до реставрації"></figure>
+  <figure><img class="aimg " src="images/skr-144.jpg" width="244" height="150" loading="lazy" decoding="async" alt="Лікар Ілля Прокопенко, м. Полтава, ПДМУ: після реставрації"></figure>
+</div>
+<p class="cap"><b>Лікар Ілля Прокопенко, м. Полтава, ПДМУ.</b> Ліворуч — до реставрації, праворуч — після реставрації.</p>
+
 <h2>Переможці</h2>
 <p>У другому турі взяли участь 8 лікарів-інтернів. Переможці другого туру:</p>
 <ul class="tech">
@@ -253,159 +442,18 @@ fbq('track', 'PageView');
 </ul>
 <p>Учасники конкурсу отримали дипломи й цінні подарунки, сертифікати на навчання та придбання стоматологічної продукції від спонсорів, а це ПДМУ, Асоціація стоматологів України, клініка «Професорська стоматологія», міжнародний стоматологічний журнал «ДентАрт», фірми Meddins, Phillips, Dentsply Sirona, HagerWerken, Endopen, MDS, Colgate, Навичка, Артап, Роял інтеграція. На сайті кафедри післядипломної освіти лікарів-стоматологів www.dentaero.com були висвітлені етапи конкурсу і відбулося інтернет-голосування за кращу роботу, в якому приз глядацьких симпатій і отримав Роман Моторний.</p>
 <p>Вітаємо переможців з високими результатами робіт і нагородами! Нових професійних здобутків і успішного кар'єрного зростання!</p>
-<div class="gal g4">
-  <figure><img class="aimg" src="images/skr-004.jpg" width="380" height="306" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-005.jpg" width="374" height="306" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-006.jpg" width="252" height="306" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-007.jpg" width="648" height="400" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-008.jpg" width="372" height="399" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-009.jpg" width="218" height="146" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-010.jpg" width="217" height="230" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-011.jpg" width="213" height="230" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-012.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-013.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-014.jpg" width="245" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-015.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-016.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-017.jpg" width="245" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-018.jpg" width="245" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-019.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-020.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-021.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-022.jpg" width="166" height="220" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-023.jpg" width="165" height="245" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-024.jpg" width="255" height="149" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-025.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-026.jpg" width="239" height="146" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-027.jpg" width="217" height="230" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-028.jpg" width="213" height="230" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-029.jpg" width="245" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-030.jpg" width="245" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-031.jpg" width="245" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-032.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-033.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-034.jpg" width="245" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-035.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-036.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-037.jpg" width="245" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-038.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-039.jpg" width="166" height="220" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-040.jpg" width="165" height="220" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-041.jpg" width="245" height="148" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-042.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-043.jpg" width="218" height="146" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-044.jpg" width="217" height="230" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-045.jpg" width="213" height="230" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-046.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-047.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-048.jpg" width="245" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-049.jpg" width="244" height="149" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-050.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-051.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-052.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-053.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-054.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-055.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-056.jpg" width="166" height="245" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-057.jpg" width="165" height="245" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-058.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-059.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-060.jpg" width="218" height="146" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-061.jpg" width="218" height="230" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-062.jpg" width="212" height="230" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-063.jpg" width="244" height="149" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-064.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-065.jpg" width="245" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-066.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-067.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-068.jpg" width="245" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-069.jpg" width="245" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-070.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-071.jpg" width="245" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-072.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-073.jpg" width="166" height="245" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-074.jpg" width="165" height="245" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-075.jpg" width="254" height="148" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-076.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-077.jpg" width="218" height="146" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-078.jpg" width="218" height="231" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-079.jpg" width="212" height="230" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-080.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-081.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-082.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-083.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-084.jpg" width="254" height="167" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-085.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-086.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-087.jpg" width="245" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-088.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-089.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-090.jpg" width="166" height="245" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-091.jpg" width="165" height="220" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-092.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-093.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-094.jpg" width="213" height="146" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-095.jpg" width="218" height="231" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-096.jpg" width="209" height="231" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-097.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-098.jpg" width="244" height="153" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-099.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-100.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-101.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-102.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-103.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-104.jpg" width="245" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-105.jpg" width="246" height="149" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-106.jpg" width="245" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-107.jpg" width="166" height="245" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-108.jpg" width="165" height="220" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-109.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-110.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-111.jpg" width="218" height="146" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-112.jpg" width="217" height="230" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-113.jpg" width="213" height="231" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-114.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-115.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-116.jpg" width="245" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-117.jpg" width="245" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-118.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-119.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-120.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-121.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-122.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-123.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-124.jpg" width="166" height="245" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-125.jpg" width="165" height="220" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-126.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-127.jpg" width="263" height="151" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-128.jpg" width="213" height="146" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-129.jpg" width="217" height="230" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-130.jpg" width="211" height="230" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-131.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-132.jpg" width="250" height="161" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-133.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-134.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-135.jpg" width="245" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-136.jpg" width="242" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-137.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-138.jpg" width="245" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-139.jpg" width="245" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-140.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-141.jpg" width="167" height="221" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-142.jpg" width="165" height="220" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-143.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-144.jpg" width="244" height="150" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-145.jpg" width="252" height="306" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-146.jpg" width="251" height="305" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-147.jpg" width="251" height="306" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-148.jpg" width="499" height="374" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-149.jpg" width="252" height="305" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-150.jpg" width="252" height="306" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-151.jpg" width="251" height="306" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-152.jpg" width="251" height="306" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
-  <figure><img class="aimg" src="images/skr-153.jpg" width="252" height="306" loading="lazy" alt="Роботи учасників конкурсу «Шлях у світ майстерності» (до і після реставрації) та моменти події"></figure>
+<div class="gal g3">
+  <figure><img class="aimg " src="images/skr-145.jpg" width="252" height="306" loading="lazy" decoding="async" alt="Нагородження переможців конкурсу «Шлях у світ майстерності»"></figure>
+  <figure><img class="aimg " src="images/skr-146.jpg" width="251" height="305" loading="lazy" decoding="async" alt="Нагородження переможців конкурсу «Шлях у світ майстерності»"></figure>
+  <figure><img class="aimg " src="images/skr-147.jpg" width="251" height="306" loading="lazy" decoding="async" alt="Нагородження переможців конкурсу «Шлях у світ майстерності»"></figure>
+  <figure><img class="aimg " src="images/skr-148.jpg" width="499" height="374" loading="lazy" decoding="async" alt="Нагородження переможців конкурсу «Шлях у світ майстерності»"></figure>
+  <figure><img class="aimg " src="images/skr-149.jpg" width="252" height="305" loading="lazy" decoding="async" alt="Нагородження переможців конкурсу «Шлях у світ майстерності»"></figure>
+  <figure><img class="aimg " src="images/skr-150.jpg" width="252" height="306" loading="lazy" decoding="async" alt="Нагородження переможців конкурсу «Шлях у світ майстерності»"></figure>
+  <figure><img class="aimg " src="images/skr-151.jpg" width="251" height="306" loading="lazy" decoding="async" alt="Нагородження переможців конкурсу «Шлях у світ майстерності»"></figure>
+  <figure><img class="aimg " src="images/skr-152.jpg" width="251" height="306" loading="lazy" decoding="async" alt="Нагородження переможців конкурсу «Шлях у світ майстерності»"></figure>
+  <figure><img class="aimg " src="images/skr-153.jpg" width="252" height="306" loading="lazy" decoding="async" alt="Нагородження переможців конкурсу «Шлях у світ майстерності»"></figure>
 </div>
-<p class="cap">Етапи конкурсної роботи, члени журі, організатори, учасники та спонсори; роботи конкурсантів «до реставрації» і «після реставрації» (Роман Моторний, Кристина Костюк, Валентин Пілат, Дмитро Клевець, Ольга Кривда, Андрій Адаменко, Валерія Скубій, Ілля Прокопенко); нагородження переможців. Фото Кристини Костюк.</p>
+<p class="cap">Валентин Пілат і Кристина Костюк — перше місце. Нагородження конкурсантів. Ольга Кривда — друге місце. Дмитро Клевець — друге місце. Андрій Адаменко — третє місце. Валерія Скубій — третє місце. Ілля Прокопенко — третє місце. Володар Гран-прі Роман Моторний. Фото Кристини Костюк.</p>
       </div>
       <div class="refs">
         <h2>Література</h2>
