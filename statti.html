@@ -80,6 +80,15 @@ fbq('track', 'PageView');
     .scard-rub{font-size:.66rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--brass)}
     .scard h3{font-family:var(--display);font-weight:400;font-size:1.18rem;line-height:1.28;margin-top:9px;color:var(--ink)}
     .scard-auth{margin-top:auto;padding-top:14px;font-size:.85rem;color:var(--ink-faint)}
+    .author-band{display:flex;align-items:center;gap:26px;background:var(--porcelain);border:1px solid var(--line);border-radius:12px;padding:20px 26px;margin:26px 0 6px;transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .35s}
+    .author-band:hover{transform:translateY(-3px);box-shadow:0 18px 40px -24px rgba(27,25,22,.45);border-color:var(--brass)}
+    .author-band img{width:74px;height:74px;border-radius:50%;object-fit:cover;object-position:50% 18%;flex:0 0 auto}
+    .author-band .ab-txt{flex:1;min-width:0}
+    .author-band .ab-eyebrow{font-size:.66rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--brass)}
+    .author-band h2{font-family:var(--display);font-weight:400;font-size:1.3rem;line-height:1.25;margin-top:6px;color:var(--ink)}
+    .author-band p{font-size:.9rem;color:var(--ink-soft);margin-top:6px}
+    .author-band .ab-go{flex:0 0 auto;font-size:.82rem;font-weight:600;color:var(--brass);white-space:nowrap}
+    @media(max-width:700px){.author-band{flex-wrap:wrap;gap:16px;padding:20px}.author-band .ab-go{width:100%}}
     .about-j{max-width:820px;margin:24px auto 0;background:var(--porcelain);border:1px solid var(--line);border-radius:12px;padding:26px 30px}
     .about-j p{color:var(--ink-soft);font-size:.98rem}
     .about-j p+p{margin-top:12px}
@@ -119,6 +128,16 @@ fbq('track', 'PageView');
         <h1>Журнал про науку та мистецтво в стоматології</h1>
         <p>«ДентАрт» — ілюстрований міжнародний журнал для лікарів-практиків. Тут ми поступово публікуємо статті номерів онлайн: естетика прямої та непрямої реставрації, ендодонтія, дитяча стоматологія, матеріалознавство, організація практики та інтерв’ю з визначними стоматологами.</p>
       </div>
+
+      <a class="author-band" href="statti-radlinsky.html">
+        <img src="images/lect-radlinsky.jpg" width="74" height="74" loading="lazy" decoding="async" alt="Сергій Радлінський" style="height:74px">
+        <div class="ab-txt">
+          <span class="ab-eyebrow">Добірка автора</span>
+          <h2>Статті Сергія Радлінського</h2>
+          <p>Системне відновлення зубів, Золотий коефіцієнт і техніка прямої реставрації — одинадцять клінічних матеріалів в одному місці.</p>
+        </div>
+        <span class="ab-go">Перейти →</span>
+      </a>
 
       <section class="issue">
         <div class="issue-head"><h2>«ДентАрт» № 4 (121)</h2><span>2025 рік</span></div>
