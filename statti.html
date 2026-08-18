@@ -66,6 +66,17 @@ fbq('track', 'PageView');
     .page-hero .eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--brass)}
     .page-hero h1{font-family:var(--display);font-weight:300;font-size:clamp(2.1rem,5vw,3.1rem);line-height:1.1;letter-spacing:-.01em;margin-top:14px}
     .page-hero p{color:var(--ink-soft);margin-top:18px;font-size:1.05rem}
+    .author-promo{display:flex;align-items:center;gap:20px;background:var(--porcelain);border:1px solid var(--line);border-radius:12px;padding:18px 24px;margin-top:6px;transition:border-color .3s var(--ease),box-shadow .35s var(--ease)}
+    .author-promo:hover{border-color:var(--brass);box-shadow:0 14px 32px -22px rgba(27,25,22,.45)}
+    .author-promo .ava{width:66px;height:66px;flex:none;border-radius:50%;overflow:hidden;border:1px solid var(--line);background:var(--enamel)}
+    .author-promo .ava img{width:100%;height:100%;object-fit:cover;object-position:center 8%}
+    .author-promo .txt{flex:1;min-width:0}
+    .author-promo .k{font-size:.66rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--brass)}
+    .author-promo strong{display:block;font-family:var(--display);font-weight:400;font-size:1.28rem;line-height:1.2;margin-top:5px;color:var(--ink)}
+    .author-promo span.sub{display:block;font-size:.86rem;color:var(--ink-faint);margin-top:5px}
+    .author-promo .arw{flex:none;font-size:1.3rem;color:var(--brass);transition:transform .35s var(--ease)}
+    .author-promo:hover .arw{transform:translateX(4px)}
+    @media(max-width:560px){.author-promo{flex-direction:column;align-items:flex-start;padding:18px;gap:12px}.author-promo .ava{width:56px;height:56px}.author-promo .arw{display:none}}
     .issue{padding:34px 0 10px}
     .issue-head{display:flex;align-items:baseline;gap:14px;padding-bottom:22px;border-bottom:1px solid var(--line);margin-bottom:30px}
     .issue-head h2{font-family:var(--display);font-weight:400;font-size:1.5rem;color:var(--petrol)}
@@ -119,6 +130,16 @@ fbq('track', 'PageView');
         <h1>Журнал про науку та мистецтво в стоматології</h1>
         <p>«ДентАрт» — ілюстрований міжнародний журнал для лікарів-практиків. Тут ми поступово публікуємо статті номерів онлайн: естетика прямої та непрямої реставрації, ендодонтія, дитяча стоматологія, матеріалознавство, організація практики та інтерв’ю з визначними стоматологами.</p>
       </div>
+
+      <a class="author-promo" href="statti-radlinsky.html">
+        <div class="ava"><img src="images/lect-radlinsky.jpg" width="850" height="1275" alt="Сергій Радлінський" decoding="async"></div>
+        <div class="txt">
+          <span class="k">Авторська добірка</span>
+          <strong>Статті Сергія Радлінського</strong>
+          <span class="sub">Системна реставрація зубів, Золотий коефіцієнт, клінічні випадки — 15 матеріалів в одному місці</span>
+        </div>
+        <span class="arw" aria-hidden="true">→</span>
+      </a>
 
       <section class="issue">
         <div class="issue-head"><h2>«ДентАрт» № 4 (121)</h2><span>2025 рік</span></div>
@@ -3253,7 +3274,7 @@ fbq('track', 'PageView');
     <div class="wrap">
       <div class="top">
         <div><img class="footer-logo" src="images/logo-full.png" alt="Аполлонія — навчальний центр" decoding="async"></div>
-        <div><h5>Навігація</h5><ul><li><a href="index.html">Головна</a></li><li><a href="lektory.html">Наші лектори</a></li><li><a href="index.html#schedule">Розклад</a></li></ul></div>
+        <div><h5>Навігація</h5><ul><li><a href="index.html">Головна</a></li><li><a href="lektory.html">Наші лектори</a></li><li><a href="statti-radlinsky.html">Сергій Радлінський</a></li><li><a href="index.html#schedule">Розклад</a></li></ul></div>
         <div><h5>Інформація</h5><ul><li><a href="politika-konfidentsiynosti.html">Політика конфіденційності</a></li><li><a href="politika-cookies.html">Політика Cookies</a></li><li><a href="povernennya-koshtiv.html">Повернення коштів</a></li><li><a href="publichna-oferta.html">Публічна оферта</a></li></ul></div>
         <div><h5>Зв’язатись з нами</h5><ul><li><a href="tel:+380661918300">+38 (066) 191-83-00</a></li><li><a href="mailto:nickolay@radlinsky.com.ua">nickolay@radlinsky.com.ua</a></li><li>Полтава, вул. О. Оксанченка, 29</li></ul></div>
       </div>
