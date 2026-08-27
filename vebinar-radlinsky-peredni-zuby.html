@@ -619,8 +619,8 @@ fbq('track', 'PageView');
     .cp-day ul{list-style:none;display:grid;gap:8px;margin-top:12px}
     .cp-day li{position:relative;padding-left:18px;color:var(--ink-soft);font-size:.96rem;line-height:1.55}
     .cp-day li::before{content:"";position:absolute;left:0;top:9px;width:6px;height:6px;border-radius:50%;background:var(--brass)}
-    .cp-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px}
-    .cp-gallery img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:6px;border:1px solid var(--line)}
+    .cp-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px;align-items:start}
+    .cp-gallery img{width:100%;height:auto;display:block;border-radius:6px;border:1px solid var(--line)}
     .cp-lect{display:grid;grid-template-columns:.66fr 1.34fr;gap:46px;align-items:center}
     .cp-lect-photo{border-radius:8px;overflow:hidden;border:1px solid var(--line)}
     .cp-lect-photo img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 12%;display:block}
@@ -643,7 +643,7 @@ fbq('track', 'PageView');
     .cp-form input::placeholder{color:rgba(247,244,236,.5)}
     .cp-form .btn{width:100%;justify-content:center;margin-top:4px}
     .cp-note{font-size:.78rem;color:rgba(247,244,236,.55);margin-top:6px}
-    @media(max-width:880px){.cp-hero .cgrid,.cp-two,.cp-lect,.cp-enroll .cgrid2{grid-template-columns:1fr;gap:30px}.cp-facts{grid-template-columns:1fr 1fr;gap:24px}.cp-gallery{grid-template-columns:1fr 1fr}.cp-day{grid-template-columns:1fr;gap:6px}}
+    @media(max-width:880px){.cp-hero .cgrid,.cp-two,.cp-lect,.cp-enroll .cgrid2{grid-template-columns:1fr;gap:30px}.cp-facts{grid-template-columns:1fr 1fr;gap:24px}.cp-gallery{grid-template-columns:1fr}.cp-day{grid-template-columns:1fr;gap:6px}}
     .btn-green{background:var(--petrol);color:var(--enamel);border:1px solid var(--petrol)}
     .btn-green:hover{background:var(--petrol-deep);border-color:var(--petrol-deep);color:var(--enamel)}
     .cp-facts-3{grid-template-columns:repeat(3,1fr)}
