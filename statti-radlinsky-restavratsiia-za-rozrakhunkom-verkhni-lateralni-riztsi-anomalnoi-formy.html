@@ -135,6 +135,28 @@ fbq('track', 'PageView');
     .footer-logo{height:52px;width:auto}
     footer.site .bottom{display:flex;justify-content:space-between;align-items:center;padding-top:26px;font-size:.8rem;color:rgba(247,244,236,.5);flex-wrap:wrap;gap:12px}
     @media(max-width:860px){footer.site .top{grid-template-columns:1fr 1fr}}
+  
+    /* ── Читайте також + CTA ── */
+    .more-read{padding:56px 0 8px;border-top:1px solid var(--line)}
+    .more-read .mr-h{font-family:var(--display);font-weight:400;font-size:clamp(22px,3vw,30px);margin-bottom:22px}
+    .mr-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .mr-card{display:flex;flex-direction:column;gap:10px;padding-bottom:14px;border-bottom:1px solid var(--line);transition:opacity .3s var(--ease)}
+    .mr-card:hover{opacity:.72}
+    .mr-card img{width:100%;height:170px;object-fit:cover;border-radius:8px;background:var(--porcelain)}
+    .mr-name{font-family:var(--display);font-size:18px;line-height:1.35}
+    .mr-meta{font-size:13px;color:var(--ink-faint);letter-spacing:.02em}
+    .art-cta{margin:48px 0 0;padding:44px 0 48px;background:var(--petrol);color:var(--enamel)}
+    .art-cta .cta-eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--brass-bright);margin-bottom:12px}
+    .art-cta h2{font-family:var(--display);font-weight:400;font-size:clamp(24px,3.4vw,34px);line-height:1.2;margin-bottom:12px}
+    .art-cta p.cta-sub{color:rgba(247,244,236,.72);max-width:620px;margin-bottom:24px}
+    .cta-row{display:flex;flex-wrap:wrap;gap:14px}
+    .cta-row a{display:inline-block;padding:14px 26px;border-radius:2px;font-size:15px;font-weight:600;letter-spacing:.02em;transition:.25s var(--ease)}
+    .btn-primary{background:var(--brass);color:var(--petrol-deep)}
+    .btn-primary:hover{background:var(--brass-bright)}
+    .btn-ghost{border:1px solid var(--line-light);color:var(--enamel)}
+    .btn-ghost:hover{border-color:var(--brass-bright);color:var(--brass-bright)}
+    @media(max-width:860px){.mr-grid{grid-template-columns:1fr;gap:18px}.mr-card img{height:200px}}
+
   </style>
 </head>
 <body>
@@ -360,7 +382,30 @@ fbq('track', 'PageView');
 <div class="note">Пізніший римейк цієї роботи з віддаленими клінічними результатами — <a href="statti-radlinsky-restavratsiya-za-rozrakhunkom-lateralni-riztsi.html">«Реставрація за розрахунком: верхні латеральні різці» («ДентАрт» 2022 №3)</a>.</div>
 <div class="refs"><h2>Література</h2><ol><li>Радлінський С.В., Новіков В.С., Смажило С.М. Ортопедичні аспекти реставрації зубів композитами // М-ли Респ. наук. конф. Актуальні питання стоматології дитячого віку і ортодонтії. – Полтава. – 1993. – С.118-119.</li><li>Радлинский С. Реконструкция зубного ряда // ДентАрт. – 1997. – №3. – С.51-64.</li><li>Радлинский С. Системное восстановление всех зубов при повышенной стираемости // ДентАрт. – 2007. – №3. – С.38-48.</li><li>Радлинский С. Реставрация контактных поверхностей в нижних передних зубах // ДентАрт. – 2008. – №3. – С.27-40.</li><li>Ahmad I. Prosthodontics at Glance. – Oxford: Willey-Blackwell, 2012. – P.57.</li><li>Astakhov A. Harmonious proportion // British Dental Journal. – 2008. – 205. – P.61.</li><li>Bukhary S.M.N., Gill D.S., Tredwin C.J., Moles D.R. The influence of varying maxillary lateral incisor dimensions on perceived smile aesthetics // British Dental Journal. – 2007. – 203. – P.687-693.</li><li>Levin E. I. Dental esthetics and the golden proportion // J Prosthet Dent. – 1978. – 40. – P.244-252.</li><li>Levin E.I. Aesthetic proportions // British Dental Journal. – 2008. – 204. – P.419-420.</li><li>Levin E. Golden additions // British Dental Journal. – 2008. – 205. – P.637.</li><li>Radlinskiy S. Aesthetic deviation // British Dental Journal. – 2009. – 206. – P.447.</li><li>Rufenacht C.R. Fundamental of Esthetics. – Chicago: QuintessencePubl.Co. – 1992. – P.87-92.</li></ol></div>
     </article>
+  
+  <section class="more-read">
+    <div class="wrap">
+      <h2 class="mr-h">Читайте також</h2>
+      <div class="mr-grid">
+        <a class="mr-card" href="statti-radlinsky-restavratsiya-za-rozrakhunkom-lateralni-riztsi.html"><img src="images/radl-44.jpg" alt="" loading="lazy" decoding="async"><span class="mr-name">Реставрація за розрахунком: верхні латеральні різці</span><span class="mr-meta">Сергій Радлінський</span></a>
+        <a class="mr-card" href="statti-radlinsky-rekonstruktsiia-nyzhnikh-riztsiv-zolotyi-koefitsiient.html"><img src="images/goldlow-082.jpg" alt="" loading="lazy" decoding="async"><span class="mr-name">Реконструкція нижніх різців за Золотим коефіцієнтом</span><span class="mr-meta">Сергій Радлінський</span></a>
+        <a class="mr-card" href="statti-radlinsky-bodakva-rekonstruktsiia-verkhnikh-riztsiv-zolotyi-koefitsiient.html"><img src="images/goldcoef-062.jpg" alt="" loading="lazy" decoding="async"><span class="mr-name">Реконструкція верхніх різців за Золотим коефіцієнтом</span></a>
+      </div>
+    </div>
+  </section>
   </main>
+  <section class="art-cta">
+    <div class="wrap">
+      <p class="cta-eyebrow">Навчальний центр «Аполлонія»</p>
+      <h2>Онлайн майстер-курс художньої реставрації зубів</h2>
+      <p class="cta-sub">26 лекцій і майстер-класів Сергія Радлінського. 60 годин, доступ 24/7, 30 балів БПР — навчання у своєму темпі, з будь-якої точки України.</p>
+      <div class="cta-row">
+        <a class="btn-primary" href="kurs-online.html">Дивитися програму курсу</a>
+        <a class="btn-ghost" href="dentart-dobirka.html">Безкоштовна добірка статей (PDF)</a>
+      </div>
+    </div>
+  </section>
+
   <footer class="site">
     <div class="wrap">
       <div class="top">
