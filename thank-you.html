@@ -32,23 +32,32 @@ fbq('track', 'PageView');
 <script>
 (function(){
   var products = {
-    'summer-sale': { name: '6 онлайн майстер-класів', value: 2480 },
-    'kurs-online': { name: 'Онлайн майстер-курс художньої реставрації', value: 5999 }
+    'summer-sale':            { name: '6 онлайн майстер-класів', value: 2480 },
+    'kurs-online':            { name: 'Онлайн майстер-курс художньої реставрації', value: 5999 },
+    'vebinar-peredni-zuby':   { name: 'Онлайн МК «Художня реставрація верхніх передніх зубів»', value: 997 }
   };
-  var p = new URLSearchParams(location.search).get('p');
-  var prod = products[p] || { name: 'Онлайн-продукт НЦ Аполлонія', value: 0 };
+  var q = new URLSearchParams(location.search);
+  var p = q.get('p');
+  var vParam = parseFloat(q.get('v'));           // ?v=1234 — разова ціна для акційних лендингів
+  var prod = products[p] || null;
+  var name = prod ? prod.name : 'Онлайн-продукт НЦ «Аполлонія»';
+  var value = !isNaN(vParam) && vParam > 0 ? vParam : (prod ? prod.value : null);
   var key = 'purchase_sent_' + (p || 'unknown');
   if (sessionStorage.getItem(key)) return;
   sessionStorage.setItem(key, '1');
   var txid = 'wfp_' + Date.now();
+  // Без відомої суми подію все одно шлемо, але БЕЗ value:0 —
+  // нуль псує ROAS сильніше, ніж його відсутність.
   try {
-    gtag('event', 'purchase', {
-      transaction_id: txid, currency: 'UAH', value: prod.value,
-      items: [{ item_name: prod.name, price: prod.value, quantity: 1 }]
-    });
+    var ga = { transaction_id: txid, currency: 'UAH',
+               items: [{ item_name: name, quantity: 1 }] };
+    if (value) { ga.value = value; ga.items[0].price = value; }
+    gtag('event', 'purchase', ga);
   } catch(_){}
   try {
-    fbq('track', 'Purchase', { currency: 'UAH', value: prod.value, content_name: prod.name });
+    var fb = { currency: 'UAH', content_name: name };
+    if (value) fb.value = value;
+    fbq('track', 'Purchase', fb);
   } catch(_){}
 })();
 </script>
