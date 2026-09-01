@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /_templates/
 
 Sitemap: https://radlinsky.com.ua/sitemap.xml
