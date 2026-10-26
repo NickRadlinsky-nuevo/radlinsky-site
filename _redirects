@@ -1,0 +1,18 @@
+# ── НЕОПУБЛІКОВАНІ СТОРІНКИ КУРСІВ ──────────────────────────────
+# Файли лишаються в репозиторії, адреси тимчасово (302) ведуть на розклад.
+# Щоб опублікувати сторінку знову — видаліть її два рядки нижче
+# і поверніть URL у sitemap.xml.
+/kurs-radlinsky-individual              /#schedule  302
+/kurs-radlinsky-individual.html         /#schedule  302
+/lektsiya-radlinsky-okliuziya-lviv      /#schedule  302
+/lektsiya-radlinsky-okliuziya-lviv.html /#schedule  302
+/vebinar-radlinsky-peredni-zuby         /#schedule  302
+/vebinar-radlinsky-peredni-zuby.html    /#schedule  302
+/kurs-ponomarenko-styrannya             /#schedule  302
+/kurs-ponomarenko-styrannya.html        /#schedule  302
+/kurs-ponomarenko-posmishka             /#schedule  302
+/kurs-ponomarenko-posmishka.html        /#schedule  302
+/kurs-restavratsiya                     /#schedule  302
+/kurs-restavratsiya.html                /#schedule  302
+/kurs-armuvannya                        /#schedule  302
+/kurs-armuvannya.html                   /#schedule  302
