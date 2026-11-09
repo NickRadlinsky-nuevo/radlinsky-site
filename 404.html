@@ -31,15 +31,11 @@ fbq('track', 'PageView');
 </script>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1357557515478741&ev=PageView&noscript=1"/></noscript>
   <meta name="robots" content="noindex">
-  <link rel="icon" href="favicon.ico" sizes="any">
-  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
   <title>Сторінку не знайдено — Аполлонія</title>
   <meta name="description" content="Навчальний центр «Аполлонія» — курси та майстер-класи з художньої реставрації зубів. Школа Сергія Радлінського. Полтава та онлайн.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;1,400&family=Manrope:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;1,400&family=Manrope:wght@400;500;600;700&display=swap"></noscript>
   <style>
     :root{
       --enamel:#F7F4EC;        /* base background — colour of enamel */
@@ -523,14 +519,21 @@ fbq('track', 'PageView');
     .bhero .dates .d b{color:var(--brass)}
     @media(max-width:900px){.bhero .below{grid-template-columns:1fr;gap:30px}}
     @media(max-width:560px){.sched-table td.c-thumb{display:none}}
-  </style></head>
-<body>
+  </style>  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;600&family=Onest:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="/assets/b-site.css">
+</head>
+<body data-bx="404">
 <div style="min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px;background:var(--enamel)">
-  <a href="index.html"><img src="images/logo-full.png" alt="Аполлонія" style="height:48px;margin-bottom:40px" decoding="async"></a>
+  <a href="/index.html"><img src="/img/logo-full-gold.png" alt="Аполлонія" style="height:48px;margin-bottom:40px" decoding="async"></a>
   <div style="font-family:var(--display);font-size:clamp(4rem,12vw,8rem);font-weight:300;color:var(--brass);line-height:1">404</div>
   <h1 style="font-family:var(--display);font-weight:400;font-size:1.8rem;margin:16px 0 12px;color:var(--ink)">Сторінку не знайдено</h1>
   <p style="color:var(--ink-soft);max-width:44ch;margin-bottom:32px">На жаль, такої сторінки не існує або вона була переміщена. Поверніться на головну, щоб продовжити.</p>
-  <a href="index.html" class="btn btn-brass" style="display:inline-block;padding:14px 32px;border-radius:4px;text-decoration:none">На головну</a>
+  <a href="/index.html" class="btn btn-brass" style="display:inline-block;padding:14px 32px;border-radius:4px;text-decoration:none">На головну</a>
 </div>
+<script>
+var bb=document.querySelector('.bx-burger');if(bb)bb.addEventListener('click',()=>document.body.classList.toggle('bx-open'));
+document.querySelectorAll('.bx-menu a').forEach(a=>a.addEventListener('click',()=>document.body.classList.remove('bx-open')));
+setTimeout(()=>document.querySelectorAll('.ru').forEach(e=>e.classList.add('in')),1500);
+</script>
 </body>
 </html>

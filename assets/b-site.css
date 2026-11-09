@@ -1,0 +1,144 @@
+/* auto: світлий текст на колишніх темних панелях */
+.acard.feat{color:var(--ink)!important}
+.art-cta{color:var(--ink)!important}
+.btn-ghost{color:var(--ink)!important}
+.btn-green{color:var(--ink)!important}
+.btn-green:hover{color:var(--ink)!important}
+.btn-light{color:var(--ink)!important}
+.ccard-balls{color:var(--bx-blue)!important}
+.center{color:var(--ink)!important}
+.cp-enroll{color:var(--ink)!important}
+.cp-enroll h2{color:var(--ink)!important}
+.cp-form input{color:var(--ink)!important}
+.filter-pill.active{color:var(--ink)!important}
+.final{color:var(--ink)!important}
+.htl-hero{color:var(--ink)!important}
+.lm-form{color:var(--ink)!important}
+.lm-form input{color:var(--ink)!important}
+.pill.live{color:var(--bx-blue)!important}
+.pill.open{color:var(--bx-blue)!important}
+.post:hover h3{color:var(--bx-blue)!important}
+.promo{color:var(--ink)!important}
+.srow-balls{color:var(--bx-blue)!important}
+.srow:hover .srow-title{color:var(--bx-blue)!important}
+h2{color:var(--bx-blue)!important}
+
+/* ===== Тема «Опалесценція» для внутрішніх сторінок radlinsky.com.ua (пробна версія) =====
+   Накладається поверх власних стилів сторінок: перевизначає змінні кольорів/шрифтів,
+   кнопки, картки, заголовки; додає шапку й підвал як на новій головній. */
+
+:root{
+  --enamel:#090B10; --porcelain:#10141C; --ink:#E8EDF3; --ink-soft:#A3AEBD; --ink-faint:#6F7A8A;
+  --petrol:#0F131B; --petrol-deep:#0B0E14; --petrol-soft:#161B26;
+  --brass:#F3B66A; --brass-bright:#F7CC8E;
+  --line:rgba(255,255,255,.09); --line-light:rgba(255,255,255,.12);
+  --display:'Unbounded',system-ui,sans-serif; --sans:'Onest',system-ui,sans-serif;
+  --bx-blue:#8CC8FF; --bx-amber:#F3B66A;
+  --bx-grad:linear-gradient(100deg,#8CC8FF 0%,#C9C2F0 45%,#F3B66A 100%);
+  --bx-card:rgba(255,255,255,.035); --bx-r:22px;
+}
+html{background:#090B10}
+body{background:#090B10!important;color:var(--ink)!important;font-family:var(--sans)!important;padding-top:96px;
+  background-image:radial-gradient(900px 700px at 100% -10%,rgba(140,200,255,.12),transparent 60%),radial-gradient(800px 600px at -10% 40%,rgba(243,182,106,.07),transparent 60%)!important;background-repeat:no-repeat!important}
+::selection{background:var(--bx-blue);color:#090B10}
+a{color:inherit}
+
+/* ---------- заголовки (Unbounded ширший за Spectral — зменшуємо) ---------- */
+main h1,body > section h1,.page-hero h1,.cp-hero h1,.lm-h1{font-family:var(--display)!important;font-weight:400!important;font-style:normal!important;
+  font-size:clamp(1.9rem,4.2vw,3.3rem)!important;line-height:1.1!important;letter-spacing:-.025em!important}
+main h2,.sec-head h2,.cp-h{font-family:var(--display)!important;font-weight:400!important;font-size:clamp(1.5rem,3vw,2.35rem)!important;line-height:1.15!important;letter-spacing:-.02em!important}
+main h3{font-family:var(--display)!important;font-weight:400!important;letter-spacing:-.01em!important;line-height:1.25!important}
+main h3:not([class*="title"]){font-size:clamp(1.05rem,1.6vw,1.3rem)!important}
+main h4{font-family:var(--sans)!important;font-weight:600!important}
+main em,main .ital,.serif.ital{font-style:normal!important;background:var(--bx-grad);-webkit-background-clip:text;background-clip:text;color:transparent!important}
+.eyebrow,.lm-eyebrow{color:var(--ink-soft)!important;letter-spacing:.18em!important;font-family:var(--sans)!important}
+.eyebrow::before,.lm-eyebrow::before{width:8px!important;height:8px!important;border-radius:50%;background:var(--bx-grad)!important;box-shadow:0 0 14px var(--bx-blue)}
+p,li,td{color:inherit}
+.lede,.sub,.muted,.sec-head p{color:var(--ink-soft)!important}
+
+/* ---------- кнопки ---------- */
+.btn{border-radius:999px!important;text-transform:none!important;letter-spacing:0!important;font-family:var(--sans)!important;font-weight:600!important;font-size:.95rem!important;padding:14px 26px!important}
+.btn-solid,.btn-brass,.cp-cta .btn:first-child{background:var(--bx-grad)!important;color:#0A0C12!important;border:0!important;box-shadow:0 10px 40px -12px rgba(140,200,255,.55)}
+.btn-solid:hover,.btn-brass:hover{transform:translateY(-2px);box-shadow:0 16px 50px -12px rgba(243,182,106,.7)}
+.btn-ghost,.btn-light{border:1px solid var(--line-light)!important;background:rgba(255,255,255,.04)!important;color:var(--ink)!important}
+.btn-ghost:hover,.btn-light:hover{border-color:var(--bx-blue)!important;background:rgba(140,200,255,.08)!important;color:var(--ink)!important}
+
+/* ---------- картки й панелі ---------- */
+.cp-card,.contact-card,.lect,.cat,.tcard,.art-feat,.map-card,.ccard,.scard,.course,.cp-facts > *,.cp-incl,.cp-enroll,.cp-price,
+.find-grid > *,.lm-form,.card,.cp-acc-item,.cp-note,.cp-prog-note,.legal-box{
+  border-radius:var(--bx-r)!important;border-color:var(--line)!important;background-color:var(--bx-card)}
+img{border-radius:inherit}
+.cp-banner,.cp-banner img,.cp-gallery img,.case-gal img,.lect-photo,.lect-photo img,.cp-lect-photo,.cp-lect-photo img,.lm-cover,.lm-cover img{border-radius:18px!important}
+.chip,.pill,.d,.cp-day,.cp-date,.balls-pill,.cc-num{border-radius:999px!important}
+.pill.few,.balls-pill,[style*="#7a5a23"]{color:var(--bx-amber)!important;background:rgba(243,182,106,.12)!important}
+.crumb,.cp-crumb{color:var(--ink-faint)!important}
+.crumb a:hover,.cp-crumb a:hover{color:var(--ink)!important}
+hr{border-color:var(--line)!important}
+input,select,textarea{background:rgba(255,255,255,.04)!important;color:var(--ink)!important;border-color:var(--line-light)!important;border-radius:14px!important}
+
+/* ---------- юридичні тексти ---------- */
+.legal{color:var(--ink-soft)}
+.legal h2,.legal h3{color:var(--ink)!important}
+.legal a{color:var(--bx-blue)!important}
+.legal strong,.legal b{color:var(--ink)}
+
+/* ---------- заблокована форма (превʼю) ---------- */
+.bx-lock{position:relative;border-radius:18px;overflow:hidden}
+.bx-lock::after{content:attr(data-note);position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:center;padding:18px;
+  background:linear-gradient(to top,rgba(9,11,16,.85),rgba(9,11,16,.15) 60%);color:#E8EDF3;font:600 .85rem/1.3 var(--sans);text-align:center;cursor:not-allowed}
+
+/* ---------- шапка ---------- */
+header.site{display:none!important}
+.bx-wrap{max-width:1240px;margin:0 auto;padding:0 28px}
+.bx-head{position:fixed;top:14px;left:0;right:0;z-index:100}
+.bx-nav{display:flex;align-items:center;justify-content:space-between;gap:24px;height:64px;padding:0 10px 0 22px;border-radius:999px;background:rgba(14,17,24,.72);backdrop-filter:blur(16px) saturate(1.4);-webkit-backdrop-filter:blur(16px) saturate(1.4);border:1px solid var(--line)}
+.bx-brand img{height:34px;width:auto;display:block;border-radius:0}
+.bx-menu{display:flex;gap:6px;align-items:center}
+.bx-menu a{font:500 .88rem var(--sans);color:var(--ink-soft);padding:9px 14px;border-radius:999px;transition:all .25s;text-decoration:none}
+.bx-menu a:hover{color:var(--ink);background:rgba(255,255,255,.06)}
+.bx-soc{display:flex;gap:4px}
+.bx-soc a{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;color:var(--ink-soft);transition:all .25s}
+.bx-soc a:hover{color:#090B10;background:var(--bx-blue)}
+.bx-soc svg{width:16px;height:16px;fill:currentColor}
+.bx-burger{display:none;background:none;border:1px solid var(--line);color:var(--ink);border-radius:999px;padding:9px 16px;font:500 .85rem var(--sans);cursor:pointer}
+
+/* ---------- підвал ---------- */
+footer.site{display:none!important}
+.bx-foot{border-top:1px solid var(--line);padding:72px 0 32px;margin-top:40px;background:radial-gradient(ellipse at 50% 0,rgba(140,200,255,.08),transparent 60%);font-family:var(--sans);color:var(--ink-soft)}
+.bx-ft{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:40px}
+.bx-ft > div{min-width:0}
+.bx-flogo{height:50px;width:auto;display:block;border-radius:0}
+.bx-foot h5{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--bx-blue);margin:0 0 16px;font-weight:600}
+.bx-foot ul{list-style:none;margin:0;padding:0}
+.bx-foot li{margin-bottom:10px;font-size:.95rem}
+.bx-foot a{text-decoration:none;overflow-wrap:anywhere}.bx-foot a:hover{color:var(--ink)}
+.bx-fb{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:56px;padding-top:24px;border-top:1px solid var(--line);color:var(--ink-faint);font-size:.84rem}
+
+@media(max-width:1000px){
+  .bx-menu,.bx-nav .bx-soc{display:none}.bx-burger{display:block}
+  body.bx-open .bx-menu{display:flex;flex-direction:column;align-items:stretch;position:absolute;top:74px;left:28px;right:28px;background:rgba(14,17,24,.97);border:1px solid var(--line);border-radius:24px;padding:16px}
+  .bx-ft{grid-template-columns:1fr 1fr}
+}
+@media(max-width:720px){
+  body{padding-top:84px}
+  .bx-wrap{padding:0 18px}
+  .bx-head{top:10px}.bx-nav{padding:0 8px 0 16px;height:58px}.bx-brand img{height:28px}
+  body.bx-open .bx-menu{left:18px;right:18px;top:66px}
+  .bx-ft{grid-template-columns:1fr 1fr;gap:30px 20px}
+  .bx-ft > div:first-child,.bx-ft > div:last-child{grid-column:1/-1}
+}
+
+/* ---------- темні панелі старого сайту ---------- */
+.cp-enroll,.center,.final,.promo{background:linear-gradient(110deg,rgba(140,200,255,.06),rgba(243,182,106,.06))!important;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.btn-green{background:var(--bx-grad)!important;color:#0A0C12!important;border:0!important;box-shadow:0 10px 40px -12px rgba(140,200,255,.55)}
+main h1,main h2,main h3{color:var(--ink)}
+
+/* ---------- дрібні виправлення ---------- */
+.oneline{white-space:normal!important}
+.lm-form button{background:var(--bx-grad)!important;color:#0A0C12!important;border-radius:999px!important}
+body[data-bx="404"],body[data-bx="thank-you"]{padding-top:0}
+/* «Дякуємо за оплату» — власна палітра брендбука → темна */
+body[data-bx="thank-you"]{--charcoal:#E8EDF3;--cream:#090B10;--ivory:#10141C;--muted:#A3AEBD;--saffron:#F3B66A;--saffron-deep:#F3B66A;--sage-mist:rgba(255,255,255,.07);--walnut:#E8EDF3;font-family:var(--sans)!important}
+body[data-bx="thank-you"] h1{font-family:var(--display)!important;font-weight:400!important;letter-spacing:-.02em}
+body[data-bx="thank-you"] .btn{background:var(--bx-grad)!important;color:#0A0C12!important;border:0!important}
+body[data-bx="thank-you"] .card{background:var(--bx-card)!important;border:1px solid var(--line)!important;border-radius:var(--bx-r)!important;color:var(--ink-soft)}

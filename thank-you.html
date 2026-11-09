@@ -61,9 +61,6 @@ fbq('track', 'PageView');
   } catch(_){}
 })();
 </script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600&family=Onest:wght@400;500;600;700&display=swap&subset=cyrillic" rel="stylesheet">
 <style>
 :root{--charcoal:#1F1611;--cream:#FAF5E8;--ivory:#F2EBD8;--muted:#8B7E70;--saffron:#E8A82C;--saffron-deep:#C26A1A;--sage-mist:#E4E2CC;--walnut:#3D2418}
 *{margin:0;padding:0;box-sizing:border-box}
@@ -84,17 +81,24 @@ h1{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(34px,6
 .contact a{color:var(--saffron-deep);font-weight:600}
 footer{padding:24px;text-align:center;font-size:13px;color:var(--muted)}
 </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;600&family=Onest:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="assets/b-site.css">
 </head>
-<body>
+<body data-bx="thank-you">
 <main class="wrap">
   <div class="mark" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="4 12.5 9.5 18 20 6"/></svg></div>
   <p class="eyebrow">Оплата пройшла успішно</p>
   <h1>Дякуємо!</h1>
   <p class="lede">Ми вже отримали вашу оплату. Менеджер зв'яжеться з вами протягом робочого дня та надасть доступ до всіх матеріалів.</p>
   <div class="card">Якщо лист або дзвінок не надійшли протягом робочого дня — напишіть нам, і ми все вирішимо: <b>+38 (066) 191-83-00</b></div>
-  <a class="btn" href="/">На головну</a>
+  <a class="btn" href="index.html">На головну</a>
   <p class="contact">Питання? <a href="mailto:nickolay@radlinsky.com.ua">nickolay@radlinsky.com.ua</a></p>
 </main>
 <footer>© 2026 Навчальний центр «Аполлонія» · Полтава</footer>
+<script>
+var bb=document.querySelector('.bx-burger');if(bb)bb.addEventListener('click',()=>document.body.classList.toggle('bx-open'));
+document.querySelectorAll('.bx-menu a').forEach(a=>a.addEventListener('click',()=>document.body.classList.remove('bx-open')));
+setTimeout(()=>document.querySelectorAll('.ru').forEach(e=>e.classList.add('in')),1500);
+</script>
 </body>
 </html>
