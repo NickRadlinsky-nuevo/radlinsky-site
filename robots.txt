@@ -2,5 +2,6 @@ User-agent: *
 Allow: /
 Disallow: /_templates/
 Disallow: /kabinet/
+Disallow: /kurs/kabinet/
 
 Sitemap: https://radlinsky.com.ua/sitemap.xml
