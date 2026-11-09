@@ -73,17 +73,19 @@ fbq('track', 'PageView');
   </script>
       <meta name="theme-color" content="#090B10">
       <meta name="theme-color" content="#090B10">
+      <meta name="theme-color" content="#090B10">
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;600&family=Onest:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
       <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;600&family=Onest:wght@400;500;600&display=swap"></noscript>
-      <link rel="preload" as="image" href="img/home-hero-radlinsky.webp">
+      <link rel="preload" as="image" href="img/home-hero-radlinsky.webp" imagesrcset="img/home-hero-radlinsky-600.webp 600w, img/home-hero-radlinsky.webp 1100w" imagesizes="(max-width:720px) 236px, (max-width:1000px) 42vw, 470px">
+      <script>document.documentElement.className+=' js'</script>
       <style>
-:root{--bg:#090B10;--bg2:#10141C;--card:rgba(255,255,255,.035);--txt:#E8EDF3;--txt2:#9AA5B4;--txt3:#6B7584;
+:root{--bg:#090B10;--bg2:#10141C;--card:rgba(255,255,255,.035);--txt:#E8EDF3;--txt2:#9AA5B4;--txt3:#8490A0;
 --blue:#8CC8FF;--amber:#F3B66A;--grad:linear-gradient(100deg,#8CC8FF 0%,#C9C2F0 45%,#F3B66A 100%);
 --bd:rgba(255,255,255,.09);--head:'Unbounded',system-ui,sans-serif;--sans:'Onest',system-ui,sans-serif;--w:1240px}
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html{scroll-behavior:smooth;scroll-padding-top:96px;-webkit-text-size-adjust:100%}
 body{font-family:var(--sans);background:var(--bg);color:var(--txt);font-size:16.5px;line-height:1.6;overflow-x:hidden}
 img{max-width:100%;height:auto;display:block}a{color:inherit;text-decoration:none}
 ::selection{background:var(--blue);color:var(--bg)}
@@ -91,7 +93,13 @@ img{max-width:100%;height:auto;display:block}a{color:inherit;text-decoration:non
 .g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 .eb{display:inline-flex;align-items:center;gap:10px;font-size:.74rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--txt2)}
 .eb::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--grad);box-shadow:0 0 14px var(--blue)}
-.ru{opacity:0;transform:translateY(22px);transition:opacity .9s,transform .9s}.ru.in{opacity:1;transform:none}
+.js .ru{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.2,1)}.js .ru.in{opacity:1;transform:none}
+.js .ru.d1{transition-delay:.08s}.js .ru.d2{transition-delay:.16s}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
+a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+.skip{position:absolute;left:16px;top:-80px;z-index:200;background:var(--txt);color:var(--bg);padding:11px 18px;border-radius:12px;font-weight:600;font-size:.9rem;transition:top .2s}
+.skip:focus{top:12px}
 h2{font-family:var(--head);font-weight:400;font-size:clamp(1.7rem,3.6vw,2.9rem);line-height:1.12;letter-spacing:-.02em}
 section{padding:110px 0;position:relative}
 .sh{max-width:760px;margin-bottom:56px}.sh h2{margin-top:18px}.sh p{color:var(--txt2);margin-top:18px;font-size:1.05rem}
@@ -106,14 +114,19 @@ section{padding:110px 0;position:relative}
 
 /* header */
 header{position:fixed;top:14px;left:0;right:0;z-index:50}
-.nav{display:flex;align-items:center;justify-content:space-between;gap:24px;height:64px;padding:0 10px 0 22px;border-radius:999px;background:rgba(14,17,24,.7);backdrop-filter:blur(16px) saturate(1.4);border:1px solid var(--bd)}
-.logo{height:34px;width:auto}
-.menu{display:flex;gap:6px;align-items:center}
+.nav{position:relative;display:flex;align-items:center;justify-content:space-between;gap:20px;height:64px;padding:0 10px 0 22px;border-radius:999px;background:rgba(14,17,24,.78);backdrop-filter:blur(16px) saturate(1.4);border:1px solid var(--bd)}
+.logo{height:34px;width:auto}.brand{flex:0 0 auto}
+.menu{display:flex;gap:4px;align-items:center}
 .menu a{font-size:.88rem;font-weight:500;color:var(--txt2);padding:9px 14px;border-radius:999px;transition:all .25s}
-.menu a:hover{color:var(--txt);background:rgba(255,255,255,.06)}
+.menu a.lnk:hover{color:var(--txt);background:rgba(255,255,255,.06)}.menu a[aria-current]{color:var(--txt)}
+.m-extra{display:none}
+.nav-r{display:flex;align-items:center;gap:10px;flex:0 0 auto}
+.nav-cta{padding:11px 20px;font-size:.86rem;white-space:nowrap}
 .socials{display:flex;gap:4px}.socials a{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;color:var(--txt2);transition:all .25s}
 .socials a:hover{color:var(--bg);background:var(--blue)}.socials svg{width:16px;height:16px;fill:currentColor}
-.burger{display:none;background:none;border:1px solid var(--bd);color:var(--txt);border-radius:999px;padding:9px 16px;font:500 .85rem var(--sans);cursor:pointer}
+.burger{display:none;align-items:center;gap:9px;background:rgba(255,255,255,.04);border:1px solid var(--bd);color:var(--txt);border-radius:999px;height:44px;padding:0 18px;font:500 .88rem var(--sans);cursor:pointer}
+.burger i{position:relative;width:16px;height:10px;border-top:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transition:all .25s}
+body.nav-open .burger i{height:0;border-bottom:0;transform:rotate(45deg)}body.nav-open .burger i::after{content:"";position:absolute;left:0;top:-1.5px;width:16px;border-top:1.5px solid currentColor;transform:rotate(-90deg)}
 
 /* hero */
 .hero{padding:170px 0 90px;overflow:hidden}
@@ -123,6 +136,7 @@ header{position:fixed;top:14px;left:0;right:0;z-index:50}
 .wm{height:30px;width:auto;margin-bottom:30px;opacity:.9}
 .hero h1{font-family:var(--head);font-weight:400;font-size:clamp(2.2rem,4.9vw,4.3rem);line-height:1.06;letter-spacing:-.03em}
 .hero .lede{color:var(--txt2);font-size:1.15rem;max-width:46ch;margin-top:28px}
+.hero-tx>*{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}.hero-tx>:nth-child(2){animation-delay:.07s}.hero-tx>:nth-child(3){animation-delay:.14s}.hero-tx>:nth-child(4){animation-delay:.21s}
 .cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:40px}
 .chips{display:flex;gap:14px;margin-top:52px;flex-wrap:wrap}
 .chip{padding:16px 22px;display:flex;align-items:center;gap:14px}
@@ -161,15 +175,18 @@ header{position:fixed;top:14px;left:0;right:0;z-index:50}
 .date b{font-family:var(--head);font-weight:500;font-size:1.5rem;display:block}
 .date span{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--txt2);display:block;margin-top:6px}
 .bpr{position:absolute;right:18px;top:18px;z-index:2;background:var(--grad);color:#0A0C12;font-weight:600;font-size:.78rem;border-radius:999px;padding:7px 13px}
-.cb{padding:4px 26px 26px;display:flex;flex-direction:column;flex:1;margin-top:-34px;position:relative;z-index:2}
-.who{display:flex;align-items:center;gap:12px}
+.cb{padding:4px 26px 26px;display:flex;flex-direction:column;flex:1;margin-top:-34px}
+.who{display:flex;align-items:center;gap:12px;position:relative;z-index:2}
 .who img{width:44px;height:44px;border-radius:50%;object-fit:cover;object-position:top;border:2px solid var(--bg2);box-shadow:0 0 0 1px rgba(140,200,255,.4)}
 .who b{font-weight:600;font-size:.92rem;display:block}.who span{font-size:.76rem;color:var(--blue)}
 .card h3{font-family:var(--head);font-weight:400;font-size:1.3rem;line-height:1.22;letter-spacing:-.01em;margin-top:18px}
 .card .k{font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-top:10px}
 .card p{color:var(--txt2);font-size:.93rem;margin-top:12px;flex:1}
 .card .btn{align-self:flex-start;margin-top:22px;padding:11px 22px;font-size:.88rem}
-.card .btn.off{opacity:.4;pointer-events:none}
+.card .btn.off{opacity:.5;pointer-events:none}
+.card a.btn::after{content:"";position:absolute;inset:0;z-index:3;border-radius:24px}
+.card:has(a.btn){cursor:pointer}.card:hover a.btn{border-color:var(--blue);background:rgba(140,200,255,.08)}
+.card a.btn:focus-visible{outline:0}.card:has(a.btn:focus-visible){outline:2px solid var(--blue);outline-offset:3px}
 
 /* online */
 .on{display:grid;grid-template-columns:1fr 1fr;gap:0;overflow:hidden}
@@ -182,6 +199,7 @@ header{position:fixed;top:14px;left:0;right:0;z-index:50}
 .price{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:34px}
 .price .new{font-family:var(--head);font-size:2.2rem;font-weight:500}
 .price .old{color:var(--txt3);text-decoration:line-through}
+.price .btn{margin-left:auto}
 .price .sale{border:1px solid var(--amber);color:var(--amber);border-radius:999px;padding:3px 10px;font-size:.8rem;font-weight:600}
 .on-img{position:relative}
 .on-img img{width:100%;height:100%;object-fit:cover}
@@ -225,113 +243,158 @@ footer{border-top:1px solid var(--bd);padding:72px 0 32px;background:radial-grad
 .ft{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:40px}
 .ft .logo{height:50px}
 .ft h5{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);margin-bottom:16px;font-weight:600}
-.ft ul{list-style:none}.ft li{margin-bottom:10px;color:var(--txt2);font-size:.95rem}.ft a:hover{color:var(--txt)}
+.ft ul{list-style:none}.ft li{margin-bottom:10px;color:var(--txt2);font-size:.95rem}.ft a{transition:color .2s;overflow-wrap:anywhere}.ft a:hover{color:var(--txt)}.ft>div{min-width:0}
 .fb{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:56px;padding-top:24px;border-top:1px solid var(--bd);color:var(--txt3);font-size:.84rem}
 
+@media(max-width:1180px){.nav-r .socials{display:none}}
 @media(max-width:1000px){
- .menu,.nav .socials{display:none}.burger{display:block}
- body.nav-open .menu{display:flex;flex-direction:column;position:absolute;top:74px;left:28px;right:28px;background:rgba(14,17,24,.96);border:1px solid var(--bd);border-radius:24px;padding:16px}
- .hero-grid,.mi,.on{grid-template-columns:1fr}
- .hero-ph{order:-1;max-width:330px;margin:0 auto -40px}.ph-chip{left:-6px;bottom:18%;padding:11px 15px}.ph-chip b{font-size:.92rem}
+ .menu,.nav-cta{display:none}.burger{display:inline-flex}
+ body.nav-open header::before{content:"";position:fixed;inset:0;background:rgba(4,6,9,.62);z-index:-1}
+ body.nav-open .menu{display:flex;flex-direction:column;align-items:stretch;gap:2px;position:absolute;top:calc(100% + 10px);left:0;right:0;background:#0E1118;border:1px solid var(--bd);border-radius:24px;padding:12px;box-shadow:0 30px 80px -20px rgba(0,0,0,.85);max-height:calc(100vh - 110px);max-height:calc(100dvh - 110px);overflow-y:auto}
+ body.nav-open .menu a.lnk{padding:14px 16px;font-size:1.02rem;color:var(--txt);border-radius:14px}
+ body.nav-open .menu a.lnk[aria-current]{background:rgba(255,255,255,.05)}
+ body.nav-open .m-extra{display:grid;gap:14px;margin-top:8px;padding:16px 4px 6px;border-top:1px solid var(--bd)}
+ .m-extra .btn{justify-content:center;padding:14px 20px}.m-extra .btn-g{color:#0A0C12}
+ .m-tel{font-family:var(--head);font-size:1.02rem;text-align:center;padding:8px 0;color:var(--txt)}
+ .m-extra .socials{justify-content:center;gap:10px}.m-extra .socials a{width:44px;height:44px;border:1px solid var(--bd)}
+ .hero{padding:128px 0 70px}
+ .hero-grid{grid-template-columns:1.15fr .85fr;gap:20px}
+ .hero .lede{font-size:1.05rem;margin-top:22px}.cta{margin-top:30px}.chips{margin-top:36px}
+ .ph-chip{left:-6px;bottom:18%;padding:11px 15px}.ph-chip b{font-size:.92rem}
+ .mi,.on{grid-template-columns:1fr}
  .band .gb{grid-template-columns:1fr auto;padding:0 28px}.band img{display:none}
  .on-img{aspect-ratio:3/2;order:-1}.on-img::after{background:linear-gradient(0deg,rgba(14,17,24,1),transparent 40%)}
  .on-tx{padding:36px 28px}
+ .mi-ph{max-width:460px;margin:0 auto;width:100%}
  .rv{grid-template-columns:1fr}
  .ft{grid-template-columns:1fr 1fr}
 }
 @media(max-width:720px){
+ html{scroll-padding-top:80px}
  .wrap{padding:0 18px}
- header{top:10px}.nav{padding:0 8px 0 16px;height:58px}.logo{height:28px}
- body.nav-open .menu{left:18px;right:18px;top:66px}
- .hero{padding:96px 0 60px}
- section{padding:76px 0}
+ header{top:10px}.nav{padding:0 7px 0 16px;height:58px}.logo{height:28px}
+ .hero{padding:84px 0 56px}
+ .hero-grid{grid-template-columns:1fr;gap:0}
+ .hero-ph{order:-1;max-width:236px;margin:0 auto -58px}
+ .portrait{aspect-ratio:4/5}
+ .ph-chip{left:auto;right:-58px;bottom:30%;padding:9px 13px;border-radius:16px}.ph-chip b{font-size:.8rem}.ph-chip span{font-size:.7rem}
+ .hero h1{font-size:clamp(1.8rem,8.3vw,2.6rem);position:relative}
+ .hero .lede{font-size:1rem;margin-top:18px}
+ .cta{margin-top:26px;gap:10px}.cta .btn{flex:1 1 100%;justify-content:center}
+ .chips{margin-top:28px;gap:10px}.chip{flex:1 1 0;padding:13px 14px;gap:10px}.chip .n{font-size:1.5rem}.chip .l{font-size:.78rem}
+ section{padding:72px 0}
+ .sh{margin-bottom:36px}
  .cards,.arts{grid-template-columns:1fr}
+ .cards{gap:16px}
+ .cv{aspect-ratio:16/7}
+ .cb{padding:4px 20px 22px}
+ .card h3{font-size:1.14rem;margin-top:14px}
+ .card p{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden;flex:0 1 auto}
+ .card .btn{margin-top:18px}
  .band .gb{grid-template-columns:1fr;gap:0;padding:0 22px}.band .pr{text-align:left;padding-bottom:26px;display:flex;align-items:center;justify-content:space-between}.band .price{margin:0}.band .bp-old{margin:0}.band .pr{flex-wrap:wrap;gap:14px 18px}.band .price{font-size:1.6rem}.band .bp-old{font-size:.85rem}
- .feats .n{font-size:1.6rem}
- .ft{grid-template-columns:1fr}
+ .on-tx{padding:30px 22px}
+ .feats{gap:8px}.feats div{padding:14px 12px}.feats .n{font-size:1.6rem}
+ .price .btn{margin-left:0;flex:1 1 100%;justify-content:center}
+ .rv .gb{padding:26px 22px}.rv p{font-size:1rem}
+ .art{padding:16px 18px}
+ .ft{grid-template-columns:1fr 1fr;gap:34px 20px}.ft>div:first-child,.ft>div:last-child{grid-column:1/-1}
+ .ft li{margin-bottom:0}.ft li a{display:inline-block;padding:11px 0}.ft li:not(:has(a)){padding:11px 0}
+ .ft h5{margin-bottom:6px}
+ .fb{margin-top:36px}
 }
+@media(prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto}
+ .js .ru{opacity:1;transform:none;transition:none}.hero-tx>*{animation:none}
+ .card,.cv img,.btn{transition:none}.card:hover{transform:none}.card:hover .cv img{transform:none}
+}
+@media print{.js .ru{opacity:1;transform:none}header{position:static}}
 
 .hero h1 .wm{display:block;height:30px;width:auto;margin-bottom:30px}
 .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media(max-width:720px){.hero h1 .wm{position:absolute;width:1px;height:1px;margin:0;overflow:hidden;clip:rect(0 0 0 0)}}
 </style>
     </head>
     <body>
     
 
+<a class="skip" href="#content">Перейти до змісту</a>
 <header><div class="wrap"><div class="nav">
-  <a href="index.html"><img class="logo" src="img/logo-full-gold.png" alt="Аполлонія — навчальний центр"></a>
-  <nav class="menu"><a class="lnk" href="index.html">Головна</a><a class="lnk" href="#schedule">Розклад курсів</a><a class="lnk" href="lektory.html">Лектори</a><a class="lnk" href="statti.html">Статті</a><a class="lnk" href="contacts.html">Контакти</a></nav>
-  <div class="socials"><a href="https://www.facebook.com/S.Radlinsky" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.7l-.4 2.9h-2.3v7A10 10 0 0 0 22 12Z"/></svg></a><a href="https://www.instagram.com/radlinsky_training_center" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.3 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.3 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .3-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.3-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.3-1-.4-2.2-.1-1.3-.1-1.7-.1-4.9s0-3.6.1-4.9c.1-1.2.3-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.3 2.2-.4C8.4 2.2 8.8 2.2 12 2.2Zm0 1.8c-3.1 0-3.5 0-4.7.1-1.1.1-1.7.2-2.1.4-.5.2-.9.4-1.3.8-.4.4-.6.8-.8 1.3-.2.4-.3 1-.4 2.1C2.6 9.9 2.6 10.3 2.6 12s0 3.5.1 4.7c.1 1.1.2 1.7.4 2.1.2.5.4.9.8 1.3.4.4.8.6 1.3.8.4.2 1 .3 2.1.4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1.1-.1 1.7-.2 2.1-.4.5-.2.9-.4 1.3-.8.4-.4.6-.8.8-1.3.2-.4.3-1 .4-2.1.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1.1-.2-1.7-.4-2.1-.2-.5-.4-.9-.8-1.3-.4-.4-.8-.6-1.3-.8-.4-.2-1-.3-2.1-.4-1.2-.1-1.6-.1-4.7-.1Zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8Zm0 8.1a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4Zm6.2-8.3a1.15 1.15 0 1 1-2.3 0 1.15 1.15 0 0 1 2.3 0Z"/></svg></a><a href="https://www.youtube.com/@apollonia_dental" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.5 6.5a3 3 0 0 0-2.1-2.1C19.5 3.9 12 3.9 12 3.9s-7.5 0-9.4.5A3 3 0 0 0 .5 6.5 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.5 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.5ZM9.6 15.6V8.4l6.2 3.6-6.2 3.6Z"/></svg></a></div>
-  <button class="burger" aria-label="Меню">Меню</button>
+  <a class="brand" href="index.html"><img class="logo" src="img/logo-full-gold.png" alt="Аполлонія — навчальний центр" width="600" height="137"></a>
+  <nav class="menu" id="menu" aria-label="Головне меню"><a class="lnk" href="index.html" aria-current="page">Головна</a><a class="lnk" href="#schedule">Розклад курсів</a><a class="lnk" href="lektory.html">Лектори</a><a class="lnk" href="statti.html">Статті</a><a class="lnk" href="contacts.html">Контакти</a>
+    <div class="m-extra"><a class="btn btn-g" href="kurs-online.html">Онлайн-курс Сергія Радлінського</a><a class="m-tel" href="tel:+380661918300">+38 (066) 191-83-00</a><div class="socials"><a href="https://www.facebook.com/S.Radlinsky" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.7l-.4 2.9h-2.3v7A10 10 0 0 0 22 12Z"/></svg></a><a href="https://www.instagram.com/radlinsky_training_center" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.3 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.3 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .3-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.3-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.3-1-.4-2.2-.1-1.3-.1-1.7-.1-4.9s0-3.6.1-4.9c.1-1.2.3-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.3 2.2-.4C8.4 2.2 8.8 2.2 12 2.2Zm0 1.8c-3.1 0-3.5 0-4.7.1-1.1.1-1.7.2-2.1.4-.5.2-.9.4-1.3.8-.4.4-.6.8-.8 1.3-.2.4-.3 1-.4 2.1C2.6 9.9 2.6 10.3 2.6 12s0 3.5.1 4.7c.1 1.1.2 1.7.4 2.1.2.5.4.9.8 1.3.4.4.8.6 1.3.8.4.2 1 .3 2.1.4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1.1-.1 1.7-.2 2.1-.4.5-.2.9-.4 1.3-.8.4-.4.6-.8.8-1.3.2-.4.3-1 .4-2.1.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1.1-.2-1.7-.4-2.1-.2-.5-.4-.9-.8-1.3-.4-.4-.8-.6-1.3-.8-.4-.2-1-.3-2.1-.4-1.2-.1-1.6-.1-4.7-.1Zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8Zm0 8.1a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4Zm6.2-8.3a1.15 1.15 0 1 1-2.3 0 1.15 1.15 0 0 1 2.3 0Z"/></svg></a><a href="https://www.youtube.com/@apollonia_dental" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.5 6.5a3 3 0 0 0-2.1-2.1C19.5 3.9 12 3.9 12 3.9s-7.5 0-9.4.5A3 3 0 0 0 .5 6.5 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.5 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.5ZM9.6 15.6V8.4l6.2 3.6-6.2 3.6Z"/></svg></a></div></div>
+  </nav>
+  <div class="nav-r"><div class="socials"><a href="https://www.facebook.com/S.Radlinsky" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.7l-.4 2.9h-2.3v7A10 10 0 0 0 22 12Z"/></svg></a><a href="https://www.instagram.com/radlinsky_training_center" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.3 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.3 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .3-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.3-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.3-1-.4-2.2-.1-1.3-.1-1.7-.1-4.9s0-3.6.1-4.9c.1-1.2.3-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.3 2.2-.4C8.4 2.2 8.8 2.2 12 2.2Zm0 1.8c-3.1 0-3.5 0-4.7.1-1.1.1-1.7.2-2.1.4-.5.2-.9.4-1.3.8-.4.4-.6.8-.8 1.3-.2.4-.3 1-.4 2.1C2.6 9.9 2.6 10.3 2.6 12s0 3.5.1 4.7c.1 1.1.2 1.7.4 2.1.2.5.4.9.8 1.3.4.4.8.6 1.3.8.4.2 1 .3 2.1.4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1.1-.1 1.7-.2 2.1-.4.5-.2.9-.4 1.3-.8.4-.4.6-.8.8-1.3.2-.4.3-1 .4-2.1.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1.1-.2-1.7-.4-2.1-.2-.5-.4-.9-.8-1.3-.4-.4-.8-.6-1.3-.8-.4-.2-1-.3-2.1-.4-1.2-.1-1.6-.1-4.7-.1Zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8Zm0 8.1a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4Zm6.2-8.3a1.15 1.15 0 1 1-2.3 0 1.15 1.15 0 0 1 2.3 0Z"/></svg></a><a href="https://www.youtube.com/@apollonia_dental" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.5 6.5a3 3 0 0 0-2.1-2.1C19.5 3.9 12 3.9 12 3.9s-7.5 0-9.4.5A3 3 0 0 0 .5 6.5 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.5 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.5ZM9.6 15.6V8.4l6.2 3.6-6.2 3.6Z"/></svg></a></div><a class="btn btn-g nav-cta" href="kurs-online.html">Онлайн-курс</a>
+  <button class="burger" type="button" aria-expanded="false" aria-controls="menu"><i aria-hidden="true"></i><span>Меню</span></button></div>
 </div></div></header>
 <main id="top">
-<section class="hero"><div class="wrap hero-grid">
-  <div class="ru">
+<section class="hero" id="content"><div class="wrap hero-grid">
+  <div class="hero-tx">
     <h1><img class="wm" src="img/apollonia-wordmark-gold.png" alt="Аполлонія" width="467" height="64"><span class="vh"> — </span>Стоматологічні курси та семінари <span class="g">з балами БПР</span></h1>
     <p class="lede">Ваші пацієнти будуть дякувати вам щоранку! Станьте стоматологом, якого радять і до якого повертаються знову і знову.</p>
     <div class="cta"><a class="btn btn-g" href="#schedule">Розклад курсів</a><a class="btn btn-o" href="kurs-online.html">Онлайн майстер-курс</a></div>
     <div class="chips"><div class="chip gb"><span class="n g">30</span><span class="l">років у практиці</span></div><div class="chip gb"><span class="n g">БПР</span><span class="l">бали за кожен курс</span></div></div>
   </div>
-  <div class="hero-ph ru">
-    <div class="portrait"><img src="img/home-hero-radlinsky.webp" alt="Сергій Радлінський — засновник навчального центру «Аполлонія»" fetchpriority="high"></div>
+  <div class="hero-ph">
+    <div class="portrait"><img src="img/home-hero-radlinsky.webp" srcset="img/home-hero-radlinsky-600.webp 600w, img/home-hero-radlinsky.webp 1100w" sizes="(max-width:720px) 236px, (max-width:1000px) 42vw, 470px" alt="Сергій Радлінський — засновник навчального центру «Аполлонія»" width="1100" height="1650" fetchpriority="high"></div>
     <div class="ph-chip"><b>Сергій Радлінський</b><span>Засновник центру «Аполлонія»</span></div>
   </div>
 </div></section>
 
 <section class="band ru"><div class="wrap"><div class="gb lit">
   <div class="tx"><span class="eb" data-bf="label">Чорна п’ятниця «Аполлонії» · до 30 листопада</span><p class="t">Онлайн-курс «Художня реставрація зубів» <em class="g">із Сергієм Радлінським</em></p><p class="m">26 лекцій і майстер-класів · 60 годин · 30 балів БПР · доступ до 31 грудня 2027</p></div>
-  <img src="images/pb-radlinsky.webp" alt="Сергій Радлінський">
+  <img src="images/pb-radlinsky.webp" alt="" width="283" height="424">
   <div class="pr"><div class="bp"><s class="bp-old" data-bf="old">8 000 грн</s><div class="price" data-bf="price">3 890 грн</div></div><a class="btn btn-g" href="kurs-online.html">Детальніше</a></div>
 </div></div></section>
 
 <section id="schedule"><div class="wrap">
-  <div class="cards ru"><article class="card gb">
-  <div class="cv"><img src="img/home-cover-radlinsky-nyzhni.webp" alt="" loading="lazy"><div class="date"><b>31</b><span>жовтня</span></div><span class="bpr">+7 балів БПР</span></div>
+  <h2 class="vh">Розклад курсів</h2>
+  <div class="cards"><article class="card gb ru">
+  <div class="cv"><img src="img/home-cover-radlinsky-nyzhni.webp" alt="" loading="lazy" decoding="async"><div class="date"><b>31</b><span>жовтня</span></div><span class="bpr">+7 балів БПР</span></div>
   <div class="cb">
-    <div class="who"><img src="images/lect-radlinsky.jpg" alt="Сергій Радлінський" loading="lazy"><div><b>Сергій Радлінський</b><span>Онлайн</span></div></div>
-    <h3>Художня реставрація нижніх передніх зубів</h3><div class="k">Онлайн майстер-клас з відео демонстрацією</div><p>Функція й оклюзія нижнього переднього секстанта, авторський розрахунок та покрокова побудова іклів, латеральних і центральних різців з інтеграцією в оклюзію. Запис доступний 3 місяці.</p><a class="btn btn-o" href="vebinar-radlinsky-nyzhni-peredni-zuby.html">Програма →</a>
+    <div class="who"><img src="img/ava-radlinsky.webp" alt="" width="44" height="44" loading="lazy" decoding="async"><div><b>Сергій Радлінський</b><span>Онлайн</span></div></div>
+    <h3>Художня реставрація нижніх передніх зубів</h3><div class="k">Онлайн майстер-клас з відео демонстрацією</div><p>Функція й оклюзія нижнього переднього секстанта, авторський розрахунок та покрокова побудова іклів, латеральних і центральних різців з інтеграцією в оклюзію. Запис доступний 3 місяці.</p><a class="btn btn-o" href="vebinar-radlinsky-nyzhni-peredni-zuby.html">Програма<span class="vh"> курсу «Художня реставрація нижніх передніх зубів», 31 жовтня</span> →</a>
   </div>
-</article><article class="card gb">
-  <div class="cv"><img src="img/home-cover-savosta-endo.webp" alt="" loading="lazy"><div class="date"><b>7</b><span>листопада</span></div><span class="bpr">+15 балів БПР</span></div>
+</article><article class="card gb ru d1">
+  <div class="cv"><img src="img/home-cover-savosta-endo.webp" alt="" loading="lazy" decoding="async"><div class="date"><b>7</b><span>листопада</span></div><span class="bpr">+15 балів БПР</span></div>
   <div class="cb">
-    <div class="who"><img src="images/lect-savosta.jpg" alt="Наталія Савоста" loading="lazy"><div><b>Наталія Савоста</b><span>Полтава</span></div></div>
-    <h3>Проста та ефективна ендодонтія</h3><div class="k">Практичний курс</div><p>Практичний хендс-он майстер-клас: 3D-анатомія, сучасні ротаційні системи, якісна обтурація. Від теорії до практики на фантомах і видалених зубах. Навчіться контролювати кожен етап ендодонтичного лікування.</p><a class="btn btn-o" href="kurs-savosta-endodontiya.html">Програма →</a>
+    <div class="who"><img src="img/ava-savosta.webp" alt="" width="44" height="44" loading="lazy" decoding="async"><div><b>Наталія Савоста</b><span>Полтава</span></div></div>
+    <h3>Проста та ефективна ендодонтія</h3><div class="k">Практичний курс</div><p>Практичний хендс-он майстер-клас: 3D-анатомія, сучасні ротаційні системи, якісна обтурація. Від теорії до практики на фантомах і видалених зубах. Навчіться контролювати кожен етап ендодонтичного лікування.</p><a class="btn btn-o" href="kurs-savosta-endodontiya.html">Програма<span class="vh"> курсу «Проста та ефективна ендодонтія», 7 листопада</span> →</a>
   </div>
-</article><article class="card gb">
-  <div class="cv"><img src="img/home-cover-pon-1.webp" alt="" loading="lazy"><div class="date"><b>17–20</b><span>листопада</span></div><span class="bpr">+60 балів БПР</span></div>
+</article><article class="card gb ru">
+  <div class="cv"><img src="img/home-cover-pon-1.webp" alt="" loading="lazy" decoding="async"><div class="date"><b>17–20</b><span>листопада</span></div><span class="bpr">+60 балів БПР</span></div>
   <div class="cb">
-    <div class="who"><img src="images/lect-ponomarenko.jpg" alt="Ольга Пономаренко" loading="lazy"><div><b>Ольга Пономаренко</b><span>Полтава</span></div></div>
-    <h3>Художня реставрація зубів</h3><div class="k">4-денний клініко-практичний курс</div><p>Практичне керівництво до створення природних реставрацій, які виглядають і працюють як живі зуби. Авторські клінічні протоколи в реальній роботі — анатомія, колір і форма з математичною точністю та художньою інтуїцією.</p><a class="btn btn-o" href="kurs-ponomarenko-hudozhnya.html">Програма →</a>
+    <div class="who"><img src="img/ava-ponomarenko.webp" alt="" width="44" height="44" loading="lazy" decoding="async"><div><b>Ольга Пономаренко</b><span>Полтава</span></div></div>
+    <h3>Художня реставрація зубів</h3><div class="k">4-денний клініко-практичний курс</div><p>Практичне керівництво до створення природних реставрацій, які виглядають і працюють як живі зуби. Авторські клінічні протоколи в реальній роботі — анатомія, колір і форма з математичною точністю та художньою інтуїцією.</p><a class="btn btn-o" href="kurs-ponomarenko-hudozhnya.html">Програма<span class="vh"> курсу «Художня реставрація зубів», 17–20 листопада</span> →</a>
   </div>
-</article><article class="card gb">
-  <div class="cv"><img src="img/home-cover-pon-clinic.webp" alt="" loading="lazy"><div class="date"><b>19–20</b><span>листопада</span></div><span class="bpr">+30 балів БПР</span></div>
+</article><article class="card gb ru d1">
+  <div class="cv"><img src="img/home-cover-pon-clinic.webp" alt="" loading="lazy" decoding="async"><div class="date"><b>19–20</b><span>листопада</span></div><span class="bpr">+30 балів БПР</span></div>
   <div class="cb">
-    <div class="who"><img src="images/lect-ponomarenko.jpg" alt="Ольга Пономаренко" loading="lazy"><div><b>Ольга Пономаренко</b><span>Полтава</span></div></div>
-    <h3>Художня реставрація передніх та бічних зубів</h3><div class="k">Практичний курс</div><p>Ви опануєте фундаментальні основи прямої техніки реставрації — від простого до складного. Детально розберемо клінічні протоколи системного відновлення передніх та бокових зубів: послідовність, принципи й правила адгезивної реставрації, типові помилки та ускладнення.</p><a class="btn btn-o" href="kurs-ponomarenko-perednikh.html">Програма →</a>
+    <div class="who"><img src="img/ava-ponomarenko.webp" alt="" width="44" height="44" loading="lazy" decoding="async"><div><b>Ольга Пономаренко</b><span>Полтава</span></div></div>
+    <h3>Художня реставрація передніх та бічних зубів</h3><div class="k">Практичний курс</div><p>Ви опануєте фундаментальні основи прямої техніки реставрації — від простого до складного. Детально розберемо клінічні протоколи системного відновлення передніх та бокових зубів: послідовність, принципи й правила адгезивної реставрації, типові помилки та ускладнення.</p><a class="btn btn-o" href="kurs-ponomarenko-perednikh.html">Програма<span class="vh"> курсу «Художня реставрація передніх та бічних зубів», 19–20 листопада</span> →</a>
   </div>
-</article><article class="card gb">
-  <div class="cv"><img src="img/home-cover-pon-team.webp" alt="" loading="lazy"><div class="date"><b>21</b><span>листопада</span></div><span class="bpr">+15 балів БПР</span></div>
+</article><article class="card gb ru">
+  <div class="cv"><img src="img/home-cover-pon-team.webp" alt="" loading="lazy" decoding="async"><div class="date"><b>21</b><span>листопада</span></div><span class="bpr">+15 балів БПР</span></div>
   <div class="cb">
-    <div class="who"><img src="images/lect-ponomarenko.jpg" alt="Ольга Пономаренко" loading="lazy"><div><b>Ольга Пономаренко</b><span>Полтава</span></div></div>
+    <div class="who"><img src="img/ava-ponomarenko.webp" alt="" width="44" height="44" loading="lazy" decoding="async"><div><b>Ольга Пономаренко</b><span>Полтава</span></div></div>
     <h3>Системна реконструкція висоти прикусу. Нижня щелепа</h3><div class="k">Практичний курс</div><p>Поглиблений практичний модуль із поетапного відновлення висоти прикусу на нижній щелепі. Тільки для учасників чотириденного курсу «Художня реставрація зубів».</p><span class="btn btn-o off">Скоро</span>
   </div>
-</article><article class="card gb">
-  <div class="cv"><img src="img/home-cover-pon-bleach.webp" alt="" loading="lazy"><div class="date"><b>28</b><span>листопада</span></div><span class="bpr">+15 балів БПР</span></div>
+</article><article class="card gb ru d1">
+  <div class="cv"><img src="img/home-cover-pon-bleach.webp" alt="" loading="lazy" decoding="async"><div class="date"><b>28</b><span>листопада</span></div><span class="bpr">+15 балів БПР</span></div>
   <div class="cb">
-    <div class="who"><img src="images/lect-ponomarenko.jpg" alt="Ольга Пономаренко" loading="lazy"><div><b>Ольга Пономаренко</b><span>Полтава</span></div></div>
-    <h3>Реставрація зубів з Bleach-ефектом</h3><div class="k">Клінічно-практичний курс</div><p>Тактика і протокол ведення пацієнтів із запитом на відбілені зуби: колірна конструкція, ефект-фарби, дво- і тришарова реставрація за типом вініра при дисколоритах.</p><a class="btn btn-o" href="kurs-ponomarenko-bleach.html">Програма →</a>
+    <div class="who"><img src="img/ava-ponomarenko.webp" alt="" width="44" height="44" loading="lazy" decoding="async"><div><b>Ольга Пономаренко</b><span>Полтава</span></div></div>
+    <h3>Реставрація зубів з Bleach-ефектом</h3><div class="k">Клінічно-практичний курс</div><p>Тактика і протокол ведення пацієнтів із запитом на відбілені зуби: колірна конструкція, ефект-фарби, дво- і тришарова реставрація за типом вініра при дисколоритах.</p><a class="btn btn-o" href="kurs-ponomarenko-bleach.html">Програма<span class="vh"> курсу «Реставрація зубів з Bleach-ефектом», 28 листопада</span> →</a>
   </div>
-</article><article class="card gb">
-  <div class="cv"><img src="img/home-cover-pon-hero2.webp" alt="" loading="lazy"><div class="date"><b>9–12</b><span>грудня</span></div><span class="bpr">+60 балів БПР</span></div>
+</article><article class="card gb ru">
+  <div class="cv"><img src="img/home-cover-pon-hero2.webp" alt="" loading="lazy" decoding="async"><div class="date"><b>9–12</b><span>грудня</span></div><span class="bpr">+60 балів БПР</span></div>
   <div class="cb">
-    <div class="who"><img src="images/lect-ponomarenko.jpg" alt="Ольга Пономаренко" loading="lazy"><div><b>Ольга Пономаренко</b><span>Полтава</span></div></div>
-    <h3>Художня реставрація зубів</h3><div class="k">4-денний клініко-практичний курс</div><p>Практичне керівництво до створення природних реставрацій, які виглядають і працюють як живі зуби. Авторські клінічні протоколи в реальній роботі — анатомія, колір і форма з математичною точністю та художньою інтуїцією.</p><a class="btn btn-o" href="kurs-ponomarenko-hudozhnya.html">Програма →</a>
+    <div class="who"><img src="img/ava-ponomarenko.webp" alt="" width="44" height="44" loading="lazy" decoding="async"><div><b>Ольга Пономаренко</b><span>Полтава</span></div></div>
+    <h3>Художня реставрація зубів</h3><div class="k">4-денний клініко-практичний курс</div><p>Практичне керівництво до створення природних реставрацій, які виглядають і працюють як живі зуби. Авторські клінічні протоколи в реальній роботі — анатомія, колір і форма з математичною точністю та художньою інтуїцією.</p><a class="btn btn-o" href="kurs-ponomarenko-hudozhnya.html">Програма<span class="vh"> курсу «Художня реставрація зубів», 9–12 грудня</span> →</a>
   </div>
-</article><article class="card gb">
-  <div class="cv"><img src="img/home-cover-endo-gal.webp" alt="" loading="lazy"><div class="date"><b>11–12</b><span>грудня</span></div><span class="bpr">+30 балів БПР</span></div>
+</article><article class="card gb ru d1">
+  <div class="cv"><img src="img/home-cover-endo-gal.webp" alt="" loading="lazy" decoding="async"><div class="date"><b>11–12</b><span>грудня</span></div><span class="bpr">+30 балів БПР</span></div>
   <div class="cb">
-    <div class="who"><img src="images/lect-ponomarenko.jpg" alt="Ольга Пономаренко" loading="lazy"><div><b>Ольга Пономаренко</b><span>Полтава</span></div></div>
-    <h3>Художня реставрація передніх та бічних зубів</h3><div class="k">Практичний курс</div><p>Ви опануєте фундаментальні основи прямої техніки реставрації — від простого до складного. Детально розберемо клінічні протоколи системного відновлення передніх та бокових зубів: послідовність, принципи й правила адгезивної реставрації, типові помилки та ускладнення.</p><a class="btn btn-o" href="kurs-ponomarenko-perednikh.html">Програма →</a>
+    <div class="who"><img src="img/ava-ponomarenko.webp" alt="" width="44" height="44" loading="lazy" decoding="async"><div><b>Ольга Пономаренко</b><span>Полтава</span></div></div>
+    <h3>Художня реставрація передніх та бічних зубів</h3><div class="k">Практичний курс</div><p>Ви опануєте фундаментальні основи прямої техніки реставрації — від простого до складного. Детально розберемо клінічні протоколи системного відновлення передніх та бокових зубів: послідовність, принципи й правила адгезивної реставрації, типові помилки та ускладнення.</p><a class="btn btn-o" href="kurs-ponomarenko-perednikh.html">Програма<span class="vh"> курсу «Художня реставрація передніх та бічних зубів», 11–12 грудня</span> →</a>
   </div>
 </article></div>
 </div></section>
@@ -340,9 +403,9 @@ footer{border-top:1px solid var(--bd);padding:72px 0 32px;background:radial-grad
   <div class="on gb lit ru">
     <div class="on-tx"><span class="eb" data-bf="eyebrow">Чорна п’ятниця «Аполлонії»</span><h2 style="margin-top:18px">«Художня реставрація зубів» з проф. Сергієм Радлінським</h2><p data-bf="text">Оновлений онлайн-курс: 26 лекцій і майстер-класів, 60 годин відео, з них 25 годин нових лекцій 2026 року. До 30 листопада — 3 890 грн замість 8 000.</p>
       <div class="feats"><div><span class="n g">60</span><span class="l">годин навчання</span></div><div><span class="n g">26</span><span class="l">лекцій та МК</span></div><div><span class="n g">30</span><span class="l">балів БПР</span></div></div>
-      <div class="price"><span class="new" data-bf="new">3 890 ₴</span><span class="old" data-bf="old2">8 000 ₴</span><span class="sale" data-bf="until">до 30 листопада</span><a class="btn btn-g" href="kurs-online.html" style="margin-left:auto">Купити курс</a></div>
+      <div class="price"><span class="new" data-bf="new">3 890 ₴</span><span class="old" data-bf="old2">8 000 ₴</span><span class="sale" data-bf="until">до 30 листопада</span><a class="btn btn-g" href="kurs-online.html">Купити курс</a></div>
     </div>
-    <div class="on-img"><img src="img/home-online-lecture.webp" alt="Сергій Радлінський" loading="lazy"></div>
+    <div class="on-img"><img src="img/home-online-lecture.webp" alt="Сергій Радлінський читає лекцію" width="1280" height="924" loading="lazy" decoding="async"></div>
   </div>
 </div></section>
 
@@ -356,7 +419,7 @@ document.querySelectorAll('[data-bf]').forEach(function(e){var v=S[e.getAttribut
 </script>
 
 <section id="mission"><div class="wrap mi">
-  <div class="mi-ph ru"><img src="img/home-mission-radlinsky.webp" alt="Сергій Радлінський — засновник центру" loading="lazy"></div>
+  <div class="mi-ph ru"><img src="img/home-mission-radlinsky.webp" alt="Сергій Радлінський — засновник центру" width="1000" height="1500" loading="lazy" decoding="async"></div>
   <div class="ru"><span class="eb">Місія</span>
     <p class="q">Наша візитівка — це <em class="g">філософія біоміметичної реставрації</em>, розроблена Сергієм Радлінським.</p>
     <h3>Місія навчального центру «Аполлонія» Сергія Радлінського</h3><p class="t">Маємо за мету навчити Вас виконувати індивідуалізацію кожного клінічного випадка, спираючись на знання топографії зубних тканин, колірної конструкції, анатомії, розмірів та форми. Наша місія — збереження стоматологічного здоров'я через розвиток і поширення прямої реставрації зубів.</p>
@@ -366,32 +429,39 @@ document.querySelectorAll('[data-bf]').forEach(function(e){var v=S[e.getAttribut
 
 <section id="reviews"><div class="wrap">
   <div class="sh c ru"><span class="eb">Відгуки</span><h2>Ми вдячні вам за довіру</h2></div>
-  <div class="rv ru"><article class="gb lit"><div class="stars g">★★★★★</div><p>Вражаючий курс! Сергій Радлінський пояснює складні речі просто й системно. Маестро — супер!</p>
-<div class="nm"><span class="av">О</span><div><b>Оксана М.</b><span>Лікар-стоматолог</span></div></div></article><article class="gb lit"><div class="stars g">★★★★★</div><p>Дуже практично! Покрокові протоколи, логіка, приклади з клініки — усе структуровано. Відчувається досвід і глибоке розуміння матеріалу.</p>
-<div class="nm"><span class="av">М</span><div><b>Марина Б.</b><span>Стоматолог, приватна практика</span></div></div></article><article class="gb lit"><div class="stars g">★★★★★</div><p>Люблю споглядати, як творить майстер. 60 годин без «води». Після лекцій почала дивитися на реставрацію зовсім інакше.</p>
-<div class="nm"><span class="av">В</span><div><b>Вікторія А.</b><span>Стоматолог-терапевт</span></div></div></article></div>
+  <div class="rv"><article class="gb lit ru"><div class="stars g" role="img" aria-label="Оцінка 5 з 5">★★★★★</div><p>Вражаючий курс! Сергій Радлінський пояснює складні речі просто й системно. Маестро — супер!</p>
+<div class="nm"><span class="av" aria-hidden="true">О</span><div><b>Оксана М.</b><span>Лікар-стоматолог</span></div></div></article><article class="gb lit ru d1"><div class="stars g" role="img" aria-label="Оцінка 5 з 5">★★★★★</div><p>Дуже практично! Покрокові протоколи, логіка, приклади з клініки — усе структуровано. Відчувається досвід і глибоке розуміння матеріалу.</p>
+<div class="nm"><span class="av" aria-hidden="true">М</span><div><b>Марина Б.</b><span>Стоматолог, приватна практика</span></div></div></article><article class="gb lit ru d2"><div class="stars g" role="img" aria-label="Оцінка 5 з 5">★★★★★</div><p>Люблю споглядати, як творить майстер. 60 годин без «води». Після лекцій почала дивитися на реставрацію зовсім інакше.</p>
+<div class="nm"><span class="av" aria-hidden="true">В</span><div><b>Вікторія А.</b><span>Стоматолог-терапевт</span></div></div></article></div>
 </div></section>
 
 <section id="dentart" class="dent"><div class="wrap">
   <div class="sh ru"><span class="eb">Статті Дентарт</span><h2>Журнал про науку та мистецтво в стоматології</h2><p>«ДентАрт» — ілюстрований міжнародний журнал для лікарів-практиків: естетика прямої та непрямої реставрації, ортодонтія, ендодонтія, пародонтологія, хірургія та організація практики.</p></div>
-  <div class="arts ru"><a class="art" href="statti-ponomarenko-restavratsiya-zubiv-i-zubnykh-riadiv.html"><div><h4>Особливості реставрації зубів і зубних рядів</h4><span class="au">Ольга Пономаренко</span></div><span class="ar">→</span></a><a class="art" href="statti-radlinsky-prostorovi-oriientyry.html"><div><h4>Просторові орієнтири в системній реставрації зубів</h4><span class="au">Сергій Радлінський</span></div><span class="ar">→</span></a><a class="art" href="statti-radlinsky-restavratsiya-za-rozrakhunkom-lateralni-riztsi.html"><div><h4>Реставрація за розрахунком: верхні латеральні різці</h4><span class="au">Сергій Радлінський</span></div><span class="ar">→</span></a><a class="art" href="statti-radlinsky-restavratsiya-zubiv-z-pidiasennym-defektom.html"><div><h4>Реставрація зубів з під’ясенним дефектом</h4><span class="au">Сергій Радлінський</span></div><span class="ar">→</span></a><a class="art" href="statti-ponomarenko-neo-spectra-st.html"><div><h4>Відновлення бічних зубів композитами Neo Spectra ST</h4><span class="au">Ольга Пономаренко</span></div><span class="ar">→</span></a><a class="art" href="statti-lazarieva-postendorestavratsiia.html"><div><h4>Новий погляд на постендореставрацію</h4><span class="au">Ксенія Лазарєва</span></div><span class="ar">→</span></a><a class="art" href="statti-heranin-apikalnyi-barier-mta.html"><div><h4>Нехірургічне перелікування апікоектомії з бар’єром MTA</h4><span class="au">Станіслав Геранін</span></div><span class="ar">→</span></a><a class="art" href="statti-frank-maskuvannia-bilykh-pliam-icon.html"><div><h4>Маскування білих плям за допомогою Icon</h4><span class="au">Інго Франк</span></div><span class="ar">→</span></a><a class="art" href="statti-parkhar-vitalna-pulpa-biodentine.html"><div><h4>Лікування вітальної пульпи Biodentine™ при дентальній евагінації</h4><span class="au">Марк Пархар</span></div><span class="ar">→</span></a><a class="art" href="statti-vitalnia-tetiana-bondar.html"><div><h4>Стоматологиня і волонтерка Тетяна Бондар (інтерв’ю)</h4><span class="au">Вітальня «ДентАрту»</span></div><span class="ar">→</span></a></div>
+  <div class="arts ru"><a class="art" href="statti-ponomarenko-restavratsiya-zubiv-i-zubnykh-riadiv.html"><div><h4>Особливості реставрації зубів і зубних рядів</h4><span class="au">Ольга Пономаренко</span></div><span class="ar" aria-hidden="true">→</span></a><a class="art" href="statti-radlinsky-prostorovi-oriientyry.html"><div><h4>Просторові орієнтири в системній реставрації зубів</h4><span class="au">Сергій Радлінський</span></div><span class="ar" aria-hidden="true">→</span></a><a class="art" href="statti-radlinsky-restavratsiya-za-rozrakhunkom-lateralni-riztsi.html"><div><h4>Реставрація за розрахунком: верхні латеральні різці</h4><span class="au">Сергій Радлінський</span></div><span class="ar" aria-hidden="true">→</span></a><a class="art" href="statti-radlinsky-restavratsiya-zubiv-z-pidiasennym-defektom.html"><div><h4>Реставрація зубів з під’ясенним дефектом</h4><span class="au">Сергій Радлінський</span></div><span class="ar" aria-hidden="true">→</span></a><a class="art" href="statti-ponomarenko-neo-spectra-st.html"><div><h4>Відновлення бічних зубів композитами Neo Spectra ST</h4><span class="au">Ольга Пономаренко</span></div><span class="ar" aria-hidden="true">→</span></a><a class="art" href="statti-lazarieva-postendorestavratsiia.html"><div><h4>Новий погляд на постендореставрацію</h4><span class="au">Ксенія Лазарєва</span></div><span class="ar" aria-hidden="true">→</span></a><a class="art" href="statti-heranin-apikalnyi-barier-mta.html"><div><h4>Нехірургічне перелікування апікоектомії з бар’єром MTA</h4><span class="au">Станіслав Геранін</span></div><span class="ar" aria-hidden="true">→</span></a><a class="art" href="statti-frank-maskuvannia-bilykh-pliam-icon.html"><div><h4>Маскування білих плям за допомогою Icon</h4><span class="au">Інго Франк</span></div><span class="ar" aria-hidden="true">→</span></a><a class="art" href="statti-parkhar-vitalna-pulpa-biodentine.html"><div><h4>Лікування вітальної пульпи Biodentine™ при дентальній евагінації</h4><span class="au">Марк Пархар</span></div><span class="ar" aria-hidden="true">→</span></a><a class="art" href="statti-vitalnia-tetiana-bondar.html"><div><h4>Стоматологиня і волонтерка Тетяна Бондар (інтерв’ю)</h4><span class="au">Вітальня «ДентАрту»</span></div><span class="ar" aria-hidden="true">→</span></a></div>
   <div class="all"><a class="btn btn-g" href="statti.html">Усі статті ДентАрт онлайн →</a></div>
 </div></section>
 </main>
 
 <footer><div class="wrap">
   <div class="ft">
-    <div><img class="logo" src="img/logo-full-gold.png" alt="Аполлонія — навчальний центр"><div style="margin-top:22px"><div class="socials"><a href="https://www.facebook.com/S.Radlinsky" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.7l-.4 2.9h-2.3v7A10 10 0 0 0 22 12Z"/></svg></a><a href="https://www.instagram.com/radlinsky_training_center" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.3 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.3 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .3-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.3-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.3-1-.4-2.2-.1-1.3-.1-1.7-.1-4.9s0-3.6.1-4.9c.1-1.2.3-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.3 2.2-.4C8.4 2.2 8.8 2.2 12 2.2Zm0 1.8c-3.1 0-3.5 0-4.7.1-1.1.1-1.7.2-2.1.4-.5.2-.9.4-1.3.8-.4.4-.6.8-.8 1.3-.2.4-.3 1-.4 2.1C2.6 9.9 2.6 10.3 2.6 12s0 3.5.1 4.7c.1 1.1.2 1.7.4 2.1.2.5.4.9.8 1.3.4.4.8.6 1.3.8.4.2 1 .3 2.1.4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1.1-.1 1.7-.2 2.1-.4.5-.2.9-.4 1.3-.8.4-.4.6-.8.8-1.3.2-.4.3-1 .4-2.1.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1.1-.2-1.7-.4-2.1-.2-.5-.4-.9-.8-1.3-.4-.4-.8-.6-1.3-.8-.4-.2-1-.3-2.1-.4-1.2-.1-1.6-.1-4.7-.1Zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8Zm0 8.1a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4Zm6.2-8.3a1.15 1.15 0 1 1-2.3 0 1.15 1.15 0 0 1 2.3 0Z"/></svg></a><a href="https://www.youtube.com/@apollonia_dental" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.5 6.5a3 3 0 0 0-2.1-2.1C19.5 3.9 12 3.9 12 3.9s-7.5 0-9.4.5A3 3 0 0 0 .5 6.5 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.5 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.5ZM9.6 15.6V8.4l6.2 3.6-6.2 3.6Z"/></svg></a></div></div></div>
-    <div><h5>Навігація</h5><ul><li><a href="lektory.html">Наші лектори</a></li><li><a href="statti-radlinsky.html">Сергій Радлінський</a></li><li><a href="kurs-online.html">Онлайн курс</a></li></ul></div>
+    <div><img class="logo" src="img/logo-full-gold.png" alt="Аполлонія — навчальний центр" width="600" height="137" loading="lazy"><div style="margin-top:22px"><div class="socials"><a href="https://www.facebook.com/S.Radlinsky" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.7l-.4 2.9h-2.3v7A10 10 0 0 0 22 12Z"/></svg></a><a href="https://www.instagram.com/radlinsky_training_center" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.3 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.3 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .3-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.3-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.3-1-.4-2.2-.1-1.3-.1-1.7-.1-4.9s0-3.6.1-4.9c.1-1.2.3-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.3 2.2-.4C8.4 2.2 8.8 2.2 12 2.2Zm0 1.8c-3.1 0-3.5 0-4.7.1-1.1.1-1.7.2-2.1.4-.5.2-.9.4-1.3.8-.4.4-.6.8-.8 1.3-.2.4-.3 1-.4 2.1C2.6 9.9 2.6 10.3 2.6 12s0 3.5.1 4.7c.1 1.1.2 1.7.4 2.1.2.5.4.9.8 1.3.4.4.8.6 1.3.8.4.2 1 .3 2.1.4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1.1-.1 1.7-.2 2.1-.4.5-.2.9-.4 1.3-.8.4-.4.6-.8.8-1.3.2-.4.3-1 .4-2.1.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1.1-.2-1.7-.4-2.1-.2-.5-.4-.9-.8-1.3-.4-.4-.8-.6-1.3-.8-.4-.2-1-.3-2.1-.4-1.2-.1-1.6-.1-4.7-.1Zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8Zm0 8.1a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4Zm6.2-8.3a1.15 1.15 0 1 1-2.3 0 1.15 1.15 0 0 1 2.3 0Z"/></svg></a><a href="https://www.youtube.com/@apollonia_dental" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.5 6.5a3 3 0 0 0-2.1-2.1C19.5 3.9 12 3.9 12 3.9s-7.5 0-9.4.5A3 3 0 0 0 .5 6.5 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.5 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.5ZM9.6 15.6V8.4l6.2 3.6-6.2 3.6Z"/></svg></a></div></div></div>
+    <div><h5>Навігація</h5><ul><li><a href="#schedule">Розклад курсів</a></li><li><a href="lektory.html">Наші лектори</a></li><li><a href="statti-radlinsky.html">Сергій Радлінський</a></li><li><a href="kurs-online.html">Онлайн курс</a></li><li><a href="statti.html">Статті ДентАрт</a></li><li><a href="contacts.html">Контакти</a></li></ul></div>
     <div><h5>Інформація</h5><ul><li><a href="politika-konfidentsiynosti.html">Політика конфіденційності</a></li><li><a href="politika-cookies.html">Політика Cookies</a></li><li><a href="povernennya-koshtiv.html">Повернення коштів</a></li><li><a href="publichna-oferta.html">Публічна оферта</a></li></ul></div>
     <div><h5>Зв'язатись з нами</h5><ul><li><a href="tel:+380661918300">+38 (066) 191-83-00</a></li><li><a href="mailto:nickolay@radlinsky.com.ua">nickolay@radlinsky.com.ua</a></li><li>Полтава, вул. О. Оксанченка, 29</li></ul></div>
   </div>
   <div class="fb"><span>© 2026 Навчальний центр «Аполлонія» · radlinsky.com.ua</span><span>Усі права захищені</span></div>
 </div></footer>
 <script>
-document.querySelector('.burger').addEventListener('click',()=>document.body.classList.toggle('nav-open'));
-document.querySelectorAll('.menu a').forEach(a=>a.addEventListener('click',()=>document.body.classList.remove('nav-open')));
-if(!matchMedia('(prefers-reduced-motion: reduce)').matches){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.08});document.querySelectorAll('.ru').forEach(el=>io.observe(el))}else document.querySelectorAll('.ru').forEach(el=>el.classList.add('in'));
+(function(){var B=document.body,b=document.querySelector('.burger'),nav=document.querySelector('.nav'),t=b.querySelector('span');
+function set(o){B.classList.toggle('nav-open',o);b.setAttribute('aria-expanded',o?'true':'false');t.textContent=o?'Закрити':'Меню'}
+b.addEventListener('click',function(){set(!B.classList.contains('nav-open'))});
+document.querySelectorAll('.menu a').forEach(function(a){a.addEventListener('click',function(){set(false)})});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&B.classList.contains('nav-open')){set(false);b.focus()}});
+document.addEventListener('click',function(e){if(B.classList.contains('nav-open')&&!nav.contains(e.target))set(false)});
+var els=[].slice.call(document.querySelectorAll('.ru'));function show(e){e.classList.add('in')}
+if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)els.forEach(show);
+else{var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){show(e.target);io.unobserve(e.target)}})},{rootMargin:'0px 0px -5% 0px'});els.forEach(function(el){io.observe(el)})}
+})();
 </script>
 
     </body>
