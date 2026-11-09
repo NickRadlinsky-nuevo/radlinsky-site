@@ -148,8 +148,11 @@ section{padding:72px 0}
 .author p{color:var(--ink-soft);margin-top:14px}
 .regalia{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
 /* reviews */
-.rev .card.ph{border-style:dashed;border-color:rgba(255,255,255,.18);min-height:170px;display:flex;flex-direction:column;justify-content:space-between;color:var(--ink-faint)}
-.rev .card.ph b{color:var(--ink-soft);font-weight:600}
+.rev .card.quote{display:flex;flex-direction:column;justify-content:space-between;gap:16px}
+.rev .card.quote p{font-size:.95rem;line-height:1.6}
+.rev .card.quote b{font-weight:600;color:var(--ink);font-size:.88rem}
+.rev .card.stat .big{font-size:clamp(2.4rem,4vw,3.4rem)}
+.rev .card.stat p{margin-top:8px}
 /* bpr */
 .bpr{background:linear-gradient(110deg,rgba(140,200,255,.06),rgba(243,182,106,.06));border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .bpr-g{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
@@ -309,12 +312,12 @@ section{padding:72px 0}
 </div></div></section>
 
 <section class="rev" id="reviews"><div class="wrap">
-  <div class="sec-head"><span class="eyebrow">Результати учнів</span><h2 style="margin-top:14px">Понад 3 000 лікарів навчалися на онлайн-курсах <span class="grad">«Аполлонії»</span></h2>
-  <p>Відгуки лікарів, які пройшли курс, з іменем і містом.</p></div>
+  <div class="sec-head"><span class="eyebrow">Результати учнів</span><h2 style="margin-top:14px">Що кажуть лікарі після <span class="grad">курсів «Аполлонії»</span></h2>
+  <p>Відгуки з особистих повідомлень учасників, наведені дослівно.</p></div>
   <div class="g3">
-    <div class="card ph"><p>Місце для відгуку 1: 3–5 речень про те, що змінилося в роботі після курсу.</p><b>Ім’я, місто</b></div>
-    <div class="card ph"><p>Місце для відгуку 2: конкретний клінічний результат або навичка.</p><b>Ім’я, місто</b></div>
-    <div class="card ph"><p>Місце для відеовідгуку: обкладинка з кнопкою відтворення.</p><b>Ім’я, місто</b></div>
+    <div class="card quote"><p>«Я не перший рік у стоматології і з кожним роком покращую свої навички моделювання. Проходжу онлайн і офлайн курси. Все йшло добре, але були нюанси: чогось не вистачало, щоб контакт був випуклий, гладенький і щоб я була задоволена своєю роботою. І ось нарешті цей вебінар Сергія Радлінського — просто благословіння для моїх робіт. Тепер флос у міжзубному просторі каже мені «дякую», а не рветься при одному погляді на мене. Безмежно вдячна, щаслива і до зустрічі на живих курсах!»</p><b>Лікар-стоматолог, учасниця онлайн-вебінару Сергія Радлінського</b></div>
+    <div class="card quote"><p>«Щиро дякуємо вам за курси та всій команді за організацію та високопрофесійне проведення курсів з художньої та прямої реставрації зубів і онлайн-курсів. Отримані знання, практичні навички та сучасні підходи до реставрації є надзвичайно цінними та корисними для щоденної роботи. Завдяки вашій роботі та професіоналізму навчання відбулося на високому рівні!»</p><b>Лікар-стоматолог, учасник очних і онлайн-курсів «Аполлонії»</b></div>
+    <div class="card stat"><div class="big"><span class="grad">3 000+</span></div><p>лікарів навчалися на онлайн-курсах «Аполлонії» за весь час.</p><p style="margin-top:10px">Понад 30 років клінічної практики автора, журнал «ДентАрт», підручник і понад 60 статей з реставраційної стоматології.</p></div>
   </div>
 </div></section>
 
