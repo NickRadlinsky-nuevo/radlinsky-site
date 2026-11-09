@@ -72,6 +72,7 @@ fbq('track', 'PageView');
 }
   </script>
       <meta name="theme-color" content="#090B10">
+      <meta name="theme-color" content="#090B10">
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;600&family=Onest:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
@@ -145,7 +146,8 @@ header{position:fixed;top:14px;left:0;right:0;z-index:50}
 .band .m{color:var(--txt2);margin-top:10px;font-size:.92rem}
 .band img{height:200px;width:auto;align-self:end}
 .band .pr{text-align:right}
-.band .price{font-family:var(--head);font-size:2rem;font-weight:500;margin-bottom:12px}
+.band .price{font-family:var(--head);font-size:2rem;font-weight:500;margin:0 0 12px;display:block;white-space:nowrap}
+.band .bp-old{display:block;color:var(--txt3);font-size:.95rem;margin-bottom:2px}
 
 /* schedule */
 .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
@@ -244,7 +246,7 @@ footer{border-top:1px solid var(--bd);padding:72px 0 32px;background:radial-grad
  .hero{padding:96px 0 60px}
  section{padding:76px 0}
  .cards,.arts{grid-template-columns:1fr}
- .band .gb{grid-template-columns:1fr;gap:0;padding:0 22px}.band .pr{text-align:left;padding-bottom:26px;display:flex;align-items:center;justify-content:space-between}.band .price{margin:0}
+ .band .gb{grid-template-columns:1fr;gap:0;padding:0 22px}.band .pr{text-align:left;padding-bottom:26px;display:flex;align-items:center;justify-content:space-between}.band .price{margin:0}.band .bp-old{margin:0}.band .pr{flex-wrap:wrap;gap:14px 18px}.band .price{font-size:1.6rem}.band .bp-old{font-size:.85rem}
  .feats .n{font-size:1.6rem}
  .ft{grid-template-columns:1fr}
 }
@@ -277,13 +279,12 @@ footer{border-top:1px solid var(--bd);padding:72px 0 32px;background:radial-grad
 </div></section>
 
 <section class="band ru"><div class="wrap"><div class="gb lit">
-  <div class="tx"><span class="eb">Онлайн майстер-клас · 31 жовтня</span><p class="t">Художня реставрація нижніх передніх зубів <em class="g">із Сергієм Радлінським</em></p><p class="m">10:00 — 16:00 · відео демонстрація · 7 балів БПР · запис 3 місяці</p></div>
+  <div class="tx"><span class="eb" data-bf="label">Чорна п’ятниця «Аполлонії» · до 30 листопада</span><p class="t">Онлайн-курс «Художня реставрація зубів» <em class="g">із Сергієм Радлінським</em></p><p class="m">26 лекцій і майстер-класів · 60 годин · 30 балів БПР · доступ до 31 грудня 2027</p></div>
   <img src="images/pb-radlinsky.webp" alt="Сергій Радлінський">
-  <div class="pr"><div class="price">997 грн</div><a class="btn btn-g" href="vebinar-radlinsky-nyzhni-peredni-zuby.html">Детальніше</a></div>
+  <div class="pr"><div class="bp"><s class="bp-old" data-bf="old">8 000 грн</s><div class="price" data-bf="price">3 890 грн</div></div><a class="btn btn-g" href="kurs-online.html">Детальніше</a></div>
 </div></div></section>
 
 <section id="schedule"><div class="wrap">
-  <div class="sh c ru"><span class="eb">Розклад</span><h2>Найближчі стоматологічні курси з балами БПР</h2></div>
   <div class="cards ru"><article class="card gb">
   <div class="cv"><img src="img/home-cover-radlinsky-nyzhni.webp" alt="" loading="lazy"><div class="date"><b>31</b><span>жовтня</span></div><span class="bpr">+7 балів БПР</span></div>
   <div class="cb">
@@ -337,13 +338,22 @@ footer{border-top:1px solid var(--bd);padding:72px 0 32px;background:radial-grad
 
 <section id="online" style="padding-top:20px"><div class="wrap">
   <div class="on gb lit ru">
-    <div class="on-tx"><span class="eb">Онлайн майстер-курс</span><h2 style="margin-top:18px">«Художня реставрація зубів» з проф. Сергієм Радлінським</h2><p>Оновлена програма: 60 годин лекцій та практичної демонстрації. Покрокове освоєння всіх аспектів прямої реставрації — від анатомії та біомеханіки до моделювання й полірування.</p>
+    <div class="on-tx"><span class="eb" data-bf="eyebrow">Чорна п’ятниця «Аполлонії»</span><h2 style="margin-top:18px">«Художня реставрація зубів» з проф. Сергієм Радлінським</h2><p data-bf="text">Оновлений онлайн-курс: 26 лекцій і майстер-класів, 60 годин відео, з них 25 годин нових лекцій 2026 року. До 30 листопада — 3 890 грн замість 8 000.</p>
       <div class="feats"><div><span class="n g">60</span><span class="l">годин навчання</span></div><div><span class="n g">26</span><span class="l">лекцій та МК</span></div><div><span class="n g">30</span><span class="l">балів БПР</span></div></div>
-      <div class="price"><span class="new">5999 ₴</span><span class="old">8999 ₴</span><span class="sale">−25%</span><a class="btn btn-g" href="kurs-online.html" style="margin-left:auto">Купити курс</a></div>
+      <div class="price"><span class="new" data-bf="new">3 890 ₴</span><span class="old" data-bf="old2">8 000 ₴</span><span class="sale" data-bf="until">до 30 листопада</span><a class="btn btn-g" href="kurs-online.html" style="margin-left:auto">Купити курс</a></div>
     </div>
     <div class="on-img"><img src="img/home-online-lecture.webp" alt="Сергій Радлінський" loading="lazy"></div>
   </div>
 </div></section>
+
+<script>/* акція онлайн-курсу: nov (до 30.11) → dec (1–31.12) → full (з 1.01.2027); ?mode=nov|dec|full для перевірки */
+(function(){var q=new URLSearchParams(location.search),now=Date.now(),N=Date.parse('2026-11-30T21:59:59Z'),D=Date.parse('2026-12-31T21:59:59Z');
+var m=q.get('mode')||(now<=N?'nov':now<=D?'dec':'full');if(m==='nov')return;
+var base='Оновлений онлайн-курс: 26 лекцій і майстер-класів, 60 годин відео, з них 25 годин нових лекцій 2026 року.';
+var S={dec:{label:'До кінця року — 30 балів БПР за 2026 рік',price:'4 990 грн',old:'8 000 грн',eyebrow:'До кінця року — 30 балів БПР за 2026 рік',text:base+' До 31 грудня — 4 990 грн замість 8 000, сертифікат і бали за 2026 рік.',new:'4 990 ₴',old2:'8 000 ₴',until:'до 31 грудня'},
+full:{label:'Онлайн-курс · доступ одразу після оплати',price:'8 000 грн',old:'',eyebrow:'Онлайн майстер-курс',text:base,new:'8 000 ₴',old2:'',until:''}}[m];if(!S)return;
+document.querySelectorAll('[data-bf]').forEach(function(e){var v=S[e.getAttribute('data-bf')];if(v===undefined)return;e.textContent=v;if(v==='')e.style.display='none'});})();
+</script>
 
 <section id="mission"><div class="wrap mi">
   <div class="mi-ph ru"><img src="img/home-mission-radlinsky.webp" alt="Сергій Радлінський — засновник центру" loading="lazy"></div>
