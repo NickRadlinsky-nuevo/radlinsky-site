@@ -202,14 +202,16 @@ function b64utf8(s) {
   return btoa(bin);
 }
 
-async function sendBuyerEmail(to, name, env) {
+async function sendBuyerEmail(to, name, env, fromName) {
   const key = env.SENDPULSE_API_KEY || env.SENDPULSE_ID;
   const m = buyerEmail(env.KABINET_PASS);
+  const sender = String(env.SENDER_EMAIL).trim().toLowerCase();
+  const from = fromName === null ? { email: sender } : { name: fromName || env.SENDER_NAME || FROM_NAME, email: sender };
   const r = await fetch("https://api.sendpulse.com/smtp/emails", {
     method: "POST",
     headers: { "Content-Type": "application/json", Authorization: "Bearer " + key },
     body: JSON.stringify({ email: { subject: m.subject, html: b64utf8(m.html), text: m.text,
-      from: { name: FROM_NAME, email: String(env.SENDER_EMAIL).trim().toLowerCase() }, to: [{ email: to, ...(name ? { name } : {}) }] } }),
+      from, to: [{ email: to, ...(name ? { name } : {}) }] } }),
   });
   return { ok: r.ok, status: r.status, text: (await r.text()).slice(0, 300) };
 }
@@ -248,8 +250,22 @@ export async function onRequestGet({ request, env }) {
     if (!env.SENDER_EMAIL) return Response.json({ emailtest: false, error: "немає секрету SENDER_EMAIL" }, { status: 503 });
     const want = (request.headers.get("X-Test-To") || "").trim();
     const custom = /^[^\s@<>,;]+@[^\s@<>,;]+\.[a-z]{2,}$/i.test(want);
-    const m = await sendBuyerEmail(custom ? want : env.SENDER_EMAIL, "", env);
-    return Response.json({ emailtest: true, to: custom ? "X-Test-To" : "SENDER_EMAIL", status: m.status, ok: m.ok, response: m.text,
+    const dest = custom ? want : env.SENDER_EMAIL;
+    // Діагностика: якщо SendPulse відхиляє відправника, пробуємо його ім'я так, як воно записане в SendPulse, потім без імені.
+    const tried = [];
+    let m = await sendBuyerEmail(dest, "", env); tried.push({ from_name: "default", status: m.status });
+    if (!m.ok) {
+      let spName = null;
+      try {
+        const key = env.SENDPULSE_API_KEY || env.SENDPULSE_ID;
+        const list = await (await fetch("https://api.sendpulse.com/senders", { headers: { Authorization: "Bearer " + key } })).json();
+        const me = String(env.SENDER_EMAIL).trim().toLowerCase();
+        spName = (list.find(x => String(x.email).toLowerCase() === me) || {}).name || null;
+      } catch (_) {}
+      if (spName) { m = await sendBuyerEmail(dest, "", env, spName); tried.push({ from_name: "as_in_sendpulse", value: spName, status: m.status }); }
+      if (!m.ok) { m = await sendBuyerEmail(dest, "", env, null); tried.push({ from_name: "none", status: m.status }); }
+    }
+    return Response.json({ emailtest: true, to: custom ? "X-Test-To" : "SENDER_EMAIL", tried, status: m.status, ok: m.ok, response: m.text,
       buyer_email_on: env.BUYER_EMAIL_ON === "1" }, { headers: { "Cache-Control": "no-store" } });
   }
   if (st && env.SELFTEST_KEY && st === env.SELFTEST_KEY && env.META_CAPI_TOKEN) {
