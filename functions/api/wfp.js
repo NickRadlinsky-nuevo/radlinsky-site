@@ -209,7 +209,7 @@ async function sendBuyerEmail(to, name, env) {
     method: "POST",
     headers: { "Content-Type": "application/json", Authorization: "Bearer " + key },
     body: JSON.stringify({ email: { subject: m.subject, html: b64utf8(m.html), text: m.text,
-      from: { name: FROM_NAME, email: env.SENDER_EMAIL }, to: [{ email: to, ...(name ? { name } : {}) }] } }),
+      from: { name: FROM_NAME, email: String(env.SENDER_EMAIL).trim().toLowerCase() }, to: [{ email: to, ...(name ? { name } : {}) }] } }),
   });
   return { ok: r.ok, status: r.status, text: (await r.text()).slice(0, 300) };
 }
@@ -231,6 +231,16 @@ export async function onRequestGet({ request, env }) {
         out[path] = { status: r.status, body: (await r.text()).split(key).join("***").slice(0, 700) };
       } catch (e) { out[path] = { error: String(e).slice(0, 200) }; }
     }
+    // Чи збігається SENDER_EMAIL з активним відправником (саме значення не показуємо).
+    try {
+      const r = await fetch("https://api.sendpulse.com/smtp/senders", { headers: { Authorization: "Bearer " + key } });
+      const list = (await r.json()).map(x => String(x));
+      const v = String(env.SENDER_EMAIL || ""), n = v.trim().toLowerCase();
+      out.sender_check = { length: v.length, has_edge_spaces: v !== v.trim(), has_uppercase: v !== v.toLowerCase(),
+        looks_like_email: /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(n), domain: n.includes("@") ? n.split("@")[1] : null,
+        exact_match: list.includes(v), match_after_trim_lowercase: list.map(x => x.toLowerCase()).includes(n),
+        active_senders_count: list.length, active_sender_lengths: list.map(x => x.length) };
+    } catch (e) { out.sender_check = { error: String(e).slice(0, 200) }; }
     return Response.json(out, { headers: { "Cache-Control": "no-store" } });
   }
   if (st && env.SELFTEST_KEY && st === env.SELFTEST_KEY && check === "email") {
