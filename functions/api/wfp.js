@@ -130,10 +130,11 @@ async function buildEvent(d) {
   };
 }
 
-async function sendToMeta(event, env) {
+async function sendToMeta(event, env, forceTestCode) {
   const post = async (ev) => {
     const body = { data: [ev] };
-    if (env.META_TEST_EVENT_CODE) body.test_event_code = env.META_TEST_EVENT_CODE;
+    const code = forceTestCode || env.META_TEST_EVENT_CODE;
+    if (code) body.test_event_code = code;
     const r = await fetch(`${GRAPH}/${PIXEL_ID}/events?access_token=${encodeURIComponent(env.META_CAPI_TOKEN)}`, {
       method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body),
     });
@@ -150,7 +151,19 @@ async function sendToMeta(event, env) {
 }
 
 /* ---------- обробники ---------- */
-export async function onRequestGet({ env }) {
+export async function onRequestGet({ request, env }) {
+  // Самоперевірка: заголовок X-Selftest = секрет SELFTEST_KEY. Шле в Meta подію
+  // з тестовим кодом — вона видна лише у «Тестових подіях» і в статистику не потрапляє.
+  // Перевіряє, що токен дійсний і Meta приймає формат події.
+  const st = request.headers.get("X-Selftest");
+  if (st && env.SELFTEST_KEY && st === env.SELFTEST_KEY && env.META_CAPI_TOKEN) {
+    const ev = await buildEvent({ orderReference: "SELFTEST-" + Date.now(), amount: 1, currency: "UAH",
+      email: "selftest@example.com", products: [{ name: "Самоперевірка вебхука" }] });
+    const res = await sendToMeta(ev, env, env.META_TEST_EVENT_CODE || "TEST_SELFCHECK");
+    return Response.json({ selftest: true, meta_status: res.status, meta_ok: res.ok,
+      action_source: res.fallback ? "system_generated" : "website", meta_response: res.text.slice(0, 600) },
+      { headers: { "Cache-Control": "no-store" } });
+  }
   // Перевірка налаштувань без розкриття значень.
   return Response.json({
     ok: true, service: "wayforpay → meta capi", pixel: PIXEL_ID,
