@@ -156,6 +156,19 @@ export async function onRequestGet({ request, env }) {
   // з тестовим кодом — вона видна лише у «Тестових подіях» і в статистику не потрапляє.
   // Перевіряє, що токен дійсний і Meta приймає формат події.
   const st = request.headers.get("X-Selftest");
+  const check = new URL(request.url).searchParams.get("check");
+  if (st && env.SELFTEST_KEY && st === env.SELFTEST_KEY && check === "sendpulse") {
+    // Перевірка ключа SendPulse лише читанням: нічого не надсилає і не змінює.
+    const key = env.SENDPULSE_API_KEY || env.SENDPULSE_ID || "";
+    const out = { key_present: !!key, key_format: key.startsWith("sp_apikey_") ? "api_key" : (key ? "other" : "none") };
+    for (const path of ["/senders", "/smtp/senders", "/smtp/domains", "/smtp/ips", "/addressbooks?limit=20"]) {
+      try {
+        const r = await fetch("https://api.sendpulse.com" + path, { headers: { Authorization: "Bearer " + key } });
+        out[path] = { status: r.status, body: (await r.text()).split(key).join("***").slice(0, 700) };
+      } catch (e) { out[path] = { error: String(e).slice(0, 200) }; }
+    }
+    return Response.json(out, { headers: { "Cache-Control": "no-store" } });
+  }
   if (st && env.SELFTEST_KEY && st === env.SELFTEST_KEY && env.META_CAPI_TOKEN) {
     const ev = await buildEvent({ orderReference: "SELFTEST-" + Date.now(), amount: 1, currency: "UAH",
       email: "selftest@example.com", products: [{ name: "Самоперевірка вебхука" }] });
