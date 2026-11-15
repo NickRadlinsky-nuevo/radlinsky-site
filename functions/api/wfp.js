@@ -152,7 +152,8 @@ async function sendToMeta(event, env, forceTestCode) {
 
 /* ---------- лист покупцю (SendPulse) ---------- */
 // Вимкнено, доки секрет BUYER_EMAIL_ON не дорівнює "1".
-const FROM = { name: "Навчальний центр «Аполлонія»", email: "nickolay@radlinsky.com.ua" };
+// Адреса відправника — секрет SENDER_EMAIL (у коді її немає). Має бути активним відправником у SendPulse.
+const FROM_NAME = "Навчальний центр «Аполлонія»";
 const CABINET_URL = SITE + "/kurs/kabinet/";
 const COURSE_AMOUNTS = new Set([3890, 4990, 8000]);
 const ASK = ["прізвище", "ім'я", "по батькові", "номер телефону", "емейл", "дату народження", "освіту", "місце роботи"];
@@ -208,7 +209,7 @@ async function sendBuyerEmail(to, name, env) {
     method: "POST",
     headers: { "Content-Type": "application/json", Authorization: "Bearer " + key },
     body: JSON.stringify({ email: { subject: m.subject, html: b64utf8(m.html), text: m.text,
-      from: FROM, to: [{ email: to, ...(name ? { name } : {}) }] } }),
+      from: { name: FROM_NAME, email: env.SENDER_EMAIL }, to: [{ email: to, ...(name ? { name } : {}) }] } }),
   });
   return { ok: r.ok, status: r.status, text: (await r.text()).slice(0, 300) };
 }
@@ -233,9 +234,12 @@ export async function onRequestGet({ request, env }) {
     return Response.json(out, { headers: { "Cache-Control": "no-store" } });
   }
   if (st && env.SELFTEST_KEY && st === env.SELFTEST_KEY && check === "email") {
-    // Тестовий лист покупцю — лише на власну адресу центру.
-    const m = await sendBuyerEmail(FROM.email, "Тест", env);
-    return Response.json({ emailtest: true, to: FROM.email, status: m.status, ok: m.ok, response: m.text,
+    // Тестовий лист покупцю — на адресу відправника або на адресу з заголовка X-Test-To.
+    if (!env.SENDER_EMAIL) return Response.json({ emailtest: false, error: "немає секрету SENDER_EMAIL" }, { status: 503 });
+    const want = (request.headers.get("X-Test-To") || "").trim();
+    const custom = /^[^\s@<>,;]+@[^\s@<>,;]+\.[a-z]{2,}$/i.test(want);
+    const m = await sendBuyerEmail(custom ? want : env.SENDER_EMAIL, "", env);
+    return Response.json({ emailtest: true, to: custom ? "X-Test-To" : "SENDER_EMAIL", status: m.status, ok: m.ok, response: m.text,
       buyer_email_on: env.BUYER_EMAIL_ON === "1" }, { headers: { "Cache-Control": "no-store" } });
   }
   if (st && env.SELFTEST_KEY && st === env.SELFTEST_KEY && env.META_CAPI_TOKEN) {
@@ -251,7 +255,8 @@ export async function onRequestGet({ request, env }) {
     ok: true, service: "wayforpay → meta capi", pixel: PIXEL_ID,
     configured: { WFP_SECRET_KEY: !!env.WFP_SECRET_KEY, META_CAPI_TOKEN: !!env.META_CAPI_TOKEN,
                   META_TEST_EVENT_CODE: !!env.META_TEST_EVENT_CODE,
-                  SENDPULSE: !!(env.SENDPULSE_API_KEY || env.SENDPULSE_ID), BUYER_EMAIL_ON: env.BUYER_EMAIL_ON === "1" },
+                  SENDPULSE: !!(env.SENDPULSE_API_KEY || env.SENDPULSE_ID), SENDER_EMAIL: !!env.SENDER_EMAIL,
+                  BUYER_EMAIL_ON: env.BUYER_EMAIL_ON === "1" },
   }, { headers: { "Cache-Control": "no-store" } });
 }
 
@@ -282,7 +287,7 @@ export async function onRequestPost({ request, env }) {
 
     const email = String(data.email || "").trim();
     if (env.BUYER_EMAIL_ON === "1" && (env.SENDPULSE_API_KEY || env.SENDPULSE_ID) && env.KABINET_PASS
-        && isCourse(data) && email.includes("@")) {
+        && env.SENDER_EMAIL && isCourse(data) && email.includes("@")) {
       const m = await sendBuyerEmail(email, String(data.clientName || "").trim(), env);
       console.log("wfp: лист покупцю", data.orderReference, "→ sendpulse", m.status, m.ok ? "" : m.text);
       // Лист не пішов — не підтверджуємо, WayForPay повторить (Meta дублікат зіллє).
