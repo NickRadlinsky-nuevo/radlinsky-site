@@ -45,7 +45,8 @@ fbq('track', 'PageView');
   var key = 'purchase_sent_' + (p || 'unknown');
   if (sessionStorage.getItem(key)) return;
   sessionStorage.setItem(key, '1');
-  var txid = 'wfp_' + Date.now();
+  var order = (q.get('o') || '').replace(/[^\w.\-]/g, '').slice(0, 80);  // orderReference WayForPay — спільний event_id з Conversions API
+  var txid = order || ('wfp_' + Date.now());
   // Без відомої суми подію все одно шлемо, але БЕЗ value:0 —
   // нуль псує ROAS сильніше, ніж його відсутність.
   try {
@@ -57,7 +58,8 @@ fbq('track', 'PageView');
   try {
     var fb = { currency: 'UAH', content_name: name };
     if (value) fb.value = value;
-    fbq('track', 'Purchase', fb);
+    if (order) fbq('track', 'Purchase', fb, { eventID: order });
+    else fbq('track', 'Purchase', fb);
   } catch(_){}
 })();
 </script>
