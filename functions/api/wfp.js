@@ -227,7 +227,7 @@ export async function onRequestGet({ request, env }) {
     // Перевірка ключа SendPulse лише читанням: нічого не надсилає і не змінює.
     const key = env.SENDPULSE_API_KEY || env.SENDPULSE_ID || "";
     const out = { key_present: !!key, key_format: key.startsWith("sp_apikey_") ? "api_key" : (key ? "other" : "none") };
-    for (const path of ["/senders", "/smtp/senders", "/smtp/domains", "/smtp/ips", "/addressbooks?limit=20"]) {
+    for (const path of ["/senders", "/smtp/senders", "/v2/email-service/smtp/sender_domains", "/smtp/emails?limit=1", "/smtp/emails/total", "/balance/detail"]) {
       try {
         const r = await fetch("https://api.sendpulse.com" + path, { headers: { Authorization: "Bearer " + key } });
         out[path] = { status: r.status, body: (await r.text()).split(key).join("***").slice(0, 700) };
