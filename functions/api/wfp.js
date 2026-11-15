@@ -150,6 +150,69 @@ async function sendToMeta(event, env, forceTestCode) {
   return res;
 }
 
+/* ---------- лист покупцю (SendPulse) ---------- */
+// Вимкнено, доки секрет BUYER_EMAIL_ON не дорівнює "1".
+const FROM = { name: "Навчальний центр «Аполлонія»", email: "nickolay@radlinsky.com.ua" };
+const CABINET_URL = SITE + "/kurs/kabinet/";
+const COURSE_AMOUNTS = new Set([3890, 4990, 8000]);
+const ASK = ["прізвище", "ім'я", "по батькові", "номер телефону", "емейл", "дату народження", "освіту", "місце роботи"];
+
+// Лист із кабінетом — лише за курс «Художня реставрація зубів».
+export function isCourse(d) {
+  const name = Array.isArray(d.products) && d.products[0] ? String(d.products[0].name || "").toLowerCase() : "";
+  return name.includes("реставрац") || COURSE_AMOUNTS.has(Number(d.amount));
+}
+
+const esc = (s) => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+export function buyerEmail(pass) {
+  const subject = "Ваш доступ до онлайн-курсу «Художня реставрація зубів»";
+  const text = [
+    "Вітаємо!", "",
+    "Оплату отримано, дякуємо. Доступ до онлайн-курсу Сергія Радлінського «Художня реставрація зубів» для вас відкрито.", "",
+    "Кабінет курсу: " + CABINET_URL,
+    "Пароль: " + pass, "",
+    "У кабінеті 26 лекцій і майстер-класів, 60 годин відео. Дивитися можна з будь-якого пристрою і в будь-якому порядку. Доступ діє до 31 грудня 2027 року.", "",
+    "Збережіть цей лист, щоб пароль був під рукою. Кабінет запам'ятовує вхід на 30 днів, потім попросить пароль знову.", "",
+    "Щоб ми оформили сертифікат і 30 балів БПР, надішліть, будь ласка, у відповідь на цей лист:",
+    ...ASK.map(x => "• " + x), "",
+    "Якщо щось не відкривається, просто дайте відповідь на цей лист або зателефонуйте: +38 (066) 191-83-00.", "",
+    "З повагою,", "Навчальний центр «Аполлонія»",
+  ].join("\n");
+  const P = 'style="margin:0 0 16px;font:16px/1.55 Arial,Helvetica,sans-serif;color:#1f1611"';
+  const html = `<!doctype html><html lang="uk"><body style="margin:0;padding:24px;background:#faf5e8">
+<div style="max-width:560px;margin:0 auto;background:#ffffff;border-radius:12px;padding:28px">
+<p ${P}>Вітаємо!</p>
+<p ${P}>Оплату отримано, дякуємо. Доступ до онлайн-курсу Сергія Радлінського <b>«Художня реставрація зубів»</b> для вас відкрито.</p>
+<p ${P}>Кабінет курсу: <a href="${CABINET_URL}">${CABINET_URL}</a><br>Пароль: <b>${esc(pass)}</b></p>
+<p ${P}>У кабінеті 26 лекцій і майстер-класів, 60 годин відео. Дивитися можна з будь-якого пристрою і в будь-якому порядку. Доступ діє до 31 грудня 2027 року.</p>
+<p ${P}>Збережіть цей лист, щоб пароль був під рукою. Кабінет запам'ятовує вхід на 30 днів, потім попросить пароль знову.</p>
+<p ${P}>Щоб ми оформили сертифікат і 30 балів БПР, надішліть, будь ласка, у відповідь на цей лист:</p>
+<ul style="margin:0 0 16px;padding-left:22px;font:16px/1.7 Arial,Helvetica,sans-serif;color:#1f1611">${ASK.map(x => `<li>${esc(x)}</li>`).join("")}</ul>
+<p ${P}>Якщо щось не відкривається, просто дайте відповідь на цей лист або зателефонуйте: +38 (066) 191-83-00.</p>
+<p ${P} >З повагою,<br>Навчальний центр «Аполлонія»</p>
+</div></body></html>`;
+  return { subject, text, html };
+}
+
+function b64utf8(s) {
+  const bytes = enc.encode(s); let bin = "";
+  for (let i = 0; i < bytes.length; i++) bin += String.fromCharCode(bytes[i]);
+  return btoa(bin);
+}
+
+async function sendBuyerEmail(to, name, env) {
+  const key = env.SENDPULSE_API_KEY || env.SENDPULSE_ID;
+  const m = buyerEmail(env.KABINET_PASS);
+  const r = await fetch("https://api.sendpulse.com/smtp/emails", {
+    method: "POST",
+    headers: { "Content-Type": "application/json", Authorization: "Bearer " + key },
+    body: JSON.stringify({ email: { subject: m.subject, html: b64utf8(m.html), text: m.text,
+      from: FROM, to: [{ email: to, ...(name ? { name } : {}) }] } }),
+  });
+  return { ok: r.ok, status: r.status, text: (await r.text()).slice(0, 300) };
+}
+
 /* ---------- обробники ---------- */
 export async function onRequestGet({ request, env }) {
   // Самоперевірка: заголовок X-Selftest = секрет SELFTEST_KEY. Шле в Meta подію
@@ -169,6 +232,12 @@ export async function onRequestGet({ request, env }) {
     }
     return Response.json(out, { headers: { "Cache-Control": "no-store" } });
   }
+  if (st && env.SELFTEST_KEY && st === env.SELFTEST_KEY && check === "email") {
+    // Тестовий лист покупцю — лише на власну адресу центру.
+    const m = await sendBuyerEmail(FROM.email, "Тест", env);
+    return Response.json({ emailtest: true, to: FROM.email, status: m.status, ok: m.ok, response: m.text,
+      buyer_email_on: env.BUYER_EMAIL_ON === "1" }, { headers: { "Cache-Control": "no-store" } });
+  }
   if (st && env.SELFTEST_KEY && st === env.SELFTEST_KEY && env.META_CAPI_TOKEN) {
     const ev = await buildEvent({ orderReference: "SELFTEST-" + Date.now(), amount: 1, currency: "UAH",
       email: "selftest@example.com", products: [{ name: "Самоперевірка вебхука" }] });
@@ -181,7 +250,8 @@ export async function onRequestGet({ request, env }) {
   return Response.json({
     ok: true, service: "wayforpay → meta capi", pixel: PIXEL_ID,
     configured: { WFP_SECRET_KEY: !!env.WFP_SECRET_KEY, META_CAPI_TOKEN: !!env.META_CAPI_TOKEN,
-                  META_TEST_EVENT_CODE: !!env.META_TEST_EVENT_CODE },
+                  META_TEST_EVENT_CODE: !!env.META_TEST_EVENT_CODE,
+                  SENDPULSE: !!(env.SENDPULSE_API_KEY || env.SENDPULSE_ID), BUYER_EMAIL_ON: env.BUYER_EMAIL_ON === "1" },
   }, { headers: { "Cache-Control": "no-store" } });
 }
 
@@ -205,6 +275,19 @@ export async function onRequestPost({ request, env }) {
                 "→ meta", res.status, res.fallback ? "(system_generated)" : "", res.ok ? "" : res.text.slice(0, 300));
     // Meta не прийняла — не підтверджуємо, WayForPay надішле ще раз (дублікати Meta зіллє за event_id).
     if (!res.ok) return new Response("meta error", { status: 502 });
+
+    // Будова сповіщення без особистих даних — щоб бачити, за чим відрізняти курс від інших товарів.
+    const prods = Array.isArray(data.products) ? data.products.map(p => p && p.name) : null;
+    console.log("wfp: поля", Object.keys(data).join(","), "| товари", JSON.stringify(prods), "| курс:", isCourse(data));
+
+    const email = String(data.email || "").trim();
+    if (env.BUYER_EMAIL_ON === "1" && (env.SENDPULSE_API_KEY || env.SENDPULSE_ID) && env.KABINET_PASS
+        && isCourse(data) && email.includes("@")) {
+      const m = await sendBuyerEmail(email, String(data.clientName || "").trim(), env);
+      console.log("wfp: лист покупцю", data.orderReference, "→ sendpulse", m.status, m.ok ? "" : m.text);
+      // Лист не пішов — не підтверджуємо, WayForPay повторить (Meta дублікат зіллє).
+      if (!m.ok) return new Response("email error", { status: 502 });
+    }
   } else {
     console.log("wfp: статус", data.transactionStatus, data.orderReference, "— у Meta не шлемо");
   }
