@@ -158,10 +158,14 @@ const CABINET_URL = SITE + "/kurs/kabinet/";
 const COURSE_AMOUNTS = new Set([3890, 4990, 8000]);
 const ASK = ["прізвище", "ім'я", "по батькові", "номер телефону", "емейл", "дату народження", "освіту", "місце роботи"];
 
-// Лист із кабінетом — лише за курс «Художня реставрація зубів».
+// Лист із кабінетом — лише за онлайн-курс Радлінського.
+// Реальна назва товару у WayForPay (16.11.2026): «Чорна п'ятниця! Онлайн майстер-курс Сергія Радлінського».
+// Слово «реставрація» не годиться: воно є і в назві вебінару про передні зуби.
+// Сума враховується лише тоді, коли назви товару в сповіщенні немає.
 export function isCourse(d) {
-  const name = Array.isArray(d.products) && d.products[0] ? String(d.products[0].name || "").toLowerCase() : "";
-  return name.includes("реставрац") || COURSE_AMOUNTS.has(Number(d.amount));
+  const name = (Array.isArray(d.products) && d.products[0] ? String(d.products[0].name || "") : "").toLowerCase().trim();
+  if (!name) return COURSE_AMOUNTS.has(Number(d.amount));
+  return name.includes("онлайн") && name.includes("курс") && name.includes("радлінськ");
 }
 
 const esc = (s) => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -310,6 +314,8 @@ export async function onRequestPost({ request, env }) {
     // Будова сповіщення без особистих даних — щоб бачити, за чим відрізняти курс від інших товарів.
     const prods = Array.isArray(data.products) ? data.products.map(p => p && p.name) : null;
     console.log("wfp: поля", Object.keys(data).join(","), "| товари", JSON.stringify(prods), "| курс:", isCourse(data));
+    if (!isCourse(data) && COURSE_AMOUNTS.has(Number(data.amount)))
+      console.log("wfp: УВАГА сума як у курсу, але назва товару не розпізнана — лист не надіслано", data.orderReference);
 
     const email = String(data.email || "").trim();
     if (env.BUYER_EMAIL_ON === "1" && (env.SENDPULSE_API_KEY || env.SENDPULSE_ID) && env.KABINET_PASS
