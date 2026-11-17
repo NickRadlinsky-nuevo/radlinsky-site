@@ -28,7 +28,7 @@ fbq('init', '1357557515478741');
 fbq('track', 'PageView');
 </script>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1357557515478741&ev=PageView&noscript=1"/></noscript>
-<!-- Purchase events: продукт по ?p=, дедуп через sessionStorage -->
+<!-- Purchase events: лише після повернення з WayForPay (є номер замовлення ?o=), продукт по ?p= -->
 <script>
 (function(){
   var products = {
@@ -42,11 +42,19 @@ fbq('track', 'PageView');
   var prod = products[p] || null;
   var name = prod ? prod.name : 'Онлайн-продукт НЦ «Аполлонія»';
   var value = !isNaN(vParam) && vParam > 0 ? vParam : (prod ? prod.value : null);
-  var key = 'purchase_sent_' + (p || 'unknown');
-  if (sessionStorage.getItem(key)) return;
-  sessionStorage.setItem(key, '1');
   var order = (q.get('o') || '').replace(/[^\w.\-]/g, '').slice(0, 80);  // orderReference WayForPay — спільний event_id з Conversions API
-  var txid = order || ('wfp_' + Date.now());
+  // Номер замовлення додає лише повернення з WayForPay (functions/thank-you.js).
+  // Без нього сторінку відкрили напряму — це не оплата, покупку не шлемо.
+  if (!order) return;
+  // Одне замовлення — одна подія в цьому браузері, навіть якщо сторінку відкриють знову.
+  var key = 'purchase_sent_' + order;
+  try {
+    if (localStorage.getItem(key)) return;
+    localStorage.setItem(key, '1');
+  } catch(_) {
+    try { if (sessionStorage.getItem(key)) return; sessionStorage.setItem(key, '1'); } catch(__){}
+  }
+  var txid = order;
   // Без відомої суми подію все одно шлемо, але БЕЗ value:0 —
   // нуль псує ROAS сильніше, ніж його відсутність.
   try {
@@ -58,8 +66,7 @@ fbq('track', 'PageView');
   try {
     var fb = { currency: 'UAH', content_name: name };
     if (value) fb.value = value;
-    if (order) fbq('track', 'Purchase', fb, { eventID: order });
-    else fbq('track', 'Purchase', fb);
+    fbq('track', 'Purchase', fb, { eventID: order });
   } catch(_){}
 })();
 </script>
