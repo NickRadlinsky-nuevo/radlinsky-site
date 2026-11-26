@@ -1,7 +1,7 @@
 // Службова точка для роботи з SendPulse: шаблони листів, тестове надсилання, перелік адресних книг.
 // Ключ SendPulse лежить у секретах Cloudflare і назовні не віддається.
 // Доступ лише із заголовком X-Selftest, що дорівнює секрету SELFTEST_KEY; без нього відповідь 404.
-// Масових розсилок ця точка не запускає.
+// Розсилку по базі запускає лише дія do=send з явним підтвердженням і звіркою адресної книги.
 const API = "https://api.sendpulse.com";
 
 export function b64utf8(s) {
@@ -20,6 +20,15 @@ async function call(key, path, init = {}) {
   let json = null;
   try { json = JSON.parse(text); } catch (_) {}
   return { status: r.status, ok: r.ok, json, text: json ? undefined : text.slice(0, 500) };
+}
+
+function brief(c, names) {
+  const m = c.message || {};
+  return {
+    id: c.id, name: c.name, subject: m.subject, status: c.status, qty: c.all_email_qty, send_date: c.send_date,
+    list_id: m.list_id, list_name: names[m.list_id] || null, sender_name: m.sender_name,
+    sender_domain: m.sender_email ? String(m.sender_email).split("@").pop() : null,
+  };
 }
 
 export async function onRequest({ request, env }) {
@@ -43,6 +52,26 @@ export async function onRequest({ request, env }) {
     const r = await call(key, "/templates?owner=me");
     const list = Array.isArray(r.json) ? r.json.map(t => ({ id: t.real_id || t.id, name: t.name, created: t.created })) : r.json;
     return Response.json({ ok: r.ok, status: r.status, templates: list, text: r.text });
+  }
+
+  // Останні розсилки: назва, тема, статус, кількість, адресна книга. Адреси відправника не віддаємо.
+  if (request.method === "GET" && act === "campaigns") {
+    const [r, b] = await Promise.all([call(key, "/campaigns?limit=20"), call(key, "/addressbooks?limit=100")]);
+    const names = {};
+    if (Array.isArray(b.json)) for (const x of b.json) names[x.id] = x.name;
+    const list = Array.isArray(r.json) ? r.json.map(c => brief(c, names)) : r.json;
+    return Response.json({ ok: r.ok, status: r.status, campaigns: list, text: r.text });
+  }
+
+  // Одна розсилка з цифрами доставки.
+  if (request.method === "GET" && act === "campaign") {
+    const id = (url.searchParams.get("id") || "").replace(/\D/g, "");
+    if (!id) return Response.json({ ok: false, error: "потрібен id" }, { status: 400 });
+    const [r, b] = await Promise.all([call(key, "/campaigns/" + id), call(key, "/addressbooks?limit=100")]);
+    const names = {};
+    if (Array.isArray(b.json)) for (const x of b.json) names[x.id] = x.name;
+    const c = r.json && r.json.id ? { ...brief(r.json, names), statistics: (r.json.statistics || []).map(x => ({ code: x.code, count: x.count, explain: x.explain })) } : r.json;
+    return Response.json({ ok: r.ok, status: r.status, campaign: c, text: r.text });
   }
 
   if (request.method === "POST") {
@@ -74,7 +103,32 @@ export async function onRequest({ request, env }) {
       const r = await call(key, "/smtp/emails", { method: "POST", body: JSON.stringify({ email }) });
       return Response.json({ ok: r.ok, status: r.status, action: "test", response: r.json, text: r.text });
     }
+
+    // Розсилка по адресній книзі. Відправник береться з попередньої розсилки (?like), книга має збігатися з нею.
+    // Захист: поле confirm:"SEND", звірка книги, заборона повтору з тією самою назвою.
+    if (act === "send") {
+      if (body.confirm !== "SEND") return Response.json({ ok: false, error: "потрібне confirm: SEND" }, { status: 400 });
+      const like = String(body.like || "").replace(/\D/g, "");
+      const listId = Number(body.list_id);
+      const subject = String(body.subject || "").trim();
+      const name = String(body.name || "").trim();
+      if (!like || !listId || !subject || !name) return Response.json({ ok: false, error: "потрібні like, list_id, subject, name" }, { status: 400 });
+      if (/\[ТЕСТ\]|\[TEST\]/i.test(subject)) return Response.json({ ok: false, error: "у темі позначка тесту" }, { status: 400 });
+
+      const prev = await call(key, "/campaigns/" + like);
+      const pm = prev.json && prev.json.message;
+      if (!pm || !pm.sender_email) return Response.json({ ok: false, error: "не знайдено попередню розсилку", status: prev.status }, { status: 502 });
+      if (Number(pm.list_id) !== listId) return Response.json({ ok: false, error: "адресна книга не збігається з попередньою розсилкою", prev_list_id: pm.list_id }, { status: 409 });
+
+      const recent = await call(key, "/campaigns?limit=20");
+      if (!Array.isArray(recent.json)) return Response.json({ ok: false, error: "не вдалося перевірити повтор", status: recent.status }, { status: 502 });
+      if (recent.json.some(c => String(c.name || "").trim() === name)) return Response.json({ ok: false, error: "розсилка з такою назвою вже є — повтор заборонено" }, { status: 409 });
+
+      const payload = { sender_name: pm.sender_name, sender_email: pm.sender_email, subject, body: b64utf8(body.html), list_id: listId, name };
+      const r = await call(key, "/campaigns", { method: "POST", body: JSON.stringify(payload) });
+      return Response.json({ ok: r.ok, status: r.status, action: "send", sender_name: pm.sender_name, list_id: listId, response: r.json, text: r.text });
+    }
   }
 
-  return Response.json({ ok: false, error: "невідома дія", actions: ["GET do=books", "GET do=templates", "POST do=template[&id=]", "POST do=test"] }, { status: 400 });
+  return Response.json({ ok: false, error: "невідома дія", actions: ["GET do=books", "GET do=templates", "GET do=campaigns", "GET do=campaign&id=", "POST do=template[&id=]", "POST do=test", "POST do=send"] }, { status: 400 });
 }
