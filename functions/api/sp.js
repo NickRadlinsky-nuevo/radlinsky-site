@@ -44,9 +44,18 @@ function brief(c, names) {
   };
 }
 
-export async function onRequest({ request, env }) {
-  const st = request.headers.get("X-Selftest");
-  if (!st || !env.SELFTEST_KEY || st !== env.SELFTEST_KEY) return new Response("Not found", { status: 404 });
+export async function onRequest(ctx) {
+  const st = ctx.request.headers.get("X-Selftest");
+  if (!st || !ctx.env.SELFTEST_KEY || st !== ctx.env.SELFTEST_KEY) return new Response("Not found", { status: 404 });
+  try {
+    return await handle(ctx);
+  } catch (e) {
+    // Помилку показуємо текстом, щоб не гадати за кодом 1101.
+    return Response.json({ ok: false, error: "виняток у функції", message: String(e && e.message || e).slice(0, 300) }, { status: 500 });
+  }
+}
+
+async function handle({ request, env }) {
   const key = env.SENDPULSE_API_KEY || env.SENDPULSE_ID;
   if (!key) return Response.json({ ok: false, error: "немає ключа SendPulse" }, { status: 503 });
 
@@ -83,7 +92,7 @@ export async function onRequest({ request, env }) {
     const [r, b] = await Promise.all([call(key, "/campaigns/" + id), call(key, "/addressbooks?limit=100")]);
     const names = {};
     if (Array.isArray(b.json)) for (const x of b.json) names[x.id] = x.name;
-    const c = r.json && r.json.id ? { ...brief(r.json, names), statistics: (r.json.statistics || []).map(x => ({ code: x.code, count: x.count, explain: x.explain })) } : r.json;
+    const c = r.json && r.json.id ? { ...brief(r.json, names), statistics: Array.isArray(r.json.statistics) ? r.json.statistics.map(x => ({ code: x.code, count: x.count, explain: x.explain })) : (r.json.statistics || null) } : r.json;
     return Response.json({ ok: r.ok, status: r.status, campaign: c, text: r.text });
   }
 
