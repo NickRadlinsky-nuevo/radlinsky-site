@@ -22,6 +22,19 @@ async function call(key, path, init = {}) {
   return { status: r.status, ok: r.ok, json, text: json ? undefined : text.slice(0, 500) };
 }
 
+// SendPulse віддає розсилки від найстаріших, тому гортаємо до кінця і беремо останні n.
+async function recentCampaigns(key, n = 20) {
+  const all = [];
+  for (let page = 0; page < 40; page++) {
+    const r = await call(key, "/campaigns?limit=100&offset=" + page * 100);
+    if (!Array.isArray(r.json)) return { ok: false, status: r.status, list: null, text: r.text };
+    all.push(...r.json);
+    if (r.json.length < 100) break;
+  }
+  all.sort((a, b) => Number(b.id) - Number(a.id));
+  return { ok: true, status: 200, list: all.slice(0, n), total: all.length };
+}
+
 function brief(c, names) {
   const m = c.message || {};
   return {
@@ -56,11 +69,11 @@ export async function onRequest({ request, env }) {
 
   // Останні розсилки: назва, тема, статус, кількість, адресна книга. Адреси відправника не віддаємо.
   if (request.method === "GET" && act === "campaigns") {
-    const [r, b] = await Promise.all([call(key, "/campaigns?limit=20"), call(key, "/addressbooks?limit=100")]);
+    const [r, b] = await Promise.all([recentCampaigns(key, 20), call(key, "/addressbooks?limit=100")]);
     const names = {};
     if (Array.isArray(b.json)) for (const x of b.json) names[x.id] = x.name;
-    const list = Array.isArray(r.json) ? r.json.map(c => brief(c, names)) : r.json;
-    return Response.json({ ok: r.ok, status: r.status, campaigns: list, text: r.text });
+    const list = r.list ? r.list.map(c => brief(c, names)) : null;
+    return Response.json({ ok: r.ok, status: r.status, total: r.total, campaigns: list, text: r.text });
   }
 
   // Одна розсилка з цифрами доставки.
@@ -120,9 +133,9 @@ export async function onRequest({ request, env }) {
       if (!pm || !pm.sender_email) return Response.json({ ok: false, error: "не знайдено попередню розсилку", status: prev.status }, { status: 502 });
       if (Number(pm.list_id) !== listId) return Response.json({ ok: false, error: "адресна книга не збігається з попередньою розсилкою", prev_list_id: pm.list_id }, { status: 409 });
 
-      const recent = await call(key, "/campaigns?limit=20");
-      if (!Array.isArray(recent.json)) return Response.json({ ok: false, error: "не вдалося перевірити повтор", status: recent.status }, { status: 502 });
-      if (recent.json.some(c => String(c.name || "").trim() === name)) return Response.json({ ok: false, error: "розсилка з такою назвою вже є — повтор заборонено" }, { status: 409 });
+      const recent = await recentCampaigns(key, 30);
+      if (!recent.list) return Response.json({ ok: false, error: "не вдалося перевірити повтор", status: recent.status }, { status: 502 });
+      if (recent.list.some(c => String(c.name || "").trim() === name)) return Response.json({ ok: false, error: "розсилка з такою назвою вже є — повтор заборонено" }, { status: 409 });
 
       const payload = { sender_name: pm.sender_name, sender_email: pm.sender_email, subject, body: b64utf8(body.html), list_id: listId, name };
       const r = await call(key, "/campaigns", { method: "POST", body: JSON.stringify(payload) });
