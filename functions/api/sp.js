@@ -87,6 +87,14 @@ export async function onRequest({ request, env }) {
     return Response.json({ ok: r.ok, status: r.status, campaign: c, text: r.text });
   }
 
+  // Скасувати заплановану розсилку, яка ще не пішла.
+  if (request.method === "POST" && act === "cancel") {
+    const id = (url.searchParams.get("id") || "").replace(/\D/g, "");
+    if (!id) return Response.json({ ok: false, error: "потрібен id" }, { status: 400 });
+    const r = await call(key, "/campaigns/" + id, { method: "DELETE" });
+    return Response.json({ ok: r.ok, status: r.status, action: "cancel", response: r.json, text: r.text });
+  }
+
   if (request.method === "POST") {
     let body = null;
     try { body = await request.json(); } catch (_) {}
@@ -122,26 +130,31 @@ export async function onRequest({ request, env }) {
     if (act === "send") {
       if (body.confirm !== "SEND") return Response.json({ ok: false, error: "потрібне confirm: SEND" }, { status: 400 });
       const like = String(body.like || "").replace(/\D/g, "");
-      const listId = Number(body.list_id);
+      const ids = v => [].concat(v == null ? [] : v).map(Number).filter(n => Number.isFinite(n) && n > 0).sort((a, b) => a - b);
+      const lists = ids(body.list_id);
+      const sendDate = body.send_date == null ? null : String(body.send_date).trim();
+      if (sendDate !== null && !/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/.test(sendDate)) return Response.json({ ok: false, error: "send_date у форматі РРРР-ММ-ДД ГГ:ХХ:СС" }, { status: 400 });
       const subject = String(body.subject || "").trim();
       const name = String(body.name || "").trim();
-      if (!like || !listId || !subject || !name) return Response.json({ ok: false, error: "потрібні like, list_id, subject, name" }, { status: 400 });
+      if (!like || !lists.length || !subject || !name) return Response.json({ ok: false, error: "потрібні like, list_id, subject, name" }, { status: 400 });
       if (/\[ТЕСТ\]|\[TEST\]/i.test(subject)) return Response.json({ ok: false, error: "у темі позначка тесту" }, { status: 400 });
 
       const prev = await call(key, "/campaigns/" + like);
       const pm = prev.json && prev.json.message;
       if (!pm || !pm.sender_email) return Response.json({ ok: false, error: "не знайдено попередню розсилку", status: prev.status }, { status: 502 });
-      if (Number(pm.list_id) !== listId) return Response.json({ ok: false, error: "адресна книга не збігається з попередньою розсилкою", prev_list_id: pm.list_id }, { status: 409 });
+      const prevLists = ids(pm.list_id);
+      if (prevLists.join(",") !== lists.join(",")) return Response.json({ ok: false, error: "адресні книги не збігаються з попередньою розсилкою", prev_list_id: pm.list_id }, { status: 409 });
 
       const recent = await recentCampaigns(key, 30);
       if (!recent.list) return Response.json({ ok: false, error: "не вдалося перевірити повтор", status: recent.status }, { status: 502 });
       if (recent.list.some(c => String(c.name || "").trim() === name)) return Response.json({ ok: false, error: "розсилка з такою назвою вже є — повтор заборонено" }, { status: 409 });
 
-      const payload = { sender_name: pm.sender_name, sender_email: pm.sender_email, subject, body: b64utf8(body.html), list_id: listId, name };
+      const payload = { sender_name: pm.sender_name, sender_email: pm.sender_email, subject, body: b64utf8(body.html), list_id: lists.length === 1 ? lists[0] : lists, name };
+      if (sendDate) payload.send_date = sendDate;
       const r = await call(key, "/campaigns", { method: "POST", body: JSON.stringify(payload) });
-      return Response.json({ ok: r.ok, status: r.status, action: "send", sender_name: pm.sender_name, list_id: listId, response: r.json, text: r.text });
+      return Response.json({ ok: r.ok, status: r.status, action: "send", sender_name: pm.sender_name, list_id: lists, send_date: sendDate, response: r.json, text: r.text });
     }
   }
 
-  return Response.json({ ok: false, error: "невідома дія", actions: ["GET do=books", "GET do=templates", "GET do=campaigns", "GET do=campaign&id=", "POST do=template[&id=]", "POST do=test", "POST do=send"] }, { status: 400 });
+  return Response.json({ ok: false, error: "невідома дія", actions: ["GET do=books", "GET do=templates", "GET do=campaigns", "GET do=campaign&id=", "POST do=template[&id=]", "POST do=test", "POST do=send", "POST do=cancel&id="] }, { status: 400 });
 }
